@@ -1,6 +1,125 @@
-.navbar .nav-link {
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.row {
+  padding: 0;
+}
+
+.header .nav-link {
   text-transform: capitalize;
   color: black;
+  font-weight: 500;
+}
+.header .navbar-nav .allProdDrop {
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 800;
+}
+.header .navbar-nav .allProdDrop ul {
+  list-style: none;
+}
+.header .navbar-nav .allProdDrop a {
+  text-decoration: none;
+}
+.header .navbar-nav .allProdDrop li {
+  width: 90%;
+  background-color: red;
+  margin-bottom: 5px;
+}
+.header .hero .herotext .hero-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+.header .hero .herotext h1 {
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  padding: 0;
+  margin: 0;
+}
+.header .hero .herotext span::after {
+  content: "";
+  animation: wordchange infinite 5s;
+}
+.header .hero .buttons button {
+  font-weight: 700;
+  border: 2px solid black;
+  outline: none;
+}
+.header .hero .shopbtn {
+  background-color: black;
+  color: white;
+}
+.header .hero .learnbtn {
+  background-color: white;
+}
+
+.newarrival .imgdiv {
+  background-color: #f1f1f1;
+  box-shadow: 10px 10px 29px -11px rgba(0, 0, 0, 0.75);
+}
+
+@keyframes wordchange {
+  0% {
+    content: "Men";
+  }
+  20% {
+    content: "Women";
+  }
+  40% {
+    content: "Kids";
+  }
+  60% {
+    content: "yourself";
+  }
+  80% {
+    content: "Women";
+  }
+  100% {
+    content: "Kids";
+  }
+}
+@media screen and (max-width: 650px) {
+  body {
+    overflow-x: hidden;
+  }
+  .row {
+    padding: 0;
+  }
+  .hero .herotext h1 {
+    font-size: 25px;
+  }
+  .hero .buttons button {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 2000px) {
+  body {
+    overflow-x: hidden;
+  }
+  .row {
+    padding: 0;
+  }
+  .header .navbar-nav .allProdDrop {
+    min-width: fit-content;
+    min-height: 300px;
+  }
+  .header .navbar-nav .allProdDrop h3 {
+    text-align: left;
+    margin-left: 50px;
+  }
+  .header .navbar-nav .allProdDrop ul {
+    display: flex;
+    justify-content: space-between;
+    width: 90vw;
+  }
+  .hero .herotext h1 {
+    width: 65%;
+  }
 }
 
 /*# sourceMappingURL=styles.css.map */

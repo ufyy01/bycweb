@@ -1,10 +1,151 @@
-.navbar {
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+.row {
+    padding: 0;
+}
+.header {
     .nav-link {
         text-transform: capitalize;
         color: black;
+        font-weight: 500;
     }
-    // .dropdown:hover > .dropdown-menu {
-    //     display: block;
-    //     margin-top: 2px;
-    // }
+    .navbar-nav {
+        .allProdDrop {
+            text-transform: uppercase;
+            text-align: center;
+            font-weight: 800;
+            ul {
+                list-style: none;
+            }
+            a {
+                text-decoration: none;
+            }
+            li {
+                width: 90%;
+                background-color: red;
+                margin-bottom: 5px;
+            }
+        }
+    }
+    .hero {
+        .herotext{
+            .hero-title {
+                font-size: 20px;
+                font-weight: 500;
+            }
+            h1 {
+                font-weight: 900;
+                letter-spacing: 1.5px;
+                padding: 0;
+                margin: 0;
+            }
+            span::after {
+                content: "";
+                animation: wordchange infinite 5s; 
+            }
+        }
+        .buttons button {
+            font-weight: 700;
+            border: 2px solid black;
+            outline: none;
+        }
+        .shopbtn {
+            background-color: black;
+            color: white;
+        }
+        .learnbtn {
+            background-color: white;
+        }
+    }
+}
+.newarrival {
+    .imgdiv {
+        background-color: #f1f1f1;
+        box-shadow: 10px 10px 29px -11px rgba(0,0,0,0.75);
+    }
+}
+
+
+
+
+
+
+
+
+@keyframes wordchange {
+    0% {
+        content: "Men";
+    }
+    20% {
+        content: "Women";
+    }
+    40% {
+        content: "Kids";
+    }
+    60% {
+        content: "yourself";
+    }
+    80% {
+        content: "Women";
+    }
+    100% {
+        content: "Kids";
+    }
+}
+
+@media screen and (max-width: 650px) {
+    body {
+        overflow-x: hidden;
+    }
+    .row {
+        padding: 0;
+    }
+    .hero {
+        .herotext{
+            h1 {
+                font-size: 25px;
+            }
+        }
+        .buttons button {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    }  
+}
+
+@media screen and (min-width: 992px) and (max-width:2000px){
+    body {
+        overflow-x: hidden;
+    }
+    .row {
+        padding: 0;
+    }
+    .header {
+        .navbar-nav {
+            .allProdDrop {
+                min-width: fit-content;
+                min-height: 300px;
+                h3 {
+                    text-align: left;
+                    margin-left: 50px;
+                }
+                ul {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 90vw;
+                }
+            }
+        }
+    }
+    .hero {
+        .herotext{
+            h1 {
+                width: 65%;
+            }
+        }
+    }
 }
