@@ -1,3 +1,23 @@
+@keyframes wordchange {
+  0% {
+    content: "Men";
+  }
+  20% {
+    content: "Women";
+  }
+  40% {
+    content: "Kids";
+  }
+  60% {
+    content: "yourself";
+  }
+  80% {
+    content: "Women";
+  }
+  100% {
+    content: "Kids";
+  }
+}
 body {
   padding: 0;
   margin: 0;
@@ -6,7 +26,7 @@ body {
 }
 
 .row {
-  padding: 0;
+  padding: 0 !important;
 }
 
 .header .nav-link {
@@ -44,69 +64,67 @@ body {
   content: "";
   animation: wordchange infinite 5s;
 }
-
-.buttons button, .viewbtn {
+.header .hero .buttons button {
   font-weight: 700;
   border: 2px solid black;
   outline: none;
 }
-
-.shopbtn {
+.header .hero .shopbtn {
   background-color: black;
   color: white;
 }
-
-.learnbtn, .viewbtn {
+.header .hero .learnbtn {
   background-color: white;
 }
 
 .viewbtn {
+  font-weight: 700;
+  border: 2px solid black;
+  outline: none;
   border: 1px solid black;
+  background-color: white;
 }
 
-.newarrival .imgdiv {
-  background-color: #f1f1f1;
-  box-shadow: 10px 10px 29px -11px rgba(0, 0, 0, 0.75);
+.collection .collectionText {
+  background-color: pink;
+  font-weight: 700;
+}
+.collection .collectionText .collection-title {
+  font-size: 53px;
+}
+.collection .collectionText .leadpara {
+  font-size: 34px;
+  color: #616161;
+}
+.collection .collectionText p {
+  font-weight: 400;
+  font-size: 13px;
 }
 
-@keyframes wordchange {
-  0% {
-    content: "Men";
-  }
-  20% {
-    content: "Women";
-  }
-  40% {
-    content: "Kids";
-  }
-  60% {
-    content: "yourself";
-  }
-  80% {
-    content: "Women";
-  }
-  100% {
-    content: "Kids";
-  }
-}
 @media screen and (max-width: 650px) {
   body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
   .row {
-    padding: 0;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .hero .herotext .hero-title {
+    font-size: 5px;
+    color: red;
   }
   .hero .herotext h1 {
-    font-size: 25px;
+    font-size: 50px;
+    margin-left: 20px;
   }
   .hero .buttons button {
-    width: 100%;
+    width: 90%;
     margin-bottom: 5px;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 2000px) {
   body {
-    overflow-x: hidden;
+    overflow-x: hidden !important;
   }
   .row {
     padding: 0;
@@ -126,6 +144,23 @@ body {
   }
   .hero .herotext h1 {
     width: 65%;
+  }
+  .collection .collectionText {
+    background-color: pink;
+    width: 60%;
+    margin: 170px 0 0 70px;
+    font-weight: 700;
+  }
+  .collection .collectionText .collection-title {
+    font-size: 53px;
+  }
+  .collection .collectionText .leadpara {
+    font-size: 34px;
+    color: #616161;
+  }
+  .collection .collectionText p {
+    font-weight: 400;
+    font-size: 13px;
   }
 }
 
