@@ -31,7 +31,7 @@ body {
   margin-bottom: 5px;
 }
 .header .hero .herotext .hero-title {
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 500;
 }
 .header .hero .herotext h1 {
@@ -44,17 +44,24 @@ body {
   content: "";
   animation: wordchange infinite 5s;
 }
-.header .hero .buttons button {
+
+.buttons button, .viewbtn {
   font-weight: 700;
   border: 2px solid black;
   outline: none;
 }
-.header .hero .shopbtn {
+
+.shopbtn {
   background-color: black;
   color: white;
 }
-.header .hero .learnbtn {
+
+.learnbtn, .viewbtn {
   background-color: white;
+}
+
+.viewbtn {
+  border: 1px solid black;
 }
 
 .newarrival .imgdiv {
