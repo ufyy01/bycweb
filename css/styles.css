@@ -77,7 +77,7 @@ body {
   background-color: white;
 }
 
-.viewbtn {
+.viewbtn, .explorebtn {
   font-weight: 700;
   border: 2px solid black;
   outline: none;
@@ -86,19 +86,50 @@ body {
 }
 
 .collection .collectionText {
-  background-color: pink;
   font-weight: 700;
 }
 .collection .collectionText .collection-title {
-  font-size: 53px;
+  font-size: 48px;
+  margin-top: -20px;
 }
 .collection .collectionText .leadpara {
-  font-size: 34px;
+  font-size: 30px;
   color: #616161;
 }
-.collection .collectionText p {
+.collection .collectionText .textpara {
   font-weight: 400;
   font-size: 13px;
+  color: #424242;
+}
+.collection .pic {
+  background-color: #F1F1F1;
+}
+
+.category .section-header {
+  text-transform: capitalize;
+}
+.category .section-header .section-title {
+  font-weight: 700;
+  font-size: 35px;
+}
+.category .section-header ul {
+  list-style: none;
+}
+.category .section-header li {
+  background: pink;
+  display: inline-block;
+}
+.category .section-header a, .category .section-header a:visited, .category .section-header a:checked {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+}
+.category .section-header a:active {
+  border-bottom: 2px solid black;
+  color: #828282;
+}
+.category .section-header .subnav a {
+  font-size: 17px;
 }
 
 @media screen and (max-width: 650px) {
@@ -118,8 +149,20 @@ body {
     margin-left: 20px;
   }
   .hero .buttons button {
-    width: 90%;
+    width: 100%;
     margin-bottom: 5px;
+  }
+  .collection .explorebtn, .collection .viewbtn {
+    width: 100%;
+  }
+  .category .section-header .section-title {
+    font-size: 32px;
+  }
+  .category .section-header li {
+    padding: 5px;
+  }
+  .category .section-header a {
+    font-size: 17px;
   }
 }
 @media screen and (min-width: 992px) and (max-width: 2000px) {
@@ -145,8 +188,10 @@ body {
   .hero .herotext h1 {
     width: 65%;
   }
+  .collection .textcol {
+    background-color: #F1F1F1;
+  }
   .collection .collectionText {
-    background-color: pink;
     width: 60%;
     margin: 170px 0 0 70px;
     font-weight: 700;
@@ -154,13 +199,11 @@ body {
   .collection .collectionText .collection-title {
     font-size: 53px;
   }
-  .collection .collectionText .leadpara {
-    font-size: 34px;
-    color: #616161;
+  .collection .collectionText .textpara {
+    width: 90%;
   }
-  .collection .collectionText p {
-    font-weight: 400;
-    font-size: 13px;
+  .collection .collectionText .explorebtn {
+    padding: 10px 70px;
   }
 }
 
