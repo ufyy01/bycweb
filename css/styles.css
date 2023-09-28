@@ -18,11 +18,10 @@
     content: "Kids";
   }
 }
-body {
+*, *::before, *::after {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  overflow-x: hidden;
 }
 
 .row {
@@ -101,9 +100,6 @@ body {
   font-size: 13px;
   color: #424242;
 }
-.collection .pic {
-  background-color: #F1F1F1;
-}
 
 .category .section-header {
   text-transform: capitalize;
@@ -114,15 +110,17 @@ body {
 }
 .category .section-header ul {
   list-style: none;
+  padding-left: 0 !important;
 }
 .category .section-header li {
-  background: pink;
   display: inline-block;
 }
 .category .section-header a, .category .section-header a:visited, .category .section-header a:checked {
   text-decoration: none;
   color: black;
   font-size: 25px;
+  padding: 15px 20px;
+  outline: 0.5px solid black;
 }
 .category .section-header a:active {
   border-bottom: 2px solid black;
@@ -130,6 +128,20 @@ body {
 }
 .category .section-header .subnav a {
   font-size: 17px;
+  padding: 15px 20px;
+  outline: 0.5px solid #F1F1F1;
+  background-color: red;
+}
+
+.blog .insights {
+  width: 85%;
+  background-color: #E0E0E0;
+}
+.blog .writer {
+  font-size: 14px;
+}
+.blog .writer .writer-name {
+  font-weight: 700;
 }
 
 @media screen and (max-width: 650px) {
@@ -204,6 +216,9 @@ body {
   }
   .collection .collectionText .explorebtn {
     padding: 10px 70px;
+  }
+  .collection .pic {
+    background-color: #F1F1F1;
   }
 }
 

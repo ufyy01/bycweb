@@ -1,11 +1,11 @@
 @use 'index' as *;
 
-body {
+*, *::before, *::after {
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
+    box-sizing: border-box; 
 }
+
 .row {
     padding: 0 !important;
 }
@@ -86,9 +86,7 @@ body {
             color: #424242;
         }
     }
-    .pic {
-        background-color: #F1F1F1;
-    }
+    
     
 }
 .category {
@@ -100,17 +98,17 @@ body {
         }
         ul {
             list-style: none;
+            padding-left: 0 !important;
         }
         li {
-            background: pink;
             display: inline-block;
-            // padding: 10px 0 0 10px;
-            // margin-right: 15px;
         }
         a, a:visited, a:checked {
             text-decoration: none;
             color: black;
             font-size: 25px;
+            padding: 15px 20px;
+            outline: 0.5px solid black;
         }
         a:active {
             border-bottom: 2px solid black;
@@ -118,6 +116,21 @@ body {
         }
         .subnav a {
             font-size: 17px;
+            padding: 15px 20px;
+            outline: 0.5px solid #F1F1F1;
+            background-color: red;
+        }
+    }
+}
+.blog {
+    .insights {
+        width: 85%;
+        background-color: #E0E0E0;
+    }
+    .writer {
+        font-size: 14px;
+        .writer-name {
+            font-weight: 700;  
         }
     }
 }
@@ -218,6 +231,9 @@ body {
             .explorebtn {
                 padding: 10px 70px;
             }
+        }
+        .pic {
+            background-color: #F1F1F1;
         }
         
     }
