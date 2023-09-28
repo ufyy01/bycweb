@@ -143,6 +143,14 @@
 .blog .writer .writer-name {
   font-weight: 700;
 }
+.blog .readbtn {
+  font-weight: 700;
+  border: 2px solid black;
+  outline: none;
+  border-radius: 0;
+  font-size: 14px;
+  border: 1px solid black;
+}
 
 @media screen and (max-width: 650px) {
   body {

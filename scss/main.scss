@@ -133,6 +133,12 @@
             font-weight: 700;  
         }
     }
+    .readbtn {
+        @include buttons;
+        border-radius: 0;
+        font-size: 14px;
+        border: 1px solid black;
+    }
 }
 
 
