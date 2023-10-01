@@ -1,0 +1,101 @@
+
+@media screen and (max-width: 650px) {
+    body {
+        overflow-x: hidden !important;
+    }
+    .row {
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    .hero {
+        .herotext{
+            .hero-title {
+                font-size: 5px;
+                color: red;
+            }
+            h1 {
+                font-size: 50px;
+                margin-left: 20px;
+            }
+        }
+        .buttons button {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+    }  
+    .collection {
+        .explorebtn, .viewbtn {
+            width: 100%;
+        }
+    }
+    .category {
+        .section-header {
+            .section-title {
+                font-size: 32px;
+            }
+            li {
+                padding: 5px;
+            }
+            a {
+                font-size: 17px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width:2000px){
+    body {
+        overflow-x: hidden !important;
+    }
+    .row {
+        padding: 0;
+    }
+    .header {
+        .navbar-nav {
+            .allProdDrop {
+                min-width: fit-content;
+                min-height: 300px;
+                h3 {
+                    text-align: left;
+                    margin-left: 50px;
+                }
+                ul {
+                    display: flex;
+                    justify-content: space-between;
+                    width: 90vw;
+                }
+            }
+        }
+    }
+    .hero {
+        .herotext{
+            h1 {
+                width: 65%;
+            
+            }
+        }
+    }
+    .collection {
+        .textcol {
+            background-color: #F1F1F1;
+        }
+        .collectionText {
+            width: 60% ; 
+            margin: 170px 0 0 70px;
+            font-weight: 700;
+            .collection-title {
+                font-size: 53px;
+            }
+            .textpara {
+                width: 90%;
+            }
+            .explorebtn {
+                padding: 10px 70px;
+            }
+        }
+        .pic {
+            background-color: #F1F1F1;
+        }
+        
+    }
+}
