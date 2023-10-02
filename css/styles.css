@@ -146,21 +146,42 @@
   border: 1px solid black;
 }
 
-.blog .title {
+.blog-list .title {
   font-size: 48px;
   font-weight: 700;
 }
-.blog-title {
+.blog-list-title {
   font-size: 26px;
   font-weight: 700;
 }
-.blog-para {
+.blog-list-para {
   font-size: 20px;
   text-align: justify;
 }
-.blog .insights {
+.blog-list .insights {
   width: 50%;
   background-color: #fcfcfc;
+}
+
+article .title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #212121;
+}
+
+.blog-news .insights {
+  background-color: #e0e0e0;
+}
+.blog-news .blog-text {
+  text-align: justify;
+  font-size: 20px;
+  color: #424242;
+}
+.blog-news .readbtn {
+  font-weight: 700;
+  border: 2px solid black;
+  outline: none;
+  border: ipx solid black;
 }
 
 @media screen and (max-width: 650px) {

@@ -1,4 +1,6 @@
-.blog {
+@use 'mixins' as *;
+
+.blog-list {
     .title {
         font-size: 48px;
         font-weight: 700;
@@ -15,5 +17,24 @@
     .insights {
         width: 50%;
         background-color: #fcfcfc;
+    }
+}
+article .title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #212121;
+}
+.blog-news {
+    .insights {
+        background-color: #e0e0e0;
+    }
+    .blog-text {
+        text-align: justify;
+        font-size: 20px;
+        color: #424242;
+    }
+    .readbtn {
+        @include buttons;
+        border: ipx solid black;
     }
 }
