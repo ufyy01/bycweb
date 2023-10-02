@@ -36,5 +36,6 @@ article .title {
     .readbtn {
         @include buttons;
         border: ipx solid black;
+        border-radius: 0;
     }
 }
