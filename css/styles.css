@@ -147,7 +147,20 @@
 }
 
 .blog .title {
-  color: red;
+  font-size: 48px;
+  font-weight: 700;
+}
+.blog-title {
+  font-size: 26px;
+  font-weight: 700;
+}
+.blog-para {
+  font-size: 20px;
+  text-align: justify;
+}
+.blog .insights {
+  width: 50%;
+  background-color: #fcfcfc;
 }
 
 @media screen and (max-width: 650px) {
@@ -160,7 +173,6 @@
   }
   .hero .herotext .hero-title {
     font-size: 5px;
-    color: red;
   }
   .hero .herotext h1 {
     font-size: 50px;

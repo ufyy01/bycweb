@@ -1,5 +1,19 @@
 .blog {
     .title {
-        color: red;
+        font-size: 48px;
+        font-weight: 700;
+    }
+    &-title {
+        font-size: 26px;
+        font-weight: 700;
+
+    }
+    &-para {
+        font-size: 20px;
+        text-align: justify;
+    }
+    .insights {
+        width: 50%;
+        background-color: #fcfcfc;
     }
 }
