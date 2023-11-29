@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;700&family=Noto+Sans:wght@400;700&display=swap");
 @keyframes wordchange {
   0% {
     content: "Men";
@@ -261,6 +262,111 @@ article .title {
     background-color: #F1F1F1;
   }
 }
+.about h1 {
+  font: 100% Jost, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 65px;
+  text-transform: uppercase;
+}
+.about-text {
+  font: 100% Noto Sans, sans-serif;
+}
+.about-text h3 {
+  font-size: 30px;
+  line-height: 45px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.about-text p {
+  font-size: 32px;
+  line-height: 42px;
+}
+.about .records h2 {
+  text-transform: uppercase;
+  font: 100% Jost, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 65px;
+}
+.about .records .record .record-card {
+  width: 450px;
+  height: 330px;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #fbfbfb;
+  position: relative;
+  box-shadow: 3px 4px 22px 1px rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: 3px 4px 22px 1px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 3px 4px 22px 1px rgba(0, 0, 0, 0.06);
+  cursor: default;
+  transition: all 1.5s ease;
+}
+.about .records .record .record-card:hover {
+  background-color: rgba(189, 58, 58, 0.04);
+  transform: scale(1.05);
+}
+.about .records .record .record-card p {
+  font: 100% Noto Sans, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  margin-top: 20px;
+}
+.about .records .record .record-card img {
+  margin: 20px 0;
+}
+.about .records .record .record-card h5 {
+  color: red;
+  font: 100% Noto Sans, sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 34px;
+  position: absolute;
+  bottom: 50px;
+}
+.about .record:hover .record-card {
+  transform: scale(0.9);
+}
+
+.recently-viewed {
+  border: 1px solid rgb(225, 225, 225);
+  width: 95%;
+  border-radius: 10px;
+  box-shadow: 3px 4px 22px 1px rgba(0, 0, 0, 0.06);
+  -webkit-box-shadow: 3px 4px 22px 1px rgba(0, 0, 0, 0.06);
+  -moz-box-shadow: 3px 4px 22px 1px rgba(0, 0, 0, 0.06);
+  margin: 120px 0 60px;
+}
+.recently-viewed .text h6 {
+  font: 100% Noto Sans, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 26px;
+  text-transform: capitalize;
+}
+.recently-viewed .text a:visited, .recently-viewed .text a:link, .recently-viewed .text a:active {
+  font: 100% Jost, sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 26px;
+  color: rgb(189, 58, 58);
+  text-decoration: none;
+}
+.recently-viewed hr {
+  border: 2px solid #d1cfcf;
+}
+.recently-viewed .product-cards {
+  width: 95%;
+}
+.recently-viewed .product-cards .card {
+  width: 250px;
+  border: none;
+  cursor: pointer;
+}
+.recently-viewed .product-cards .card .card-img-top {
+  border-radius: 10px 10px 0 0;
+}
+
 *, *::before, *::after {
   padding: 0;
   margin: 0;
