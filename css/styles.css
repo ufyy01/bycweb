@@ -303,8 +303,8 @@ article .title {
   transition: all 1.5s ease;
 }
 .about .records .record .record-card:hover {
-  background-color: rgba(189, 58, 58, 0.04);
-  transform: scale(1.05);
+  background-color: rgba(189, 58, 58, 0.05);
+  transform: scale(1.1);
 }
 .about .records .record .record-card p {
   font: 100% Noto Sans, sans-serif;
@@ -365,6 +365,72 @@ article .title {
 }
 .recently-viewed .product-cards .card .card-img-top {
   border-radius: 10px 10px 0 0;
+}
+
+.title {
+  font: 100% Jost, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  text-transform: uppercase;
+  margin: 100px 0;
+}
+
+.map {
+  width: 90%;
+  height: 80vh;
+}
+
+.contact-icon {
+  width: 90%;
+  margin: 100px 0;
+}
+.contact-icon p {
+  margin-top: -5px;
+  font: 100% Noto Sans, sans-serif;
+  font-weight: 400;
+  size: 18px;
+  line-height: 20px;
+}
+.contact-icon h6 {
+  font: 100% Noto Sans, sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 34px;
+}
+.contact-icon .image {
+  box-shadow: 3px 4px 22px 2px rgba(0, 0, 0, 0.07);
+  -webkit-box-shadow: 3px 4px 22px 2px rgba(0, 0, 0, 0.07);
+  -moz-box-shadow: 3px 4px 22px 2px rgba(0, 0, 0, 0.07);
+}
+
+.contact-form h5 {
+  font: 100% Jost, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  margin: 60px 0;
+}
+.contact-form input, .contact-form textarea {
+  border: 2px solid #BD3A3A;
+  padding: 15px;
+  border-radius: 10px;
+}
+.contact-form label {
+  margin: 20px 0;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  font: 100% Noto Sans, sans-serif;
+}
+.contact-form button {
+  border: none;
+  background-color: #BD3A3A;
+  border-radius: 10px;
+  margin-top: 60px;
+  color: white;
+  font: 100% Noto Sans, sans-serif;
+  line-height: 20px;
 }
 
 *, *::before, *::after {
