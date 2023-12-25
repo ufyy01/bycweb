@@ -25,24 +25,62 @@
 
 .header .nav-link {
   text-transform: capitalize;
-  color: black;
   font-weight: 500;
+  color: black;
+}
+.header .navbar-nav {
+  font: 100% Noto Sans, sans-serif;
 }
 .header .navbar-nav .allProdDrop {
+  width: 96vw;
   text-transform: uppercase;
-  text-align: center;
-  font-weight: 800;
-}
-.header .navbar-nav .allProdDrop ul {
+  background-color: #f5f5f5;
   list-style: none;
+  margin-left: 5px;
+  border: 0;
+  border-radius: 0;
 }
-.header .navbar-nav .allProdDrop a {
+.header .navbar-nav .allProdDrop h3 a {
   text-decoration: none;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
 }
-.header .navbar-nav .allProdDrop li {
-  width: 90%;
+.header .navbar-nav .allProdDrop .drop-header {
+  padding: 5px 0;
   background-color: red;
-  margin-bottom: 5px;
+}
+.header .navbar-nav .allProdDrop .drop-header .main {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+.header .navbar-nav .allProdDrop .drop-header .main {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+}
+.header .navbar-nav .allProdDrop .drop-header .nav-marg {
+  margin-left: 25%;
+}
+.header .navbar-nav .allProdDrop .drop-header .submenu {
+  display: block;
+  width: 15%;
+  border: none;
+  border-radius: 0;
+  background-color: white;
+  height: 100%;
+  margin: 0;
+}
+.header .navbar-nav .allProdDrop .drop-header .submenu li {
+  background-color: #f5f5f5;
+  padding: 5px 0;
+}
+.header .navbar-nav .allProdDrop .drop-header .submenu a {
+  font-weight: bold;
+  color: black;
+  font-size: 20px;
 }
 .header .hero .herotext .hero-title {
   font-size: 25px;
@@ -161,7 +199,7 @@
 }
 .blog-list .insights {
   width: 50%;
-  background-color: #fcfcfc;
+  background-color: #fdf8f8;
 }
 
 article .title {
@@ -178,7 +216,8 @@ article .title {
   font-size: 20px;
   color: #424242;
 }
-.blog-news .readbtn {
+
+.button .readbtn {
   font-weight: 700;
   border: 2px solid black;
   outline: none;

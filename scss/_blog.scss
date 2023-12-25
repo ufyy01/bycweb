@@ -16,7 +16,7 @@
     }
     .insights {
         width: 50%;
-        background-color: #fcfcfc;
+        background-color: #fdf8f8;
     }
 }
 article .title {
@@ -33,9 +33,9 @@ article .title {
         font-size: 20px;
         color: #424242;
     }
-    .readbtn {
-        @include buttons;
-        border: 1px solid black;
-        border-radius: 0;
-    }
+}
+.button .readbtn {
+    @include buttons;
+    border: 1px solid black;
+    border-radius: 0;
 }
