@@ -12,58 +12,6 @@
     }
     .navbar-nav {
         font: 100% $secondary-font;
-        .allProdDrop {
-            width: 96vw;
-            text-transform: uppercase;
-            background-color: #f5f5f5;
-            list-style: none;
-            margin-left: 5px;
-            border: 0;
-            border-radius: 0;
-            h3 a {
-                text-decoration: none;
-                font-weight: bold;
-                color: black;
-                cursor: pointer;
-            }
-            .drop-header{
-                padding: 5px 0;
-                background-color: red;
-                .main {
-                    text-decoration: none;
-                    color: white;
-                    font-weight: bold;
-                }
-                .main {
-                    text-decoration: none;
-                    color: white;
-                    font-weight: bold;
-                    font-size: 20px;
-                }
-                .nav-marg{
-                    margin-left: 25%;
-                }
-                .submenu {
-                    display: block;
-                    width: 15%;
-                    border: none;
-                    border-radius: 0;
-                    background-color: white;
-                    height: 100%;
-                    margin: 0;
-                    li {
-                        background-color: #f5f5f5;
-                        padding: 5px 0;
-                    }
-                    a {
-                        font-weight: bold;
-                        color: black;
-                        font-size: 20px;
-                    }
-                }
-            }
-            
-        }
     }
     .hero {
         .herotext{
@@ -95,6 +43,42 @@
         }
     }
 }
+
+.main-drop {
+    background-color: pink;
+    border: 0;
+    border-radius: 0;
+    width: 96vw;
+    height: 50vh;
+    h3 a {
+        font: 100% $secondary-font;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 26px;
+        color: black;
+    }
+    .drop-header {
+        background-color: red;
+
+        & > li:nth-child(2) {
+            margin-left: 350px;
+        }
+
+        & > li:nth-child(3) {
+            margin-left: 200px;
+        }
+    }
+    .main-link > a {
+        font-size: 20px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+}
+
+
+
 
 .viewbtn, .explorebtn {
     @include buttons;
