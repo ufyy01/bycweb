@@ -13,7 +13,130 @@
     .navbar-nav {
         font: 100% $secondary-font;
     }
-    .hero {
+    .navbar-brand {
+        display: block;
+    }
+    .search-div {
+        position: relative;
+        display: none;
+    }
+    #search {
+        border: none;
+        width: 450px;
+        height: 32px;
+        border-bottom: 1px solid black;
+        padding: 0 10px;
+    }
+    #search:focus {
+        outline: 2px solid red;
+        background-color: white;
+        border-radius: 10px;
+    }
+    .search-btn {
+        border: none;
+        background-color: transparent;
+    }
+    .btn-big {
+        position: absolute;
+        right: 2%;
+        bottom: 2%;
+        font-size: 18px;
+    }
+    .x-btn {
+        opacity: 0;
+        position: absolute;
+        right: 8%;
+        bottom: 2%;
+        color: red;
+        transition: opacity 2s ease;
+    }
+    #search:focus + .x-btn {
+        opacity: 1;
+    }
+}
+.main-drop {
+    background-color: #f5f5f5;
+    border: 0;
+    border-radius: 0;
+    width: 96vw;
+    height: 350px;
+    h3 a {
+        font: 100% $secondary-font;
+        font-weight: 700;
+        text-decoration: none;
+        text-transform: uppercase;
+        font-size: 26px;
+        color: black;
+    }
+    .drop-header {
+        background-color: red;
+
+        & > li:nth-child(2) {
+            margin-left: 250px;
+        }
+
+        & > li:nth-child(3) {
+            margin-left: 150px;
+        }
+    }
+    .main-link > a {
+        font-size: 20px;
+        color: white;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+    .main-link > a::after {
+        font: var(--fa-font-solid);
+        content: "\f078";
+        margin-left: 7px;
+        font-size: 17px;
+    }
+    .sub-menu {
+        border-radius: 0;
+        border: none;
+        width: 180px;
+        height: 193px;
+        position: relative;
+        & > .submenu-li > a {
+            font: 100% $secondary-font;
+            font-size: 20px;
+            font-weight: 700;
+            background-color: #f5f5f5;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+    }
+    .sub-menu .sub, .sub-menu .sub2 {
+        position: absolute;
+        left: 100%;
+        top: -40%;
+    }
+    .sub-menu .sub2 {
+        top: -150%;
+    }
+    .sub-submenu {
+        border: none;
+        border-radius: 0;
+        height: 193px;
+        width: 180px;
+        & > li a {
+            font: 100% $secondary-font;
+            text-transform: capitalize;
+            padding-bottom: 10px;
+            font-weight: 500;
+        }
+    } 
+    .dropdown-menu .submenu-li > a::after {
+        font: var(--fa-font-solid);
+        content: "\f054";
+        margin-left: 35px;
+        font-size: 17px;
+    }
+    .dropdown-menu .submenu-li .mov::after {
+        margin-left: 55px;
+    }
+}  
+.hero {
         .herotext{
             .hero-title {
                 font-size: 25px;
@@ -41,45 +164,7 @@
         .learnbtn{
             background-color: white;
         }
-    }
 }
-
-.main-drop {
-    background-color: pink;
-    border: 0;
-    border-radius: 0;
-    width: 96vw;
-    height: 50vh;
-    h3 a {
-        font: 100% $secondary-font;
-        font-weight: 700;
-        text-decoration: none;
-        text-transform: uppercase;
-        font-size: 26px;
-        color: black;
-    }
-    .drop-header {
-        background-color: red;
-
-        & > li:nth-child(2) {
-            margin-left: 350px;
-        }
-
-        & > li:nth-child(3) {
-            margin-left: 200px;
-        }
-    }
-    .main-link > a {
-        font-size: 20px;
-        color: white;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-}
-
-
-
-
 .viewbtn, .explorebtn {
     @include buttons;
     border: 1px solid black;
@@ -124,16 +209,18 @@
             color: black;
             font-size: 25px;
             padding: 15px 20px;
-            outline: 0.5px solid black;
         }
-        a:active {
-            border-bottom: 2px solid black;
+        .active1 {
+            border-bottom: 2px solid #828282;
             color: #828282;
+            opacity: 0.5;
         }
         .subnav a {
             font-size: 17px;
             padding: 15px 20px;
-            outline: 0.5px solid #F1F1F1;
+            background-color: #f5f5f5;
+        }
+        .subnav .active2 {
             background-color: red;
         }
     }
