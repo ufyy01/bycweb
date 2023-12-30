@@ -248,13 +248,14 @@
 @media screen and (min-width: 576px) {
   .carousel-inner {
     display: flex;
-    justify-content: space-between;
+    transition: transform 0.5s ease-in-out;
   }
   .carousel-item {
-    margin-right: 0;
-    flex: 0 0 33.3333333333%;
+    flex: 0 0 auto;
+    width: 33.3333333333%;
     display: block;
-    padding: 16px;
+    margin-right: 0;
+    margin-left: 10px;
   }
 }
 .blog .insights {

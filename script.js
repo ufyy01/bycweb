@@ -16,3 +16,24 @@ function closeSearch() {
     brandLogo.style.display = "block";
     searchDiv.style.display = "none";
 }
+let currentIndex = 0;
+
+function prevSlide() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
+    }
+}
+
+function nextSlide() {
+    const items = document.querySelectorAll('.carousel-inner .carousel-item');
+    if (currentIndex < items.length - 1) {
+        currentIndex++;
+        updateCarousel();
+    }
+}
+
+function updateCarousel() {
+  let newTransformValue = -currentIndex * 100 + '%';
+    document.querySelector('.carousel-inner').style.transform = 'translateX(' + newTransformValue + ')';
+}
