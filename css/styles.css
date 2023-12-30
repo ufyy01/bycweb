@@ -238,7 +238,25 @@
 .category .section-header .subnav .active2 {
   background-color: red;
 }
+.category .carousel {
+  margin-top: 70px;
+}
+.category .carousel .card {
+  border: none;
+}
 
+@media screen and (min-width: 576px) {
+  .carousel-inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  .carousel-item {
+    margin-right: 0;
+    flex: 0 0 33.3333333333%;
+    display: block;
+    padding: 16px;
+  }
+}
 .blog .insights {
   width: 85%;
   background-color: #E0E0E0;

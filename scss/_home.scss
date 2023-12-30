@@ -224,6 +224,24 @@
             background-color: red;
         }
     }
+    .carousel {
+        margin-top: 70px;
+        .card {
+            border: none;
+        }
+    }
+}
+@media screen and (min-width: 576px) {
+    .carousel-inner {
+        display: flex;
+        justify-content: space-between;
+    }
+    .carousel-item {
+        margin-right: 0;
+        flex: 0 0 calc(100%/3);
+        display: block;
+        padding: 16px;
+    }
 }
 .blog {
     .insights {
