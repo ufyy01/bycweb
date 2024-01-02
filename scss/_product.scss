@@ -1,0 +1,160 @@
+@use 'variables' as *;
+.product-main {
+    border: 1px solid rgba(225, 225, 225, 1);
+    width: 97%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 50px 0 400px 0;
+    margin-bottom: 50px;
+    .dash {
+        width: 97%;
+        height: 2px;
+        background-color: #bebebe85;
+        margin: 0 auto;
+    }
+    .filter-header {
+        h4 {
+            font: 100% $secondary-font;
+            font-weight: bold;
+            font-size: 20px;
+            text-transform: capitalize;
+            margin-left: 30px;
+        }
+        form {
+            margin-right: 30px;
+            margin-bottom: 15px;
+            position: relative;
+            select {
+                border: 2px solid #bebebe;
+                border-radius: 5px;
+            }
+        }
+        label {
+            background-color: white;
+            text-transform: uppercase;
+            font-size: 10px;
+            position: absolute;
+            top: -7px;
+            left: 9%;
+            font-weight: bold;
+            color: #787885;
+        }
+    }
+    .filter-button {
+        margin-right: 30px;
+        button {
+            padding: 4px 25px;
+            border: none;
+            border-radius: 5px;       
+        }
+        .shadow {
+            background-color: white;
+            box-shadow: 10px 10px 5px #787885;
+            color: red;
+        }
+    }
+}
+
+.products {
+    padding: 0 15px;
+    .cards {
+        margin: 10px 5px;
+        box-shadow: 5px 5px 8px 3px #e4e4e4;
+        transition: display 0.5s linear;
+        .card-body {
+            font: 100% $secondary-font;
+            padding: 0 15px;
+            margin-top: 10px;
+            .card-title, .sub-title {
+                font-weight: bold;
+                line-height: 21px;
+                text-transform: uppercase;
+            }
+            .sub-title {
+                font-weight: 400;
+            }
+            .card-text {
+                font-size: 12px;
+                line-height: 15px;
+                text-transform: capitalize;
+            }
+            .price {
+                font-weight: bold;
+                font-size: 14px;
+            }
+            .btn-div {
+                opacity: 0;
+                transition: opacity 0.7s ease-in-out;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                button {
+                    border: none;
+                    border-radius: 10px;
+                    text-transform: capitalize;
+                    font-size: 11px;
+                    width: 100%;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                .wish {
+                    border: 2px solid red;
+                    background-color: white;
+                    color: red;
+                    margin-right: 10px;
+                }
+                .cart {
+                    background-color: red;
+                    color: white;
+                }
+            }
+        }
+        &:hover .btn-div {
+            opacity: 1;
+        }
+    }
+}
+
+.flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+
+@media screen and (min-width: 576px) {
+    .flex .cards {
+        flex: 0 0 calc(95%/3);
+    } 
+    .stack {
+        .stack-pro {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            .card-img-top {
+                flex: 1 0 500px;
+            }
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                align-items: center;
+                padding-top: 100px;
+                .btn-div {
+                    display: block;
+                    width: 90%;
+                    .cart {
+                        margin: 10px 0 25px 0;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+@media screen and (min-width: 1300px) {
+    .flex .cards {
+        flex: 0 0 calc(96%/5);
+    }
+}

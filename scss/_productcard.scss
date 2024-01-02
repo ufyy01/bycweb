@@ -2,12 +2,12 @@
 
 .recently-viewed {
     border: 1px solid rgba(225, 225, 225, 1) ;
-    width: 95%; 
+    width: 97%; 
     border-radius: 10px;
     box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
     -webkit-box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
     -moz-box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
-    margin: 120px 0 60px;
+    margin: 100px 0 60px;
     .text h6 {
         font: 100% $secondary-font;
         font-weight: 700;
@@ -35,7 +35,24 @@
             .card-img-top {
                 border-radius: 10px 10px 0 0;
             }
+            .card-title, .sub-title {
+                font-weight: bold;
+                line-height: 21px;
+                text-transform: uppercase;
+            }
+            .sub-title {
+                margin-top: -5px;
+                font-weight: 400;
+            }
+            .card-text {
+                font-size: 12px;
+                line-height: 15px;
+                text-transform: capitalize;
+            }
+            .price {
+                font-weight: bold;
+                font-size: 14px;
+            }
         }
-      
     }
 }

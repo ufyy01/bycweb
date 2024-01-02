@@ -177,30 +177,541 @@
             </div>
         </nav>
     </header>
-    <main>
+    <main class="product-main">
         <div class="filter-header d-flex justify-content-between align-items-center">
-            <h4>all products</h4>
+            <h4 class="products-title">all products</h4>
             <form action="">
-                <select name="product-filter" id="product-filter">
+                <label for="product-filter" class="px-1">sort by</label>
+                <select name="product-filter" id="product-filter" class="pe-3 py-1 ps-1">
                     <option value="most-sold">Most Sold</option>
                     <option value="popular">Popular</option>
                 </select>
             </form>
         </div>
-        <div class="filter-button d-flex justify-content-end align-items-center">
-            <button>
+        <div class="dash"></div>
+        <div class="filter-button justify-content-end align-items-center my-3 d-none d-lg-flex">
+            <button class="list" onclick="displayList()">
                 <i class="fa-solid fa-list"></i>
             </button>
-            <button>
-                <img src="./assets/Vector (1).png" alt="icon">
+            <button class="grid shadow" onclick="displayGrid()">
+                <i class="fa-solid fa-grip"></i>
             </button>
         </div>
-        <div class="products">
-            <div class="row">
-                
+        <div class="dash mb-2 d-none d-lg-block"></div>
+        <div class="products flex">
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image 17.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">camisole</h5>
+                    <p class="sub-title">BYC-2598abc</p>
+                    <p class="card-text">Long Cotton Adjustable Strap Camisole / Tank Top - white</p>
+                    <p class="price">₦1,900.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image22.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">Boxers</h5>
+                    <p class="sub-title">BYC 1161</p>
+                    <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                    <p class="price">₦1,800.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image23.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">Boxers</h5>
+                    <p class="sub-title">BYC 1161</p>
+                    <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                    <p class="price">₦1,800.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image24.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">Boxers</h5>
+                    <p class="sub-title">BYC 1161</p>
+                    <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                    <p class="price">₦10,000.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image24.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">Boxers</h5>
+                    <p class="sub-title">BYC 1161</p>
+                    <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                    <p class="price">₦12,000.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="cards stack-pro">
+                <img src="./assets/image24.png" class="card-img-top img-fluid" alt="product image">
+                <div class="card-body">
+                    <h5 class="card-title">Boxers</h5>
+                    <p class="sub-title">BYC 1161</p>
+                    <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                    <p class="price">₦10,000.00</p>
+                    <div class="rating">
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                        <span class="ms-2">4.05</span>
+                    </div>
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-regular fa-heart"></i>
+                            <p class="pt-3 ms-1">wishlist</p>
+                        </button>
+                        <button class="cart d-flex px-4 align-items-center justify-content-center">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                            <p class="pt-3 ms-1">buy now</p>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </main>
+    <section class="recently-viewed mx-auto">
+        <div class="text d-flex align-items-center justify-content-between mx-lg-4 mt-lg-4 pt-3">
+            <h6>recently viewed</h6>
+            <p class="me-lg-4"><a href="#">See all <i class="fa-solid fa-chevron-right ps-3"></i></a></p>
+        </div>
+        <hr class="ms-lg-4 me-lg-5">
+        <div class="product-cards py-lg-3">
+            <div class="row justify-content-between mx-lg-3">
+                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                    <div class="card">
+                        <img src="./assets/image 17.png" class="card-img-top" alt="product image">
+                        <div class="card-body">
+                            <h5 class="card-title">Men Boxers</h5>
+                            <p class="sub-title">BYC 1163</p>
+                            <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                            <p class="price">₦1,900.00</p>
+                            <div class="rating">
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <span>4.05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                    <div class="card">
+                        <img src="./assets/image 17.png" class="card-img-top" alt="product image">
+                        <div class="card-body">
+                            <h5 class="card-title">Men Boxers</h5>
+                            <p class="sub-title">BYC 1163</p>
+                            <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                            <p class="price">₦1,900.00</p>
+                            <div class="rating">
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <span>4.05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                    <div class="card">
+                        <img src="./assets/image 17.png" class="card-img-top" alt="product image">
+                        <div class="card-body">
+                            <h5 class="card-title">Men Boxers</h5>
+                            <p class="sub-title">BYC 1163</p>
+                            <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                            <p class="price">₦1,900.00</p>
+                            <div class="rating">
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <span>4.05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                    <div class="card">
+                        <img src="./assets/image 17.png" class="card-img-top" alt="product image">
+                        <div class="card-body">
+                            <h5 class="card-title">Men Boxers</h5>
+                            <p class="sub-title">BYC 1163</p>
+                            <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                            <p class="price">₦1,900.00</p>
+                            <div class="rating">
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <span>4.05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                    <div class="card">
+                        <img src="./assets/image 17.png" class="card-img-top" alt="product image">
+                        <div class="card-body">
+                            <h5 class="card-title">Men Boxers</h5>
+                            <p class="sub-title">BYC 1163</p>
+                            <p class="card-text">Fashionable Men's Underwear Boxer Cotton Underwear 3 In 1</p>
+                            <p class="price">₦1,900.00</p>
+                            <div class="rating">
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <span>4.05</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>

@@ -481,12 +481,12 @@ article .title {
 
 .recently-viewed {
   border: 1px solid rgb(225, 225, 225);
-  width: 95%;
+  width: 97%;
   border-radius: 10px;
   box-shadow: 3px 4px 22px 1px rgba(0, 0, 0, 0.06);
   -webkit-box-shadow: 3px 4px 22px 1px rgba(0, 0, 0, 0.06);
   -moz-box-shadow: 3px 4px 22px 1px rgba(0, 0, 0, 0.06);
-  margin: 120px 0 60px;
+  margin: 100px 0 60px;
 }
 .recently-viewed .text h6 {
   font: 100% Noto Sans, sans-serif;
@@ -516,6 +516,24 @@ article .title {
 }
 .recently-viewed .product-cards .card .card-img-top {
   border-radius: 10px 10px 0 0;
+}
+.recently-viewed .product-cards .card .card-title, .recently-viewed .product-cards .card .sub-title {
+  font-weight: bold;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+.recently-viewed .product-cards .card .sub-title {
+  margin-top: -5px;
+  font-weight: 400;
+}
+.recently-viewed .product-cards .card .card-text {
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: capitalize;
+}
+.recently-viewed .product-cards .card .price {
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .title {
@@ -584,6 +602,158 @@ article .title {
   line-height: 20px;
 }
 
+.product-main {
+  border: 1px solid rgb(225, 225, 225);
+  width: 97%;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 50px 0 400px 0;
+  margin-bottom: 50px;
+}
+.product-main .dash {
+  width: 97%;
+  height: 2px;
+  background-color: rgba(190, 190, 190, 0.5215686275);
+  margin: 0 auto;
+}
+.product-main .filter-header h4 {
+  font: 100% Noto Sans, sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  text-transform: capitalize;
+  margin-left: 30px;
+}
+.product-main .filter-header form {
+  margin-right: 30px;
+  margin-bottom: 15px;
+  position: relative;
+}
+.product-main .filter-header form select {
+  border: 2px solid #bebebe;
+  border-radius: 5px;
+}
+.product-main .filter-header label {
+  background-color: white;
+  text-transform: uppercase;
+  font-size: 10px;
+  position: absolute;
+  top: -7px;
+  left: 9%;
+  font-weight: bold;
+  color: #787885;
+}
+.product-main .filter-button {
+  margin-right: 30px;
+}
+.product-main .filter-button button {
+  padding: 4px 25px;
+  border: none;
+  border-radius: 5px;
+}
+.product-main .filter-button .shadow {
+  background-color: white;
+  box-shadow: 10px 10px 5px #787885;
+  color: red;
+}
+
+.products {
+  padding: 0 15px;
+}
+.products .cards {
+  margin: 10px 5px;
+  box-shadow: 5px 5px 8px 3px #e4e4e4;
+  transition: display 0.5s linear;
+}
+.products .cards .card-body {
+  font: 100% Noto Sans, sans-serif;
+  padding: 0 15px;
+  margin-top: 10px;
+}
+.products .cards .card-body .card-title, .products .cards .card-body .sub-title {
+  font-weight: bold;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+.products .cards .card-body .sub-title {
+  font-weight: 400;
+}
+.products .cards .card-body .card-text {
+  font-size: 12px;
+  line-height: 15px;
+  text-transform: capitalize;
+}
+.products .cards .card-body .price {
+  font-weight: bold;
+  font-size: 14px;
+}
+.products .cards .card-body .btn-div {
+  opacity: 0;
+  transition: opacity 0.7s ease-in-out;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.products .cards .card-body .btn-div button {
+  border: none;
+  border-radius: 10px;
+  text-transform: capitalize;
+  font-size: 11px;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.products .cards .card-body .btn-div .wish {
+  border: 2px solid red;
+  background-color: white;
+  color: red;
+  margin-right: 10px;
+}
+.products .cards .card-body .btn-div .cart {
+  background-color: red;
+  color: white;
+}
+.products .cards:hover .btn-div {
+  opacity: 1;
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media screen and (min-width: 576px) {
+  .flex .cards {
+    flex: 0 0 31.6666666667%;
+  }
+  .stack .stack-pro {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  .stack .stack-pro .card-img-top {
+    flex: 1 0 500px;
+  }
+  .stack .stack-pro .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 100px;
+  }
+  .stack .stack-pro .card-body .btn-div {
+    display: block;
+    width: 90%;
+  }
+  .stack .stack-pro .card-body .btn-div .cart {
+    margin: 10px 0 25px 0;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .flex .cards {
+    flex: 0 0 19.2%;
+  }
+}
 *, *::before, *::after {
   padding: 0;
   margin: 0;

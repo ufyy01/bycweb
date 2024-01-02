@@ -49,4 +49,26 @@ if (window.matchMedia("(min-width:576px)").matches) {
             });
         }
     }
+}else {
+    productCarousel.classList.add("slide");
+}
+function displayList() {
+    const listBtn = document.querySelector(".list");
+    const gridBtn = document.querySelector(".grid");
+    const productContainer = document.querySelector(".products");
+
+    listBtn.classList.add("shadow")
+    gridBtn.classList.remove("shadow")
+    productContainer.classList.add("stack")
+    productContainer.classList.remove("flex")
+}
+function displayGrid() {
+    const listBtn = document.querySelector(".list");
+    const gridBtn = document.querySelector(".grid");
+    const productContainer = document.querySelector(".products");
+
+    gridBtn.classList.add("shadow")
+    listBtn.classList.remove("shadow")
+    productContainer.classList.remove("stack")
+    productContainer.classList.add("flex")
 }
