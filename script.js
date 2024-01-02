@@ -16,24 +16,37 @@ function closeSearch() {
     brandLogo.style.display = "block";
     searchDiv.style.display = "none";
 }
-let currentIndex = 0;
+const productCarousel = document.querySelector("#productCarousel");
+if (window.matchMedia("(min-width:576px)").matches) {
+    const carousel = new bootstrap.Carousel(productCarousel, 
+    {
+        interval: false
+    })
 
-function prevSlide() {
-    if (currentIndex > 0) {
-        currentIndex--;
-        updateCarousel();
+    let carousell = document.querySelector(".carousel-inner");
+    let carouselWidth = carousell.scrollWidth;
+    let cardWidth = document.querySelector(".carousel-item").clientWidth;
+ 
+    let scrollPosition = 0;
+
+    function nextSlide() {
+        console.log(cardWidth)
+        if (scrollPosition < carouselWidth - cardWidth ) {
+            scrollPosition += cardWidth;
+            carousell.scrollTo({
+                left: scrollPosition,
+                behavior: "smooth"
+            });
+        }
     }
-}
 
-function nextSlide() {
-    const items = document.querySelectorAll('.carousel-inner .carousel-item');
-    if (currentIndex < items.length - 1) {
-        currentIndex++;
-        updateCarousel();
+    function prevSlide() {
+        if (scrollPosition < carouselWidth - cardWidth ) {
+            scrollPosition -= cardWidth;
+            carousell.scrollTo({
+                left: scrollPosition,
+                behavior: "smooth"
+            });
+        }
     }
-}
-
-function updateCarousel() {
-  let newTransformValue = -currentIndex * 100 + '%';
-    document.querySelector('.carousel-inner').style.transform = 'translateX(' + newTransformValue + ')';
 }
