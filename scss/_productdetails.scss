@@ -1,0 +1,33 @@
+@use 'variables' as *;
+.product-display {
+    overflow: hidden;
+    border: 1px solid rgba(225, 225, 225, 1);
+    border-radius: 10px;
+    margin-bottom: 50px;
+    .product-image {
+        // .big-image {
+        //     min-width: 100%;
+        // }
+        .thumbnail{
+            margin-top: 40px;
+            .carousel {
+                margin: 0px;
+            }
+            .carousel-inner {
+                display: flex;
+            }
+            .carousel-item {
+                flex: 0 0 calc(100%/4);
+                display: block;
+                margin: 0 2px;
+            }
+            button {
+                border: none;
+                background-color: white;
+                color: red;
+                border-radius: 5px;
+    
+            }
+        }
+    }
+}

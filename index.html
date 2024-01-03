@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/styles.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="carouselProduct()">
     <header class="header">
         <nav class="navbar navbar-expand-lg py-4 mx-2">
             <div class="container-fluid">
@@ -399,15 +399,16 @@
                     </div>
 
                     <div class="ctrl-btn d-flex justify-content-between px-3">
-                        <button class="pre-btn" type="button" data-bs-target="#productCarousel" onclick="prevSlide()" data-bs-slide="prev">
+                        <button class="pre-btn" type="button" data-bs-target="#productCarousel" data-bs-slide="prev">
                             <span aria-hidden="true"><i class="fa-solid fa-chevron-left"></i></span>
                             <span class="visually-hidden">Previous</span>
                         </button>
-                        <button class="nxt-btn" type="button" data-bs-target="#productCarousel" onclick="nextSlide()" data-bs-slide="next">
+                        <button class="nxt-btn" type="button" data-bs-target="#productCarousel" data-bs-slide="next">
                             <span aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
+                </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-1 col-xl-1"></div>
             </div>

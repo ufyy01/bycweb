@@ -52,11 +52,11 @@
             border: none;
             border-radius: 5px;       
         }
-        .shadow {
-            background-color: white;
-            box-shadow: 10px 10px 5px #787885;
-            color: red;
-        }
+    }
+    .shadow {
+        background-color: white;
+        box-shadow: 10px 10px 5px #787885;
+        color: red;
     }
 }
 
@@ -102,16 +102,23 @@
                     text-align: center;
                     font-weight: bold;
                     margin-bottom: 10px;
+                    a {
+                        text-decoration: none;
+                    }
                 }
                 .wish {
                     border: 2px solid red;
                     background-color: white;
-                    color: red;
                     margin-right: 10px;
+                    a, i {
+                        color: red;
+                    }
                 }
                 .cart {
                     background-color: red;
-                    color: white;
+                    a, i {
+                        color: white;
+                    }
                 }
             }
         }
@@ -130,8 +137,14 @@
 
 @media screen and (min-width: 576px) {
     .flex .cards {
+        flex: 0 0 calc(95%/2);
+    } 
+}
+@media screen and (min-width: 1000px) {
+    .flex .cards {
         flex: 0 0 calc(95%/3);
     } 
+
     .stack {
         .stack-pro {
             display: flex;

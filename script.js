@@ -16,41 +16,50 @@ function closeSearch() {
     brandLogo.style.display = "block";
     searchDiv.style.display = "none";
 }
-const productCarousel = document.querySelector("#productCarousel");
-if (window.matchMedia("(min-width:576px)").matches) {
-    const carousel = new bootstrap.Carousel(productCarousel, 
-    {
-        interval: false
-    })
-
-    let carousell = document.querySelector(".carousel-inner");
-    let carouselWidth = carousell.scrollWidth;
-    let cardWidth = document.querySelector(".carousel-item").clientWidth;
- 
-    let scrollPosition = 0;
-
-    function nextSlide() {
-        console.log(cardWidth)
-        if (scrollPosition < carouselWidth - cardWidth ) {
-            scrollPosition += cardWidth;
-            carousell.scrollTo({
-                left: scrollPosition,
-                behavior: "smooth"
-            });
+function carouselProduct() {
+    const productCarousel = document.querySelector("#productCarousel");
+    if (window.matchMedia("(min-width:576px)").matches) {
+        const carrousel = new bootstrap.Carousel(productCarousel, 
+        {
+            interval: false
+        })
+    
+        let carousell = document.querySelector(".carousel-inner");
+        let carouselWidth = carousell.scrollWidth;
+        let cardWidth = document.querySelector(".carousel-item").clientWidth;
+     
+        let scrollPosition = 0;
+    
+        function nextSlide() {
+            if (scrollPosition < carouselWidth - cardWidth ) {
+                scrollPosition += cardWidth;
+                scrollPosition = Math.min(scrollPosition, carouselWidth - cardWidth);
+                carousell.scrollTo({
+                    left: scrollPosition,
+                    behavior: "smooth"
+                });
+            }
         }
-    }
-
-    function prevSlide() {
-        if (scrollPosition < carouselWidth - cardWidth ) {
-            scrollPosition -= cardWidth;
-            carousell.scrollTo({
-                left: scrollPosition,
-                behavior: "smooth"
-            });
+    
+        function prevSlide() {
+            if (scrollPosition >= cardWidth) {
+                scrollPosition -= cardWidth;
+                carousell.scrollTo({
+                    left: scrollPosition,
+                    behavior: "smooth"
+                });
+            }
         }
+
+        let nextButton = document.querySelector(".nxt-btn");
+        let prevButton = document.querySelector(".pre-btn");
+    
+        nextButton.addEventListener("click", nextSlide);
+        prevButton.addEventListener("click", prevSlide);
+
+    }else {
+        productCarousel.classList.add("slide");
     }
-}else {
-    productCarousel.classList.add("slide");
 }
 function displayList() {
     const listBtn = document.querySelector(".list");
@@ -72,3 +81,45 @@ function displayGrid() {
     productContainer.classList.remove("stack")
     productContainer.classList.add("flex")
 }
+function thumbNext() {
+    let carousell = document.querySelector("#thumbnail-inner");
+    let carouselWidth = carousell.scrollWidth;
+    let cardWidth = document.querySelector("#thumbnail-inner .carousel-item").offsetWidth;
+ 
+    let scrollPosition = 0;
+
+    if (scrollPosition < carouselWidth - cardWidth ) {
+        scrollPosition += cardWidth;
+        carousell.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth"
+        });
+    }
+}
+function thumbPrev() {
+    let carousell = document.querySelector("#thumbnail-inner");
+    let carouselWidth = carousell.scrollWidth;
+    let cardWidth = document.querySelector("#thumbnail-inner .carousel-item").offsetWidth;
+ 
+    let scrollPosition = 0;
+
+    if (scrollPosition < carouselWidth - cardWidth ) {
+        scrollPosition -= cardWidth;
+        carousell.scrollTo({
+            left: scrollPosition,
+            behavior: "smooth"
+        });
+    }
+}
+document.addEventListener('DOMContentLoaded', function () {
+    const carousel = document.querySelector("#Carousel");
+    const thumbnailImage = document.querySelectorAll(".thumbImage img");
+    thumbnailImage.forEach((item) => {
+        item.addEventListener('click', () => {
+            let bigImage = document.querySelector(".bigImage");
+            let thumbUrl = item.src;
+            console.log(thumbUrl);
+            bigImage.src = thumbUrl;
+        })
+    })
+});
