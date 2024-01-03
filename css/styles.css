@@ -794,6 +794,9 @@ article .title {
   border-radius: 10px;
   margin-bottom: 50px;
 }
+.product-display .product-image {
+  background-color: pink;
+}
 .product-display .product-image .thumbnail {
   margin-top: 40px;
 }
