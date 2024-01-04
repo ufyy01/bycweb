@@ -817,6 +817,29 @@ article .title {
   color: red;
   border-radius: 5px;
 }
+.product-display .product-text {
+  background-color: yellow;
+}
+.product-display .product-text .header, .product-display .product-text .price {
+  font: 100% Noto Sans, sans-serif;
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 25px;
+}
+.product-display .product-text .header p:last-child, .product-display .product-text .price p:last-child {
+  margin-top: -5px;
+}
+.product-display .product-text .rating span {
+  font: 100% Jost, sans-serif;
+  font-size: 18px;
+  color: rgba(94, 99, 102, 0.662745098);
+}
+.product-display .product-text .dash {
+  background-color: rgb(225, 225, 225);
+  height: 2px;
+  width: 90%;
+}
 
 *, *::before, *::after {
   padding: 0;

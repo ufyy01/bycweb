@@ -28,4 +28,29 @@
             }
         }
     }
+    .product-text {
+        background-color: yellow;
+        .header, .price {
+            font: 100% $secondary-font;
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+            line-height: 25px;
+            & p:last-child {
+                margin-top: -5px;
+            }
+        }
+        .rating {
+            span {
+                font: 100% $primary-font;
+                font-size: 18px;
+                color: #5e6366a9;
+            }
+        }
+        .dash {
+            background-color: rgba(225, 225, 225, 1);
+            height: 2px;
+            width: 90%;
+        }
+    }
 }
