@@ -788,17 +788,20 @@ article .title {
     flex: 0 0 19.2%;
   }
 }
+.product-details {
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+}
+
 .product-display {
   overflow: hidden;
   border: 1px solid rgb(225, 225, 225);
   border-radius: 10px;
   margin-bottom: 50px;
 }
-.product-display .product-image {
-  background-color: pink;
-}
-.product-display .product-image .thumbnail {
-  margin-top: 40px;
+.product-display .product-image .big-image img {
+  height: 350px;
 }
 .product-display .product-image .thumbnail .carousel {
   margin: 0px;
@@ -817,9 +820,6 @@ article .title {
   color: red;
   border-radius: 5px;
 }
-.product-display .product-text {
-  background-color: yellow;
-}
 .product-display .product-text .header, .product-display .product-text .price {
   font: 100% Noto Sans, sans-serif;
   font-size: 26px;
@@ -830,6 +830,12 @@ article .title {
 .product-display .product-text .header p:last-child, .product-display .product-text .price p:last-child {
   margin-top: -5px;
 }
+.product-display .product-text .product-para {
+  font: 100% Noto Sans, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  text-transform: capitalize;
+}
 .product-display .product-text .rating span {
   font: 100% Jost, sans-serif;
   font-size: 18px;
@@ -838,9 +844,113 @@ article .title {
 .product-display .product-text .dash {
   background-color: rgb(225, 225, 225);
   height: 2px;
-  width: 90%;
+  width: 100%;
+}
+.product-display .product-text .sizes p, .product-display .product-text .colors p {
+  text-transform: capitalize;
+  font-size: 20px;
+  font: 100% Noto Sans, sans-serif;
+  font-weight: 700;
+  line-height: 26px;
+}
+.product-display .product-text .size-btns button {
+  border: none;
+  width: 45px;
+  height: 40px;
+  text-transform: uppercase;
+  background-color: white;
+  box-shadow: 2px 3px 10px 1px #cfcfd6;
+  margin-right: 3px;
+  font-weight: 600;
+}
+.product-display .product-text .selected {
+  outline: 2px solid red;
+}
+.product-display .product-text .color-btns button {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+}
+.product-display .product-text .color-btns button:nth-child(1) {
+  background-color: #3870ca;
+}
+.product-display .product-text .color-btns button:nth-child(2) {
+  background-color: #ff05e6;
+}
+.product-display .product-text .color-btns button:nth-child(3) {
+  background-color: #fb8200;
+}
+.product-display .product-text .color-btns button:nth-child(4) {
+  background-color: #000000;
+}
+.product-display .product-text .quantity {
+  width: 160px;
+}
+.product-display .product-text .quantity button {
+  border: none;
+  background-color: #bd3a3a;
+  font-size: 20px;
+  color: white;
+}
+.product-display .product-text .quantity input {
+  width: 50px;
+  height: 47px;
+  border: none;
+}
+.product-display .product-text .quantity input:focus {
+  border: none;
+  outline: none;
+}
+.product-display .product-text .quantity input[value] {
+  font: 100% Noto Sans, sans-serif;
+  text-align: center;
+  font-weight: 700;
+  font-size: 24px;
+}
+.product-display .product-text .wish {
+  border: 1px solid #bd3a3a;
+  background-color: white;
+  border-radius: 10px;
+  width: 100%;
+  height: 50px;
+}
+.product-display .product-text .wish a, .product-display .product-text .wish i {
+  text-decoration: none;
+  color: red;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+.product-display .product-text .cart {
+  border: none;
+  background-color: #bd3a3a;
+  border-radius: 10px;
+  width: 100%;
+  height: 60px;
+  justify-content: center;
+}
+.product-display .product-text .cart a, .product-display .product-text .cart i {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  text-transform: capitalize;
 }
 
+@media screen and (min-width: 991px) {
+  .product-display .product-text .qty-button {
+    width: 420px;
+  }
+  .product-display .product-text .wish {
+    flex: 1 0 36%;
+  }
+  .product-display .product-text .cart {
+    width: 420px;
+    justify-content: left;
+  }
+  .product-display .product-text .cart a, .product-display .product-text .cart i {
+    margin-left: 40px;
+  }
+}
 *, *::before, *::after {
   padding: 0;
   margin: 0;

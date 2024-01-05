@@ -177,15 +177,15 @@
             </div>
         </nav>
     </header>
-    <main class="product-details">
+    <main class="product-details mt-5">
         <section>
-            <div class="row product-display mx-lg-4">
-                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 product-image my-5 ms-lg-4">
+            <div class="row product-display mx-lg-3">
+                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 product-image my-lg-5 ms-lg-4 pb-lg-5">
                     <div>
-                        <div class="big-image text-center mb-5 w-100">
-                            <img src="./assets/image25.png" alt="product" class="bigImage img-fluid w-100">
+                        <div class="big-image text-center mb-5">
+                            <img src="./assets/image25.png" alt="product" class="bigImage img-fluid">
                         </div>
-                        <div class="thumbnail">
+                        <div class="thumbnail pb-5">
                             <div id="Carousel" class="carousel d-flex justify-content-center align-items-center">
                                 <button class="thumbnail-prev px-3 py-1 me-2 shadow" type="button" data-bs-target="#Carousel" onclick="thumbPrev()" data-bs-slide="prev">
                                     <span aria-hidden="true"><i class="fa-solid fa-chevron-left"></i></span>
@@ -194,27 +194,27 @@
                                 <div class="carousel-inner" id="thumbnail-inner">
                                     <div class="carousel-item active">
                                         <div class="thumbImage">
-                                            <img src="./assets/image25.png" class="img-fluid" alt="...">
+                                            <img src="./assets/image25.png" class="img-fluid w-100" alt="...">
                                         </div>
                                     </div>
                                     <div class="carousel-item">
                                         <div class="thumbImage">
-                                            <img src="./assets/image26.png" class="img-fluid" alt="...">
+                                            <img src="./assets/image26.png" class="img-fluid w-100" alt="...">
                                         </div>
                                     </div>
                                     <div class="carousel-item">
                                         <div class="thumbImage">
-                                            <img src="./assets/image25.png" class="img-fluid" alt="...">
+                                            <img src="./assets/image25.png" class="img-fluid w-100" alt="...">
                                         </div>
                                     </div>
                                     <div class="carousel-item">
                                         <div class="thumbImage">
-                                            <img src="./assets/image26.png" class="img-fluid" alt="...">
+                                            <img src="./assets/image26.png" class="img-fluid w-100" alt="...">
                                         </div>
                                     </div>
                                     <div class="carousel-item">
                                         <div class="thumbImage">
-                                            <img src="./assets/image25.png" class="img-fluid" alt="...">
+                                            <img src="./assets/image25.png" class="img-fluid w-100" alt="...">
                                         </div>
                                     </div>
                                 </div>
@@ -226,13 +226,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 product-text my-5">
-                    <div class="header">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 product-text my-lg-5 ms-lg-5">
+                    <div class="header mt-2">
                         <p>men boxers</p>
                         <p>byc 1166</p>
                     </div>
-                    <p class="product-text">100% cotton 12 pieces of mens boxer</p>
-                    <div class="rating d-flex align-items-center">
+                    <p class="product-para my-4">100% cotton 12 pieces of mens boxer</p>
+                    <div class="rating d-flex">
                         <i class="fa-regular fa-star" style="color: #fb8200;"></i>
                         <i class="fa-regular fa-star" style="color: #fb8200;"></i>
                         <i class="fa-regular fa-star" style="color: #fb8200;"></i>
@@ -240,19 +240,19 @@
                         <i class="fa-regular fa-star" style="color: #fb8200;"></i>
                         <span class="ms-2">4.05</span>
                     </div>
-                    <div class="dash mt-3"></div>
+                    <div class="dash mt-4"></div>
                     <p class="price my-4">₦2,800.00</p>
-                    <div class="d-flex">
-                        <div class="sizes">
+                    <div class="d-lg-flex my-4">
+                        <div class="sizes mt-2">
                             <p>available sizes</p>
                             <div class="size-btns">
-                                <button>s</button>
-                                <button>m</button>
-                                <button>l</button>
-                                <button>xl</button>
+                                <button class="">s</button>
+                                <button class="">m</button>
+                                <button class="selected">l</button>
+                                <button class="">xl</button>
                             </div>
                         </div>
-                        <div class="colors">
+                        <div class="colors ms-lg-5 mt-lg-2 mt-4">
                             <p>available colours</p>
                             <div class="color-btns">
                                 <button></button>
@@ -262,20 +262,20 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <div class="quantity">
-                            <button><i class="fa-solid fa-plus"></i></button>
-                            <button></button>
-                            <button><i class="fa-solid fa-minus"></i></button>
+                    <div class="d-lg-flex align-items-center qty-button">
+                        <div class="quantity mt-2">
+                            <button class="px-3 py-2" onclick="increaseQty()"><i class="fa-solid fa-plus"></i></button>
+                            <input type="text" name="quantity-display" id="quantity-display" value="1" readonly>
+                            <button class="px-3 py-2" onclick="decreaseQty()"><i class="fa-solid fa-minus"></i></button>
                         </div>
-                        <button class="wish d-flex px-4 py-3 align-items-center justify-content-center">
+                        <button class="wish d-flex justify-content-center align-items-center ms-lg-4 mt-lg-2 mt-4">
                             <i class="fa-regular fa-heart"></i>
-                            <a href="wishlist.html" class="ms-1 ps-1">wishlist</a>
+                            <a href="wishlist.html" class="ms-4">wishlist</a>
                         </button>
                     </div>
-                    <button class="cart d-flex px-4 py-3 align-items-center justify-content-center">
+                    <button class="cart d-flex align-items-center mt-lg-4 mt-3">
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <a href="productdetails.html" class="ms-1 ps-1">add to cart</a>
+                        <a href="productdetails.html" class="ms-3">add to cart</a>
                     </button>
                 </div>
             </div>

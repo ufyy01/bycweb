@@ -123,3 +123,22 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     })
 });
+function increaseQty() {
+    let qtyInput = document.querySelector("#quantity-display");
+    qtyInputValue = Number(document.querySelector("#quantity-display").value);
+    qtyInputValue += 1;
+    qtyInput.value = qtyInputValue;
+
+}
+function decreaseQty() {
+    let qtyInput = document.querySelector("#quantity-display");
+    qtyInputValue = Number(document.querySelector("#quantity-display").value);
+    if (qtyInputValue > 1) {
+        qtyInputValue -= 1;
+        qtyInput.value = qtyInputValue;
+    }
+    else {
+        qtyInput.value = "1";
+    }
+
+}

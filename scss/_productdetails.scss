@@ -1,13 +1,19 @@
 @use 'variables' as *;
+.product-details {
+    width: 95%;
+    height: 100%;
+    margin: 0 auto;
+}
 .product-display {
     overflow: hidden;
     border: 1px solid rgba(225, 225, 225, 1);
     border-radius: 10px;
     margin-bottom: 50px;
     .product-image {
-        background-color: pink;
+        .big-image img {
+            height: 350px;
+        }
         .thumbnail{
-            margin-top: 40px;
             .carousel {
                 margin: 0px;
             }
@@ -29,7 +35,6 @@
         }
     }
     .product-text {
-        background-color: yellow;
         .header, .price {
             font: 100% $secondary-font;
             font-size: 26px;
@@ -39,6 +44,12 @@
             & p:last-child {
                 margin-top: -5px;
             }
+        }
+        .product-para {
+            font: 100% $secondary-font;
+            font-size: 20px;
+            line-height: 26px;
+            text-transform: capitalize;
         }
         .rating {
             span {
@@ -50,7 +61,120 @@
         .dash {
             background-color: rgba(225, 225, 225, 1);
             height: 2px;
-            width: 90%;
+            width: 100%;
+        }
+        .sizes p, .colors p {
+            text-transform: capitalize;
+            font-size: 20px;
+            font: 100% $secondary-font;
+            font-weight: 700;
+            line-height: 26px;
+
+        }
+        .size-btns button {
+            border: none;
+            width: 45px;
+            height: 40px;
+            text-transform: uppercase;
+            background-color: white;
+            box-shadow: 2px 3px 10px 1px #cfcfd6;
+            margin-right: 3px;
+            font-weight: 600;
+        }
+        .selected {
+            outline: 2px solid red;
+        }
+        .color-btns button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+        }
+        .color-btns button:nth-child(1) {
+            background-color: #3870ca;
+        }
+        .color-btns button:nth-child(2) {
+            background-color: #ff05e6;
+        }
+        .color-btns button:nth-child(3) {
+            background-color: #fb8200;
+        }
+        .color-btns button:nth-child(4) {
+            background-color: #000000;
+        }
+        
+        .quantity {
+            width: 160px;
+            button {
+                border: none;
+                background-color: #bd3a3a;
+                font-size: 20px;
+                color: white;
+            }
+            input {
+                width: 50px;
+                height: 47px;
+                border: none;
+                &:focus {
+                    border: none;
+                    outline: none;
+                }
+                &[value] {
+                    font: 100% $secondary-font;
+                    text-align: center;
+                    font-weight: 700;
+                    font-size: 24px;
+                }
+            }
+        }
+        .wish {
+            border: 1px solid #bd3a3a;
+            background-color: white;
+            border-radius: 10px;
+            width: 100%; 
+            height: 50px;
+            a, i {
+                text-decoration: none;
+                color: red;
+                font-size: 16px;
+                text-transform: capitalize;
+            }
+        }
+        .cart {
+            border: none;
+            background-color: #bd3a3a;
+            border-radius: 10px;
+            width: 100%;
+            height: 60px;
+            justify-content: center;
+            a, i {
+                text-decoration: none;
+                color: white;
+                font-size: 16px;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
+
+
+@media screen and (min-width:991px) {
+    .product-display {
+
+        .product-text {
+            .qty-button {
+                width: 420px;
+            }
+            .wish {
+                flex: 1 0 36%;
+            }
+            .cart {
+                width: 420px;
+                justify-content: left;
+                a, i {
+                    margin-left: 40px;
+                }
+            }
         }
     }
 }
