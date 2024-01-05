@@ -1,5 +1,5 @@
 @use 'variables' as *;
-.product-details {
+.product-details, .product-dets {
     width: 95%;
     height: 100%;
     margin: 0 auto;
@@ -153,6 +153,27 @@
                 font-size: 16px;
                 text-transform: capitalize;
             }
+        }
+    }
+}
+.product-dets {
+    overflow: hidden;
+    margin-bottom: 50px;
+    .product-dets-text {
+        font: 100% $secondary-font;
+        border: 1px solid rgba(225, 225, 225, 1);
+        border-radius: 10px;
+        .dash {
+            background-color: rgba(225, 225, 225, 1);
+            height: 2px;
+            width: 93%;
+        }
+        h5 {
+            font-weight: 700;
+            text-transform: capitalize;
+            font-size: 26px;
+            line-height: 34px;
+            padding-bottom: 10px;
         }
     }
 }
