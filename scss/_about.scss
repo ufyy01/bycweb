@@ -28,41 +28,44 @@
             font-size: 40px;
             line-height: 65px;
         }
-        .record .record-card {
-            width: 450px;
-            height: 330px;
-            padding: 20px;
-            margin-top: 20px;
-            background-color: #fbfbfb;
-            position: relative;
-            box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
-            -webkit-box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
-            -moz-box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
-            cursor: default;
-            transition: all 1.5s ease;
-            &:hover {
-                background-color: rgba(189, 58, 58, 0.05);
-                ;
-                transform: scale(1.1);
-            }
-            p {
-                font: 100% $secondary-font;
-                font-size: 16px;
-                line-height: 20px;
+        .record {
+            flex-wrap: wrap;
+            .record-card {
+                flex: 0 0 100%;
+                height: 330px;
+                padding: 20px;
                 margin-top: 20px;
-            } 
-            img {
-                margin: 20px 0;
-            }
-            h5 {
-                color: red;
-                font: 100% $secondary-font;
-                font-weight: 700;
-                font-size: 26px;
-                line-height: 34px;
-                position: absolute;
-                bottom: 50px;
-
+                background-color: #fbfbfb;
+                position: relative;
+                box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
+                -webkit-box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
+                -moz-box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
+                cursor: default;
+                transition: all 1.5s ease;
+                &:hover {
+                    background-color: rgba(189, 58, 58, 0.05);
+                    ;
+                    transform: scale(1.1);
+                }
+                p {
+                    font: 100% $secondary-font;
+                    font-size: 16px;
+                    line-height: 20px;
+                    margin-top: 20px;
+                } 
+                img {
+                    margin: 20px 0;
+                }
+                h5 {
+                    color: red;
+                    font: 100% $secondary-font;
+                    font-weight: 700;
+                    font-size: 26px;
+                    line-height: 34px;
+                    position: absolute;
+                    bottom: 50px;
+    
+                }
             }
         }
     }
@@ -71,4 +74,29 @@
     }
 }
 
-
+@media screen and (min-width:576px) {
+    .about {
+        .records {
+            .record {
+                .record-card {
+                    flex: 0 0 calc(100%/2);
+                    // h5 {
+                    //     bottom: 20px;
+        
+                    // }
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width:1200px) {
+    .about {
+        .records {
+            .record {
+                .record-card {
+                    flex: 0 0 calc(100%/3);
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,5 @@
 @use 'variables' as *;
-.product-details, .product-dets {
+.product-details, .product-dets, .product-reviews {
     width: 95%;
     height: 100%;
     margin: 0 auto;
@@ -163,11 +163,6 @@
         font: 100% $secondary-font;
         border: 1px solid rgba(225, 225, 225, 1);
         border-radius: 10px;
-        .dash {
-            background-color: rgba(225, 225, 225, 1);
-            height: 2px;
-            width: 93%;
-        }
         h5 {
             font-weight: 700;
             text-transform: capitalize;
@@ -177,6 +172,71 @@
         }
     }
 }
+.dash {
+    background-color: rgba(225, 225, 225, 1);
+    height: 2px;
+    width: 98%;
+}
+.product-reviews {
+    font: 100% $secondary-font;
+    .review-table {
+        border: 1px solid rgba(225, 225, 225, 1);
+        border-radius: 10px;
+        h5 {
+            font-weight: 700;
+            font-size: 30px;
+            text-transform: capitalize;
+        }
+        .product-title {
+            text-transform: uppercase;
+            font-size: 20px;
+            line-height: 26px;
+        }
+        .rating-summary {
+            background-color: #ecebeb;
+            padding: 30px 80px;
+            border-radius: 10px;
+            margin-right: 5px;
+            p {
+                font-size: 35px;
+                line-height: 50px;
+                span {
+                    font-weight: 700;
+                }
+            }
+            i {
+                font-size: 25px;
+            }
+        }
+        .review-subheading {
+            h6 {
+                text-transform: uppercase;
+                font-size: 20px;
+                line-height: 26px;
+            }
+            a, i {
+                color: #bd3a3a;
+                font-size: 18px;
+                text-decoration: none;
+                font-weight: bold;
+            }
+        }
+        .reviews {
+            .review-heading {
+                font-weight: 700;
+                line-height: 21px;
+            }
+            .rating {
+                font-size: 12px;
+                line-height: 15px;
+                span {
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+}
+
 
 
 @media screen and (min-width:991px) {
