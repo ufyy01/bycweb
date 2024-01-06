@@ -1,6 +1,6 @@
 @use 'variables' as *;
-.product-details, .product-dets, .product-reviews {
-    width: 95%;
+.product-details, .product-dets, .product-reviews, .cart-page, .cart-summary {
+    width: 98%;
     height: 100%;
     margin: 0 auto;
 }
@@ -103,30 +103,6 @@
             background-color: #000000;
         }
         
-        .quantity {
-            width: 160px;
-            button {
-                border: none;
-                background-color: #bd3a3a;
-                font-size: 20px;
-                color: white;
-            }
-            input {
-                width: 50px;
-                height: 47px;
-                border: none;
-                &:focus {
-                    border: none;
-                    outline: none;
-                }
-                &[value] {
-                    font: 100% $secondary-font;
-                    text-align: center;
-                    font-weight: 700;
-                    font-size: 24px;
-                }
-            }
-        }
         .wish {
             border: 1px solid #bd3a3a;
             background-color: white;
@@ -153,6 +129,30 @@
                 font-size: 16px;
                 text-transform: capitalize;
             }
+        }
+    }
+}
+.quantity {
+    width: 160px;
+    button {
+        border: none;
+        background-color: #bd3a3a;
+        font-size: 20px;
+        color: white;
+    }
+    input {
+        width: 50px;
+        height: 47px;
+        border: none;
+        &:focus {
+            border: none;
+            outline: none;
+        }
+        &[value] {
+            font: 100% $secondary-font;
+            text-align: center;
+            font-weight: 700;
+            font-size: 24px;
         }
     }
 }

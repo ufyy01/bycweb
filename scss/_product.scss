@@ -107,15 +107,15 @@
                     }
                 }
                 .wish {
-                    border: 2px solid red;
+                    border: 2px solid #bd3a3a;
                     background-color: white;
                     margin-right: 10px;
                     a, i {
-                        color: red;
+                        color: #bd3a3a;
                     }
                 }
                 .cart {
-                    background-color: red;
+                    background-color: #bd3a3a;
                     a, i {
                         color: white;
                     }
@@ -136,6 +136,7 @@
 
 
 @media screen and (min-width: 576px) {
+    
     .flex .cards {
         flex: 0 0 calc(95%/2);
     } 
@@ -144,7 +145,6 @@
     .flex .cards {
         flex: 0 0 calc(95%/3);
     } 
-
     .stack {
         .stack-pro {
             display: flex;

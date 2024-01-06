@@ -6,11 +6,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/943fd27c22.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/styles.css">
-    <title>BYC Products</title>
+    <title>Document</title>
 </head>
 <body>
     <header class="header">
-        <nav class="navbar navbar-expand-lg py-4 mx-2">
+        <nav class="navbar navbar-expand-lg py-4 mx-3">
             <div class="container-fluid">
                 <a class="navbar-brand d-lg-none" href="index.html">
                     <img src="./assets/LOGO.png" alt="brand-logo">
@@ -25,7 +25,7 @@
                             Shop Products
                             </a>
                             <ul class="dropdown-menu main-drop mt-2">
-                                <h3 class="ms-4 mt-5 mb-3"> <a href="#">All products</a></h3>
+                                <h3 class="ms-4 mt-5 mb-3"> <a href="products.html">All products</a></h3>
                                 <div class="drop-header py-1 d-flex">
                                     <li class="nav-item dropdown main-link">
                                         <a class="nav-link ms-3" href="#" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
@@ -106,7 +106,7 @@
                                         </a>
                                         <ul class="dropdown-menu sub-submenu mt-1">
                                             <li>
-                                                <a class="dropdown-item" href="#">Boxers</a>
+                                                <a class="dropdown-item" href="category.html">camisole</a>
                                             </li>
                                             <li>
                                                 <a class="dropdown-item" href="#">pants</a>
@@ -177,189 +177,81 @@
             </div>
         </nav>
     </header>
-    <main>
-        <section class="product-details my-5">
-            <div class="row product-display mx-lg-3">
-                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 product-image my-lg-5 ms-lg-4 pb-lg-5">
-                    <div>
-                        <div class="big-image text-center mb-5">
-                            <img src="./assets/image25.png" alt="product" class="bigImage img-fluid">
+    <main class="cart-page my-5">
+        <div class="cart-details mx-lg-3 px-lg-5 px-2">
+            <h3 class="cart-header mt-5 mb-4">Cart <span class="cart-quantity">1</span> item(s)</h3>
+            <div class="dash"></div>
+            <div class="my-5">
+                <div class="row text-box">
+                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                        <div class="w-100">
+                            <img src="./assets/image25.png" alt="" class="img-fluid w-100">
                         </div>
-                        <div class="thumbnail pb-5">
-                            <div id="Carousel" class="carousel d-flex justify-content-center align-items-center">
-                                <button class="thumbnail-prev px-3 py-1 me-2 shadow" type="button" data-bs-target="#Carousel" onclick="thumbPrev()" data-bs-slide="prev">
-                                    <span aria-hidden="true"><i class="fa-solid fa-chevron-left"></i></span>
-                                    <span class="visually-hidden">Previous</span>
-                                </button>
-                                <div class="carousel-inner" id="thumbnail-inner">
-                                    <div class="carousel-item active">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image25.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image26.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image25.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image26.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image25.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
+                        <div class="pb-lg-5">
+                            <div class="header mt-2">
+                                <p>men boxers</p>
+                                <p>byc 1166</p>
+                            </div>
+                            <p class="product-para mt-4 mb-5">100% cotton 12 pieces of mens boxer</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
+                        <div class="d-lg-flex price-qty">
+                            <div class="quantity check pt-2 pt-lg-0">
+                                <p>quantity</p>
+                                <div class="d-flex justify-content-center input-btn mt-3">
+                                    <button class="px-3 py-1" onclick="increaseQty()"><i class="fa-solid fa-plus"></i></button>
+                                    <input type="text" name="quantity-display" id="quantity-display" value="1" readonly>
+                                    <button class="px-3 py-1" onclick="decreaseQty()"><i class="fa-solid fa-minus"></i></button>
                                 </div>
-                                <button class="thumbnail-nxt px-3 py-1 ms-2 shadow" type="button" data-bs-target="#Carousel" onclick="thumbNext()" data-bs-slide="next">
-                                    <span aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
-                                    <span class="visually-hidden">Next</span>
-                                </button>
+                            </div>
+                            <div class="unit-price mt-4 mt-lg-0">
+                                <p>unit price</p>
+                                <p class="price my-4 my-lg-0">₦2,800.00</p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 product-text my-lg-5 ms-lg-5">
-                    <div class="header mt-2">
-                        <p>men boxers</p>
-                        <p>byc 1166</p>
-                    </div>
-                    <p class="product-para my-4">100% cotton 12 pieces of mens boxer</p>
-                    <div class="rating d-flex">
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <span class="ms-2">4.05</span>
-                    </div>
-                    <div class="dash mt-4"></div>
-                    <p class="price my-4">₦2,800.00</p>
-                    <div class="d-lg-flex my-4">
-                        <div class="sizes mt-2">
-                            <p>available sizes</p>
-                            <div class="size-btns">
-                                <button class="">s</button>
-                                <button class="">m</button>
-                                <button class="selected">l</button>
-                                <button class="">xl</button>
-                            </div>
-                        </div>
-                        <div class="colors ms-lg-5 mt-lg-2 mt-4">
-                            <p>available colours</p>
-                            <div class="color-btns">
-                                <button></button>
-                                <button></button>
-                                <button></button>
-                                <button></button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-lg-flex align-items-center qty-button">
-                        <div class="quantity mt-2">
-                            <button class="px-3 py-2" onclick="increaseQty()"><i class="fa-solid fa-plus"></i></button>
-                            <input type="text" name="quantity-display" id="quantity-display" value="1" readonly>
-                            <button class="px-3 py-2" onclick="decreaseQty()"><i class="fa-solid fa-minus"></i></button>
-                        </div>
-                        <button class="wish d-flex justify-content-center align-items-center ms-lg-4 mt-lg-2 mt-4">
+                    <div class="btn-div mt-3">
+                        <button class="wish d-flex px-4 py-3 align-items-center justify-content-center">
                             <i class="fa-regular fa-heart"></i>
-                            <a href="wishlist.html" class="ms-4">wishlist</a>
+                            <a href="wishlist.html" class="ms-1 ps-1">wishlist</a>
+                        </button>
+                        <button class="cart-btn d-flex px-4 py-3 align-items-center justify-content-center">
+                            <i class="fa-solid fa-trash"></i>
+                            <a href="#" class="ms-1 ps-1">remove</a>
                         </button>
                     </div>
-                    <button class="cart d-flex align-items-center mt-lg-4 my-3">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <a href="cart.html" class="ms-3">add to cart</a>
-                    </button>
                 </div>
-            </div>
-        </section>
-        <section class="product-dets">
-            <div class="product-dets-text mx-lg-3 p-lg-4 pt-4 px-3">
-                <h5>product description</h5>
-                <div class="dash"></div>
-                <p class="dets-para mt-4">
-                    This set of boxers will make you feel comfortable. The hem doesn't ravel. It is made from cotton which allows aeration around your body. It suitable for both adults and teenagers. 
-                    These pair of boxers give good fit and sits appropriately, they ensure there is no unsightly bulge and they also give support to an important part of your body, which overall improves 
-                    your confidence. It has a comfortable cotton material. It comes in different beautiful colors and patterns.  It has cool and comfortable fit with flexible hem that doesn't ravel and comes tag -free for maximum comfort. Soft breathable fabric for air movement and forms to your body for best Fit. 
-                    It is made of 100% premium cotton and is perfect for crotch, so you don't have to worry about ugly bumps. 
-                    For pure organic softness and premium lingerie support, pair this four-in-one suit with yourself or the special man in your life.
-                </p>
-            </div>
-        </section>
-        <section class="product-reviews">
-            <div class="review-table mx-lg-3 p-lg-4 pt-4 px-3">
-                <h5 class="my-3">customer reviews</h5>
-                <div class="dash"></div>
-                <p class="product-title my-4">product ratings (1129)</p>
-                <div class="d-lg-flex pt-3">
-                    <div class="rating-summary text-center">
-                        <p><span>4.5</span>/5.0</p>
-                        <div class="rating d-flex ms-4">
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                <div class="dash mt-5"></div>
+                <div class="cart-total mt-3">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12 offset-lg-7 offset-xl-8 col-lg-5 col-xl-4 cart-total-dets pe-lg-5">
+                            <h5 class="cart-total-header my-3">cart totals</h5>
+                            <div class="subtotal d-flex justify-content-between">
+                                <p>Subtotal</p>
+                                <p class="subtotal-amount">₦<span>2,800.00</span></p>
+                            </div>
+                            <div class="total d-flex justify-content-between">
+                                <p>total</p>
+                                <p class="total-amount">₦<span>2,800.00</span></p>
+                            </div>
+                            <div class="total-btn d-lg-flex mt-5 justify-content-between">
+                                <button class="shopping-btn py-3">
+                                    <a href="products.html">Continue Shopping</a>
+                                </button>
+                                <button class="checkout-btn py-3">
+                                    <a href="checkout.html">Proceed to Checkout</a>
+                                </button>
+                            </div>
                         </div>
                     </div>
-                    <div class="rating-chart ms-lg-5">
-                        star and stuff
-                    </div>
-                </div>
-                <div class="review-subheading d-lg-flex align-items-center justify-content-between mt-lg-4 pt-3">
-                    <h6>product reviews (438)</h6>
-                    <p class="me-lg-4"><a href="#">See all <i class="fa-solid fa-chevron-right ps-2"></i></a></p>
-                </div>
-                <div class="dash"></div>
-                <div class="reviews mt-5">
-                    <p class="review-heading">Good product</p>
-                    <p class="review">The product lasts, the design is perfect, I love it</p>
-                    <div class="rating d-flex">
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <p class="ms-3">12-08-2021 by <span>james john</span></p>
-                    </div>
-                </div>
-                <div class="dash"></div>
-                <div class="reviews mt-5">
-                    <p class="review-heading">Good product</p>
-                    <p class="review">The product lasts, the design is perfect, I love it</p>
-                    <div class="rating d-flex">
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <p class="ms-3">12-08-2021 by <span>james john</span></p>
-                    </div>
-                </div>
-                <div class="dash"></div>
-                <div class="reviews mt-5">
-                    <p class="review-heading">Good product</p>
-                    <p class="review">The product lasts, the design is perfect, I love it</p>
-                    <div class="rating d-flex">
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                        <p class="ms-3">12-08-2021 by <span>james john</span></p>
-                    </div>
                 </div>
             </div>
-        </section>
+        </div>
     </main>
-    <section class="recently-viewed mx-auto">
+    <section class="recently-viewed mx-auto ps-2">
         <div class="text d-lg-flex align-items-center justify-content-between mx-lg-4 mt-lg-4 pt-3">
             <h6>recently viewed</h6>
             <p class="me-lg-4"><a href="#">See all <i class="fa-solid fa-chevron-right ps-2"></i></a></p>
@@ -453,6 +345,15 @@
             </div>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="./script.js"></script>
