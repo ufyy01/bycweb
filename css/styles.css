@@ -1178,6 +1178,9 @@ article .title {
   text-transform: uppercase;
   margin-bottom: 20px;
 }
+.cart-page .cart-details .payment-header h6:last-of-type {
+  margin-left: 32%;
+}
 .cart-page .cart-details form label {
   line-height: 21px;
   margin: 12px 0;
@@ -1209,6 +1212,16 @@ article .title {
   line-height: 21px;
   width: 195px;
   background-color: pink;
+}
+.cart-page .cart-details .bank-trans-text {
+  background-color: #ffffff;
+  width: 520px;
+  border-radius: 10px;
+  padding: 10px 30px 2px 15px;
+  margin: 15px auto;
+}
+.cart-page .cart-details .bank-trans-text p {
+  font-size: 12px;
 }
 
 @media screen and (min-width: 1000px) {
