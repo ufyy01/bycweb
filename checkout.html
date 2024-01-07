@@ -224,6 +224,71 @@
                 </div>
             </div>
             <div class="dash mb-5"></div>
+            <div class="payment-header d-flex">
+                <h6>Shipping address</h6>
+                <h6 class="d-none d-lg-block">Checkout</h6>
+            </div>
+            <div class="dash"></div>
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5">
+                    <form action="" class="mt-2">
+                        <label for="fullName" class="form-label">full name</label>
+                        <input type="text" class="form-control" id="fullName">
+
+                        <label for="company" class="form-label">company name (optional)</label>
+                        <input type="text" class="form-control" id="company">
+
+                        <label for="country" class="form-label">country / region</label>
+                        <input type="text" class="form-control" id="country">
+
+                        <label for="town" class="form-label">town / city</label>
+                        <input type="text" class="form-control" id="town">
+
+                        <label for="state" class="form-label">state</label>
+                        <input type="text" class="form-control" id="state">
+
+                        <label for="phone" class="form-label">phone</label>
+                        <input type="tel" class="form-control" id="phone">
+
+                        <label for="email" class="form-label">email address</label>
+                        <input type="email" class="form-control" id="email">
+                        <button class="submit-btn px-4 py-3 d-none d-lg-block w-100 my-5" type="submit">
+                            submit
+                        </button>
+                        <button class="submit-btn px-4 py-3 d-lg-none" type="submit" onclick="checkout()">
+                            submit
+                        </button>
+                    </form>
+                </div>
+                <div class="col-sm-12 col-md-12 offset-lg-1 col-lg-6 col-xl-6">
+                    <div class="checkout mt-4">
+                        <div class="bank-trans d-flex">
+                            <input type="radio" name="Trans" id="bankTrans">
+                            <p>Direct bank transfer</p>
+                        </div>
+                        <div class="bank-trans-text">
+                            <p>
+                                Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                            </p>
+                        </div>
+                        <div class="card-pmt d-flex align-items-center">
+                            <div class="online-pay d-flex">
+                                <input type="radio" name="Trans" id="onlinePay">
+                                <p>Secured Online Payment</p>
+                            </div>
+                            <div class="card-img">
+                                <img src="./assets/image27.png" alt="card options" class="img-fluid">
+                            </div>
+                        </div>
+                        <p class="checkout-footer-text">
+                            Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
+                        </p>
+                    </div>
+                    <button class="submit-btn px-4 py-3 w-100">
+                        Place order
+                    </button>
+                </div>
+            </div>
         </div>
     </main>
   

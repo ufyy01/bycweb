@@ -117,9 +117,49 @@
 
             a {
                 color: white;
-                font-weight: bold;
                 font-size: 16px;
                 text-decoration: none;
+            }
+        }
+        .payment-header h6 {
+            font-weight: 700;
+            font-size: 26px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        } 
+        form {
+            label {
+                line-height: 21px;
+                margin: 12px 0;
+                text-transform: capitalize;
+            }
+            input {
+                border: 1px solid #bd3a3a;
+                padding: 10px;
+            }
+            .submit-btn {
+                border: none;
+                border-radius: 10px;
+                text-transform: capitalize;
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+                background-color: #bd3a3a;
+                color: white;
+
+            }
+            input:focus {
+                box-shadow: 4px 3px 2px #df8e8e;
+            }
+        }
+        .checkout {
+            background-color: #ebe6e6;
+            padding: 30px 15px;
+            margin-bottom: 45px;
+            .bank-trans p, .card-pmt p {
+                line-height: 21px;
+                width: 195px;
+                background-color: pink;
             }
         }
     }
