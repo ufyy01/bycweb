@@ -127,9 +127,6 @@
             text-transform: uppercase;
             margin-bottom: 20px;
         } 
-        .payment-header h6:last-of-type {
-            margin-left: 32%;
-        }
         form {
             label {
                 line-height: 21px;
@@ -140,40 +137,53 @@
                 border: 1px solid #bd3a3a;
                 padding: 10px;
             }
-            .submit-btn {
-                border: none;
-                border-radius: 10px;
-                text-transform: capitalize;
-                width: 100%;
-                text-align: center;
-                margin-bottom: 10px;
-                background-color: #bd3a3a;
-                color: white;
-
-            }
             input:focus {
                 box-shadow: 4px 3px 2px #df8e8e;
             }
         }
+        .submit-btn, .order-btn {
+            border: none;
+            border-radius: 10px;
+            text-transform: capitalize;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 10px;
+            background-color: #bd3a3a;
+            color: white;
+        }
         .checkout {
-            background-color: #ebe6e6;
+            background-color: #fff8f8;
             padding: 30px 15px;
-            margin-bottom: 45px;
+            margin-bottom: 25px;
+            border-radius: 10px;
             .bank-trans p, .card-pmt p {
                 line-height: 21px;
                 width: 195px;
-                background-color: pink;
+                // background-color: pink;
             }
         }
         .bank-trans-text {
             background-color: #ffffff;
-            width: 520px;
+            width: 90%;
             border-radius: 10px;
-            padding: 10px 30px 2px 15px;
             margin: 15px auto;
             p {
                 font-size: 12px;
+                color: #9f9f9f;
             }
+        }
+        .card-pmt {
+            .card-img-opt {
+                margin-right: 10%;
+            }
+        }
+        .checkout-footer-text {
+            font-size: 10px;  
+            line-height: 15px;
+            color: #100f0f;
+            width: 90%;
+            margin-top: 50px;
+            // margin-left: 12%;
         }
     }
 }
@@ -220,6 +230,23 @@
             .cart {
                 width: 35%;
             }
+        }
+        .bank-trans-text {
+            width: 500px;
+        }
+        .card-pmt {
+            .card-img-opt {
+                margin-right: 10%;
+            }
+        }
+        .checkout {
+            margin-bottom: 45px;
+        }
+        .checkout-footer-text {
+            width: 520px;
+            margin-top: 100px;
+            margin-left: 12%;
+            font-size: 12px;  
         }
     }
 }

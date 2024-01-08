@@ -1178,9 +1178,6 @@ article .title {
   text-transform: uppercase;
   margin-bottom: 20px;
 }
-.cart-page .cart-details .payment-header h6:last-of-type {
-  margin-left: 32%;
-}
 .cart-page .cart-details form label {
   line-height: 21px;
   margin: 12px 0;
@@ -1190,7 +1187,10 @@ article .title {
   border: 1px solid #bd3a3a;
   padding: 10px;
 }
-.cart-page .cart-details form .submit-btn {
+.cart-page .cart-details form input:focus {
+  box-shadow: 4px 3px 2px #df8e8e;
+}
+.cart-page .cart-details .submit-btn, .cart-page .cart-details .order-btn {
   border: none;
   border-radius: 10px;
   text-transform: capitalize;
@@ -1200,28 +1200,35 @@ article .title {
   background-color: #bd3a3a;
   color: white;
 }
-.cart-page .cart-details form input:focus {
-  box-shadow: 4px 3px 2px #df8e8e;
-}
 .cart-page .cart-details .checkout {
-  background-color: #ebe6e6;
+  background-color: #fff8f8;
   padding: 30px 15px;
-  margin-bottom: 45px;
+  margin-bottom: 25px;
+  border-radius: 10px;
 }
 .cart-page .cart-details .checkout .bank-trans p, .cart-page .cart-details .checkout .card-pmt p {
   line-height: 21px;
   width: 195px;
-  background-color: pink;
 }
 .cart-page .cart-details .bank-trans-text {
   background-color: #ffffff;
-  width: 520px;
+  width: 90%;
   border-radius: 10px;
-  padding: 10px 30px 2px 15px;
   margin: 15px auto;
 }
 .cart-page .cart-details .bank-trans-text p {
   font-size: 12px;
+  color: #9f9f9f;
+}
+.cart-page .cart-details .card-pmt .card-img-opt {
+  margin-right: 10%;
+}
+.cart-page .cart-details .checkout-footer-text {
+  font-size: 10px;
+  line-height: 15px;
+  color: #100f0f;
+  width: 90%;
+  margin-top: 50px;
 }
 
 @media screen and (min-width: 1000px) {
@@ -1257,6 +1264,21 @@ article .title {
   }
   .cart-page .cart-details .cart {
     width: 35%;
+  }
+  .cart-page .bank-trans-text {
+    width: 500px;
+  }
+  .cart-page .card-pmt .card-img-opt {
+    margin-right: 10%;
+  }
+  .cart-page .checkout {
+    margin-bottom: 45px;
+  }
+  .cart-page .checkout-footer-text {
+    width: 520px;
+    margin-top: 100px;
+    margin-left: 12%;
+    font-size: 12px;
   }
 }
 *, *::before, *::after {
