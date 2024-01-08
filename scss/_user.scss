@@ -1,1 +1,56 @@
 @use 'variables' as *;
+
+.user-page {
+    font: 100% $secondary-font;
+    border: 1px solid rgba(225, 225, 225, 1);
+    box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
+    -webkit-box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
+    -moz-box-shadow: 3px 4px 22px 1px rgba(0,0,0,0.06);
+    border-radius: 10px;
+    padding: 100px 0 ;
+    .user-dets {
+        h5 {
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 34px;
+            text-align: center;
+        }
+        form {
+            width: 93%;
+            label {
+                line-height: 21px;
+                margin: 12px 0;
+                text-transform: capitalize;
+            }
+            input {
+                border: 1px solid #bd3a3a;
+                padding: 10px;
+            }
+            input[type=password]:focus, input[type=email]:focus {
+                box-shadow: 4px 3px 2px #df8e8e;
+            }
+            .fgt-password {
+                margin-top: 20px;
+            }
+        }
+        .login-btn, .createAcc-btn {
+            border: none;
+            border-radius: 10px;
+            text-transform: capitalize;
+            width: 100%;
+            text-align: center;
+            margin-bottom: 80px;
+            background-color: #bd3a3a;
+            color: white;
+        }
+        .create-acc p {
+            margin-top: 15%;
+        }
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .check {
+        border-right: 1px solid rgba(225, 225, 225, 1);
+    }
+}
