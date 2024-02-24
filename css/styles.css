@@ -83,9 +83,9 @@
   font: 100% Noto Sans, sans-serif;
   font-weight: 700;
   text-decoration: none;
+  color: black;
   text-transform: uppercase;
   font-size: 26px;
-  color: black;
 }
 .main-drop .drop-header {
   background-color: red;
@@ -167,10 +167,11 @@
   content: "";
   animation: wordchange infinite 5s;
 }
-.hero .buttons button {
+.hero .buttons a {
   font-weight: 700;
   border: 2px solid black;
   outline: none;
+  text-decoration: none;
 }
 .hero .shopbtn {
   background-color: black;
@@ -178,6 +179,7 @@
 }
 .hero .learnbtn {
   background-color: white;
+  color: black;
 }
 
 .viewbtn, .explorebtn {
@@ -188,6 +190,8 @@
   background-color: white;
   padding: 0 50px;
   margin-top: 50px;
+  text-decoration: none;
+  color: black;
 }
 
 .collection .collectionText {
@@ -292,6 +296,9 @@
     margin-right: 0;
     margin-left: 15px;
   }
+}
+.blog {
+  margin-top: 150px;
 }
 .blog .insights {
   width: 85%;
@@ -645,6 +652,32 @@ article .title {
   line-height: 20px;
 }
 
+.pagemodal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.82);
+}
+
+/* loader */
+.preloader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border-radius: 50%;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
 .product-main {
   border: 1px solid rgb(225, 225, 225);
   width: 97%;
@@ -750,23 +783,16 @@ article .title {
   text-align: center;
   font-weight: bold;
   margin-bottom: 10px;
-}
-.products .cards .card-body .btn-div button a {
-  text-decoration: none;
+  color: white;
 }
 .products .cards .card-body .btn-div .wish {
   border: 2px solid #bd3a3a;
   background-color: white;
   margin-right: 10px;
-}
-.products .cards .card-body .btn-div .wish a, .products .cards .card-body .btn-div .wish i {
   color: #bd3a3a;
 }
 .products .cards .card-body .btn-div .cart {
   background-color: #bd3a3a;
-}
-.products .cards .card-body .btn-div .cart a, .products .cards .card-body .btn-div .cart i {
-  color: white;
 }
 .products .cards:hover .btn-div {
   opacity: 1;
@@ -790,9 +816,10 @@ article .title {
     display: flex;
     justify-content: space-between;
     align-items: stretch;
+    height: 600px;
   }
   .stack .stack-pro .card-img-top {
-    flex: 1 0 500px;
+    width: 500px;
   }
   .stack .stack-pro .card-body {
     display: flex;
@@ -811,7 +838,7 @@ article .title {
 }
 @media screen and (min-width: 1300px) {
   .flex .cards {
-    flex: 0 0 19.2%;
+    flex: 0 0 24%;
   }
 }
 .product-details, .product-dets, .product-reviews, .cart-page, .cart-summary, .user {
@@ -1314,7 +1341,7 @@ article .title {
 .user-page .user-dets form .fgt-password {
   margin-top: 20px;
 }
-.user-page .user-dets .login-btn, .user-page .user-dets .createAcc-btn {
+.user-page .user-dets .login-btn, .user-page .user-dets .createAcc-btn, .user-page .user-dets .displayLog-btn, .user-page .user-dets .createAcc-btn1 {
   border: none;
   border-radius: 10px;
   text-transform: uppercase;
@@ -1327,6 +1354,12 @@ article .title {
 }
 .user-page .user-dets .create-acc p {
   margin-top: 15%;
+}
+.user-page .user-dets .signUp, .user-page .user-dets .displayLog-btn {
+  display: none;
+}
+.user-page .user-dets .spin {
+  display: none;
 }
 
 @media screen and (min-width: 1000px) {

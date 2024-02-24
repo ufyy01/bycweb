@@ -33,7 +33,7 @@
                 margin-top: 20px;
             }
         }
-        .login-btn, .createAcc-btn {
+        .login-btn, .createAcc-btn, .displayLog-btn, .createAcc-btn1 {
             border: none;
             border-radius: 10px;
             text-transform: uppercase;
@@ -46,6 +46,12 @@
         }
         .create-acc p {
             margin-top: 15%;
+        }
+        .signUp, .displayLog-btn {
+            display: none;
+        }
+        .spin {
+            display: none;
         }
     }
 }

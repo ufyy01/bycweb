@@ -8,7 +8,13 @@
     <link rel="stylesheet" href="./css/styles.css">
     <title>BYC Products</title>
 </head>
-<body>
+<body onload="productdetails()">
+    <div class="pagemodal">
+        <div class="preloader">
+            <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background:0 0"><circle cx="50" cy="50" r="4.719" fill="none" stroke="#bd3a3a" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3" keySplines="0 0.2 0.8 1" begin="-1.5s" repeatCount="indefinite"/><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3" keySplines="0.2 0 0.8 1" begin="-1.5s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="27.591" fill="none" stroke="#bd3a3a" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"/></circle>
+            </svg>
+        </div>
+    </div>
     <header class="header">
         <nav class="navbar navbar-expand-lg py-4 mx-2">
             <div class="container-fluid">
@@ -181,9 +187,8 @@
         <section class="product-details my-5">
             <div class="row product-display mx-lg-3">
                 <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 product-image my-lg-5 ms-lg-4 pb-lg-5">
-                    <div>
+                    <div class="product-image-div">
                         <div class="big-image text-center mb-5">
-                            <img src="./assets/image25.png" alt="product" class="bigImage img-fluid">
                         </div>
                         <div class="thumbnail pb-5">
                             <div id="Carousel" class="carousel d-flex justify-content-center align-items-center">
@@ -192,31 +197,6 @@
                                     <span class="visually-hidden">Previous</span>
                                 </button>
                                 <div class="carousel-inner" id="thumbnail-inner">
-                                    <div class="carousel-item active">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image25.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image26.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image25.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image26.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item">
-                                        <div class="thumbImage">
-                                            <img src="./assets/image25.png" class="img-fluid w-100" alt="...">
-                                        </div>
-                                    </div>
                                 </div>
                                 <button class="thumbnail-nxt px-3 py-1 ms-2 shadow" type="button" data-bs-target="#Carousel" onclick="thumbNext()" data-bs-slide="next">
                                     <span aria-hidden="true"><i class="fa-solid fa-chevron-right"></i></span>
@@ -228,10 +208,9 @@
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 product-text my-lg-5 ms-lg-5">
                     <div class="header mt-2">
-                        <p>men boxers</p>
-                        <p>byc 1166</p>
+                        
                     </div>
-                    <p class="product-para my-4">100% cotton 12 pieces of mens boxer</p>
+                    <p class="product-para my-4"></p>
                     <div class="rating d-flex">
                         <i class="fa-regular fa-star" style="color: #fb8200;"></i>
                         <i class="fa-regular fa-star" style="color: #fb8200;"></i>
@@ -241,7 +220,7 @@
                         <span class="ms-2">4.05</span>
                     </div>
                     <div class="dash mt-4"></div>
-                    <p class="price my-4">₦2,800.00</p>
+                    <p class="price my-4"></p>
                     <div class="d-lg-flex my-4">
                         <div class="sizes mt-2">
                             <p>available sizes</p>

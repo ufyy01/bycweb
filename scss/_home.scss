@@ -64,9 +64,9 @@
         font: 100% $secondary-font;
         font-weight: 700;
         text-decoration: none;
+        color: black;
         text-transform: uppercase;
         font-size: 26px;
-        color: black;
     }
     .drop-header {
         background-color: red;
@@ -153,16 +153,18 @@
                 animation: wordchange infinite 5s; 
             }
         }
-        .buttons button{
+        .buttons a {
             @include buttons;
+            text-decoration: none;
         }
-            
+        
         .shopbtn {
             background-color: black;
             color: white;
         }
         .learnbtn{
             background-color: white;
+            color: black;
         }
 }
 .viewbtn, .explorebtn {
@@ -171,6 +173,8 @@
     background-color: white;
     padding: 0 50px;
     margin-top: 50px;
+    text-decoration: none;
+    color: black;
 }
 .collection {
     .collectionText {
@@ -278,6 +282,7 @@
     }
 }
 .blog {
+    margin-top: 150px;
     .insights {
         width: 85%;
         background-color: #E0E0E0;
