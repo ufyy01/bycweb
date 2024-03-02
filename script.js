@@ -110,7 +110,122 @@ function decreaseQty() {
     }
     
 }
+
 const baseURL = "https://tiny-puce-snail-tutu.cyclic.app/api/";
+
+//user
+function displayForm() {
+    const loginForm = document.querySelector(".login")
+    const signupForm = document.querySelector(".signUp")
+    const buttonForm = document.querySelector(".createAcc-btn")
+    const buttonForm1 = document.querySelector(".displayLog-btn")
+
+
+    loginForm.style.display = "none";
+    buttonForm.style.display = "none";
+    buttonForm1.style.display = "block";
+    signupForm.style.display = "block";
+}
+
+function displayLoginForm() {
+    const loginForm = document.querySelector(".login")
+    const signupForm = document.querySelector(".signUp")
+    const buttonForm = document.querySelector(".displayLog-btn")
+    const buttonForm1 = document.querySelector(".createAcc-btn")
+
+
+    loginForm.style.display = "block";
+    signupForm.style.display = "none";
+    buttonForm.style.display = "none";
+    buttonForm1.style.display = "block";
+
+}
+
+//user login
+function login(event) {
+
+    event.preventDefault();
+    
+    let getSpin = document.querySelector('.spin');
+    getSpin.style.display = "inline-block";
+
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('password').value;
+
+    if ( email === "" || password === "" ) {
+        Swal.fire({
+            icon: 'info',
+            text: 'All fields are Required!',
+            confirmButtonColor: '#bd3a3a'
+        })
+        getSpin.style.display = "none";
+    }
+    else {
+
+        const signMethod = {
+            method: 'POST',
+            body: JSON.stringify({email, password}),
+            headers: {'Content-Type': 'application/json'},
+            credentials: 'include',
+            mode: 'cors'
+        }
+
+        const url = baseURL + "user/login";
+
+        fetch(url, signMethod)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            localStorage.setItem("user", JSON.stringify(result));
+
+            if (result.hasOwnProperty("user")) {
+                Swal.fire({
+                    icon: 'success',
+                    text: "Login successful!",
+                    confirmButtonColor: "#bd3a3a"
+                })
+                setTimeout(() => {
+                    location.href = "index.html"
+                }, 3000)
+            }
+            else {
+                if (result.errors.email !== ""){
+                    Swal.fire({
+                        icon: 'info',
+                        text:  `${result.errors.email}`,
+                        confirmButtonColor: "#bd3a3a"
+                    })
+                }
+                else {
+                    Swal.fire({
+                        icon: 'info',
+                        text:  `${result.errors.password}`,
+                        confirmButtonColor: "#bd3a3a"
+                    })  
+                }
+                getSpin.style.display = "none"
+            }
+        })
+        .catch(error => {
+            Swal.fire({
+                icon: 'info',
+                text: `${error.message}`,
+                confirmButtonColor: "#bd3a3a"
+            })
+            getSpin.style.display = "none"
+        });
+        
+    }
+
+}
+
+//get Token
+function getBearerToken(){
+    let user = localStorage.getItem("user");
+    user = JSON.parse(user);
+    const bearerToken = user.token;
+    return bearerToken;
+}
 
 //calling products from database
 function getProducts() {
@@ -217,8 +332,6 @@ function productdetails() {
     .then(response => response.json())
     .then(result => {
 
-        console.log(result)
-
         bigImg.innerHTML = `
         <img src=${result.image[0]} alt="product" class="bigImage img-fluid">
         `
@@ -265,11 +378,10 @@ function imgChange() {
     })
 }
 
-
 //add product to wishlist
 function addToWishlist(prodId) {
-    const url = baseURL + "wishlist";
 
+    const url = baseURL + "wishlist";
     const data = {
         "products": [
             {
@@ -279,122 +391,169 @@ function addToWishlist(prodId) {
     }
     const wishMethod = {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+            'Authorization': `Bearer ${getBearerToken()}`,
+            'Content-Type': 'application/json'
+        },
         body: JSON.stringify(data),
-        // credentials: 'include'
+        credentials: 'include',
+        mode: 'cors'
     }
 
     fetch(url, wishMethod)
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+    .then(response =>  response.json())
+    .then(result => {
+        if (result.message === "Kindly login!") {
+            setTimeout(() => {
+                location.href = "index.html"
+            }, 3000)
         }
-        return response.json();
+
+        if (result.msg === "Product added to wishlist!") {
+            Swal.fire({
+                icon: 'success',
+                text: `${result.msg}`,
+                confirmButtonColor: '#bd3a3a'
+            })
+        }
     })
-    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
+
+//Get wishlist
+function getWishProducts() {
+    const getModal = document.querySelector('.pagemodal');
+    getModal.style.display = "block";
+
+    const productCard = document.querySelector('.products');
+    let data = [];
+    const url = baseURL + "wishlist";
+    const token = getBearerToken()
+
+    const getWish = {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        mode: 'cors'
+    }
+    fetch(url, getWish)
+    .then(response => response.json())
+    .then(result => {
+
+        if (result.message === "Kindly login!") {
+            setTimeout(() => {
+                location.href = "index.html"
+            }, 3000)
+        }
+
+        if (result.products.length === 0) {
+            getModal.style.display= "none";
+            productCard.innerHTML = "<p>No Product Found</p>";
+        }
+        else {
+            getModal.style.display= "none";
+            result.products.map(product => {
+                data += 
+                `<div class="cards stack-pro">
+                    <img src=${product.image} class="card-img-top img-fluid" alt="product image" onclick="productdets('${product._id}')">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.name}</h5>
+                        <p class="sub-title">${product.code}</p>
+                        <p class="card-text">${product.summary}</p>
+                        <p class="price">₦${product.price}</p>
+                        <div class="rating">
+                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                            <span class="ms-2">4.05</span>
+                        </div>
+                        <div class="btn-div mt-3">
+                        <button class="cart d-flex px-4 py-3 align-items-center justify-content-center me-2" onclick="addToCart('${product._id}')">
+                            <i class="fa-solid fa-cart-shopping me-2"></i> buy now
+                        </button>
+                            <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdWish('${product._id}')">
+                                <i class="fa-solid fa-trash me-2"></i>
+                                remove
+                            </button>
+                        </div>
+                    </div>
+                </div>`
+
+                productCard.innerHTML = data
+            })
+        } 
+    })
+    .catch(error => console.error(error));
+}
+
+// remove product ffrom wishlist
+function deleteProdWish(productId) {
+    const url = baseURL + `wishlist/${productId}`;
+    const token = getBearerToken()
+
+    const deleteWish = {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        mode: 'cors'
+    }
+
+    fetch(url, deleteWish)
+    .then(response => response.json())
+    .then(result => {
+        if (result.msg === "Product removed from wishlist!") {
+            Swal.fire({
+                icon: 'success',
+                text: `${result.msg}`,
+                confirmButtonColor: '#bd3a3a'
+            })
+
+            setTimeout(() => {
+                location.href = "wishlist.html"
+            }, 3000)
+        }
+    })
+    .catch(error => console.log(error))
+}
+
+//get cart
+function getCart() {
+    const cartDiv = document.querySelector(".cart-details")
+
+    const url = baseURL + "cart";
+    const token = getBearerToken()
+    const getCart = {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        mode: 'cors'
+    }
+
+    fetch(url, getCart)
+    .then(response => response.json())
+    .then(result => {
+
+        if (result.msg === "Your cart is empty!" || result.message === "Kindly login!") {
+            cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Your cart is empty!</h3>'
+        }
+        // else {
+
+        // }
+    })
     .catch(error => console.log('error', error));
 }
 
 
 
-//user
-function displayForm() {
-    const loginForm = document.querySelector(".login")
-    const signupForm = document.querySelector(".signUp")
-    const buttonForm = document.querySelector(".createAcc-btn")
-    const buttonForm1 = document.querySelector(".displayLog-btn")
 
-
-    loginForm.style.display = "none";
-    buttonForm.style.display = "none";
-    buttonForm1.style.display = "block";
-    signupForm.style.display = "block";
-}
-
-function displayLoginForm() {
-    const loginForm = document.querySelector(".login")
-    const signupForm = document.querySelector(".signUp")
-    const buttonForm = document.querySelector(".displayLog-btn")
-    const buttonForm1 = document.querySelector(".createAcc-btn")
-
-
-    loginForm.style.display = "block";
-    signupForm.style.display = "none";
-    buttonForm.style.display = "none";
-    buttonForm1.style.display = "block";
-
-}
-
-//user login
-function login(event) {
-
-    event.preventDefault();
-    
-    let getSpin = document.querySelector('.spin');
-    getSpin.style.display = "inline-block";
-
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('password').value;
-
-    if ( email === "" || password === "" ) {
-        Swal.fire({
-            icon: 'info',
-            text: 'All fields are Required!',
-            confirmButtonColor: '#bd3a3a'
-        })
-        getSpin.style.display = "none";
-    }
-    else {
-
-        const signMethod = {
-            method: 'POST',
-            body: JSON.stringify({email, password}),
-            headers: {'Content-Type': 'application/json'}
-        }
-
-        const url = baseURL + "user/login";
-
-        fetch(url, signMethod)
-        .then(response => response.json())
-        .then(result => {
-            if (result.hasOwnProperty("user")) {
-                Swal.fire({
-                    icon: 'success',
-                    text: "Login successful!",
-                    confirmButtonColor: "#bd3a3a"
-                })
-
-                setTimeout(() => {
-                    location.href = "index.html"
-                }, 3000)
-            }
-            else {
-                if (result.errors.email !== ""){
-                    Swal.fire({
-                        icon: 'info',
-                        text:  `${result.errors.email}`,
-                        confirmButtonColor: "#bd3a3a"
-                    })
-                }
-                else {
-                    Swal.fire({
-                        icon: 'info',
-                        text:  `${result.errors.password}`,
-                        confirmButtonColor: "#bd3a3a"
-                    })  
-                }
-                getSpin.style.display = "none"
-            }
-        })
-        .catch(error => {
-            Swal.fire({
-                icon: 'info',
-                text: `${error.message}`,
-                confirmButtonColor: "#bd3a3a"
-            })
-            getSpin.style.display = "none"
-        });
-
-    }
-
-}
