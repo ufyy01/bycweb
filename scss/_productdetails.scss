@@ -71,50 +71,63 @@
             line-height: 26px;
 
         }
-        .size-btns button {
-            border: none;
+        input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+        }
+        .size-btns label {
             width: 45px;
             height: 40px;
             text-transform: uppercase;
             background-color: white;
             box-shadow: 2px 3px 10px 1px #cfcfd6;
             margin-right: 3px;
-            font-weight: 600;
+            padding: 15px 25px;
+            position: relative;
+            cursor: pointer;
         }
-        .selected {
+        .size-btns label span {
+            font-weight: 600;
+            position: absolute;
+            left: 35%;
+            top: 20%;
+        }
+        #small:checked ~ .label-1, #medium:checked ~ .label-2, #large:checked ~ .label-3, #extralarge:checked ~ .label-4 {
             outline: 2px solid red;
         }
-        .color-btns button {
+        .color-btns label {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            border: none;
+            cursor: pointer;
         }
-        .color-btns button:nth-child(1) {
+        .color-btns .label-1 {
             background-color: #3870ca;
         }
-        .color-btns button:nth-child(2) {
+        .color-btns .label-2 {
             background-color: #ff05e6;
         }
-        .color-btns button:nth-child(3) {
+        .color-btns .label-3 {
             background-color: #fb8200;
         }
-        .color-btns button:nth-child(4) {
+        .color-btns .label-4 {
             background-color: #000000;
         }
         
+        .color-btns #blue:checked ~ .label-1, .color-btns #pink:checked ~ .label-2, .color-btns #orange:checked ~ .label-3, .color-btns #black:checked ~ .label-4 {
+            outline: 3px solid red;
+        }
+
         .wish {
             border: 1px solid #bd3a3a;
             background-color: white;
             border-radius: 10px;
             width: 100%; 
             height: 50px;
-            a, i {
-                text-decoration: none;
-                color: red;
-                font-size: 16px;
-                text-transform: capitalize;
-            }
+            text-decoration: none;
+            color: red;
+            font-size: 16px;
+            text-transform: capitalize;
         }
         .cart {
             border: none;
@@ -123,12 +136,10 @@
             width: 100%;
             height: 60px;
             justify-content: center;
-            a, i {
-                text-decoration: none;
-                color: white;
-                font-size: 16px;
-                text-transform: capitalize;
-            }
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            text-transform: capitalize;
         }
     }
 }

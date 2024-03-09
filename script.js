@@ -223,8 +223,14 @@ function login(event) {
 function getBearerToken(){
     let user = localStorage.getItem("user");
     user = JSON.parse(user);
-    const bearerToken = user.token;
-    return bearerToken;
+    if (user) {
+        const bearerToken = user.token;
+        return bearerToken;
+    }
+    else {
+        const bearerToken = '';
+        return bearerToken
+    }
 }
 
 //calling products from database
@@ -266,7 +272,7 @@ function getProducts() {
                                 <i class="fa-regular fa-heart me-2"></i>
                                 wishlist
                             </button>
-                            <button class="cart d-flex px-4 py-3 align-items-center justify-content-center">
+                            <button class="cart d-flex px-4 py-3 align-items-center justify-content-center" onclick="productdets('${product._id}')">
                                 <i class="fa-solid fa-cart-shopping me-2"></i> buy now
                             </button>
                         </div>
@@ -316,12 +322,20 @@ function productdetails() {
 
     const getModal = document.querySelector('.pagemodal');
     getModal.style.display = "block";
+
+    const token = getBearerToken();
     
     const bigImg = document.querySelector('.big-image');
     const carousel = document.querySelector('.carousel-inner');
     const header = document.querySelector('div .header');
     const para = document.querySelector('.product-para');
     const price = document.querySelector('.price');
+    const qtybtn = document.querySelector('.qty-button');
+    const productTxt = document.querySelector('.product-text');
+    const sizeDets = document.querySelector('input[name="size"]:checked').value;
+    const colorDets = document.querySelector('input[name="color"]:checked').value;
+    const quantityDets = document.querySelector('input[name="quantity-display"]').value;
+    const qtyNum = +quantityDets;
 
     const queryParams = new URLSearchParams(window.location.search)
 
@@ -331,6 +345,22 @@ function productdetails() {
     fetch(url)
     .then(response => response.json())
     .then(result => {
+        if (token === '') {
+            data = {
+                _id: `${result._id}`,
+                name: `${result.name}`,
+                code: `${result.code}`,
+                price: `${result.price}`,
+                summary: `${result.summary}`,
+                image: `${result.image[0]}`,
+                size: sizeDets,
+                color: colorDets,
+                quantity: qtyNum
+            }
+            let product = JSON.parse(localStorage.getItem("product")) || []
+            product.push(data)
+            localStorage.setItem("product", JSON.stringify(product));
+        }
 
         bigImg.innerHTML = `
         <img src=${result.image[0]} alt="product" class="bigImage img-fluid">
@@ -361,6 +391,15 @@ function productdetails() {
         para.innerText = result.summary;
 
         price.innerText = "₦" + result.price;
+
+        qtybtn.innerHTML += ` <button class="wish d-flex justify-content-center align-items-center ms-lg-4 mt-lg-2 mt-4" onclick="addToWishlist('${result._id}')">
+        <i class="fa-regular fa-heart me-3"></i>
+        wishlist
+        </button>`
+
+        productTxt.innerHTML += `<button class="cart d-flex align-items-center mt-lg-4 my-3" onclick="addToCart('${result._id}')">
+        <i class="fa-solid fa-cart-shopping me-3"></i>add to cart
+        </button>`
 
         getModal.style.display = "none";
     } )
@@ -404,8 +443,13 @@ function addToWishlist(prodId) {
     .then(response =>  response.json())
     .then(result => {
         if (result.message === "Kindly login!") {
+            Swal.fire({
+                icon: 'info',
+                text: `${result.message}`,
+                confirmButtonColor: '#bd3a3a'
+            })
             setTimeout(() => {
-                location.href = "index.html"
+                location.href = "user.html"
             }, 3000)
         }
 
@@ -427,68 +471,73 @@ function getWishProducts() {
 
     const productCard = document.querySelector('.products');
     let data = [];
+
     const url = baseURL + "wishlist";
-    const token = getBearerToken()
+    const token = getBearerToken();
 
-    const getWish = {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        credentials: 'include',
-        mode: 'cors'
+    if (token === '') {
+        getModal.style.display= "none";
+
+        productCard.innerHTML = '<h2 class="ms-4">Kindly Login</h2>';
+        setTimeout(() => {
+            location.href = "user.html"
+        }, 2000)
     }
-    fetch(url, getWish)
-    .then(response => response.json())
-    .then(result => {
-
-        if (result.message === "Kindly login!") {
-            setTimeout(() => {
-                location.href = "index.html"
-            }, 3000)
+    else {
+        const getWish = {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            mode: 'cors'
         }
-
-        if (result.products.length === 0) {
-            getModal.style.display= "none";
-            productCard.innerHTML = "<p>No Product Found</p>";
-        }
-        else {
-            getModal.style.display= "none";
-            result.products.map(product => {
-                data += 
-                `<div class="cards stack-pro">
-                    <img src=${product.image} class="card-img-top img-fluid" alt="product image" onclick="productdets('${product._id}')">
-                    <div class="card-body">
-                        <h5 class="card-title">${product.name}</h5>
-                        <p class="sub-title">${product.code}</p>
-                        <p class="card-text">${product.summary}</p>
-                        <p class="price">₦${product.price}</p>
-                        <div class="rating">
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                            <i class="fa-regular fa-star" style="color: #fb8200;"></i>
-                            <span class="ms-2">4.05</span>
-                        </div>
-                        <div class="btn-div mt-3">
-                        <button class="cart d-flex px-4 py-3 align-items-center justify-content-center me-2" onclick="addToCart('${product._id}')">
-                            <i class="fa-solid fa-cart-shopping me-2"></i> buy now
-                        </button>
-                            <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdWish('${product._id}')">
-                                <i class="fa-solid fa-trash me-2"></i>
-                                remove
+        fetch(url, getWish)
+        .then(response => response.json())
+        .then(result => {
+            console.log(result)
+            if (result.products.length === 0) {
+                getModal.style.display= "none";
+                productCard.innerHTML = "<p>No Product Found</p>";
+            }
+            else {
+                getModal.style.display= "none";
+                result.products.map(product => {
+                    data += 
+                    `<div class="cards stack-pro">
+                        <img src=${product.image} class="card-img-top img-fluid" alt="product image" onclick="productdets('${product._id}')">
+                        <div class="card-body">
+                            <h5 class="card-title">${product.name}</h5>
+                            <p class="sub-title">${product.code}</p>
+                            <p class="card-text">${product.summary}</p>
+                            <p class="price">₦${product.price}</p>
+                            <div class="rating">
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <i class="fa-regular fa-star" style="color: #fb8200;"></i>
+                                <span class="ms-2">4.05</span>
+                            </div>
+                            <div class="btn-div mt-3">
+                            <button class="cart d-flex px-4 py-3 align-items-center justify-content-center me-2" onclick="addToCart('${product._id}')">
+                                <i class="fa-solid fa-cart-shopping me-2"></i> buy now
                             </button>
+                                <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdWish('${product._id}')">
+                                    <i class="fa-solid fa-trash me-2"></i>
+                                    remove
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </div>`
-
-                productCard.innerHTML = data
-            })
-        } 
-    })
-    .catch(error => console.error(error));
+                    </div>`
+    
+                    productCard.innerHTML = data
+                })
+            } 
+        })
+        .catch(error => console.error(error));
+    }
 }
 
 // remove product ffrom wishlist
@@ -526,10 +575,22 @@ function deleteProdWish(productId) {
 
 //get cart
 function getCart() {
+    const getModal = document.querySelector('.pagemodal');
+    getModal.style.display = "block";
+
     const cartDiv = document.querySelector(".cart-details")
+    const prodDiv = document.querySelector(".product-div")
 
     const url = baseURL + "cart";
-    const token = getBearerToken()
+    const token = getBearerToken();
+
+    if (token === '') {
+        getModal.style.display= "none";
+        cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Kindly Login!</h3>';
+        setTimeout(() => {
+            location.href = "user.html"
+        }, 2000)
+    }
     const getCart = {
         method: 'GET',
         headers: {
@@ -544,7 +605,7 @@ function getCart() {
     .then(response => response.json())
     .then(result => {
 
-        if (result.msg === "Your cart is empty!" || result.message === "Kindly login!") {
+        if (result.msg === "Your cart is empty!") {
             cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Your cart is empty!</h3>'
         }
         // else {
@@ -554,6 +615,50 @@ function getCart() {
     .catch(error => console.log('error', error));
 }
 
+//add to cart
+function addToCart(prodId) {
+    const prodDiv = document.querySelector(".product-div")
+
+    const sizeDets = document.querySelector('input[name="size"]:checked').value;
+    const colorDets = document.querySelector('input[name="color"]:checked').value;
+    const quantityDets = document.querySelector('input[name="quantity-display"]').value;
+    const qtyNum = +quantityDets;
+
+
+    const url = baseURL + "cart";
+    const token = getBearerToken();
+
+
+    if (token === '') {
+        const data = localStorage.getItem("product")
+        if (data.length !== 0) {
+            Swal.fire({
+                icon: 'success',
+                text: "Added to cart",
+                confirmButtonColor: '#bd3a3a'
+            })
+            setTimeout(() => {
+                location.href = "cart.html"
+            }, 2000)
+        }
+    }
+
+    const cartMethod = {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+        credentials: 'include',
+        mode: 'cors'
+    }
+
+    fetch(url, cartMethod)
+    .then(response => response.json())
+    .then(result => console.log(result))
+    .catch(error => console.log('error', error));
+}
 
 
 

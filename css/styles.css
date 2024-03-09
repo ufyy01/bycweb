@@ -906,36 +906,50 @@ article .title {
   font-weight: 700;
   line-height: 26px;
 }
-.product-display .product-text .size-btns button {
-  border: none;
+.product-display .product-text input[type=radio] {
+  appearance: none;
+  -webkit-appearance: none;
+}
+.product-display .product-text .size-btns label {
   width: 45px;
   height: 40px;
   text-transform: uppercase;
   background-color: white;
   box-shadow: 2px 3px 10px 1px #cfcfd6;
   margin-right: 3px;
-  font-weight: 600;
+  padding: 15px 25px;
+  position: relative;
+  cursor: pointer;
 }
-.product-display .product-text .selected {
+.product-display .product-text .size-btns label span {
+  font-weight: 600;
+  position: absolute;
+  left: 35%;
+  top: 20%;
+}
+.product-display .product-text #small:checked ~ .label-1, .product-display .product-text #medium:checked ~ .label-2, .product-display .product-text #large:checked ~ .label-3, .product-display .product-text #extralarge:checked ~ .label-4 {
   outline: 2px solid red;
 }
-.product-display .product-text .color-btns button {
+.product-display .product-text .color-btns label {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: none;
+  cursor: pointer;
 }
-.product-display .product-text .color-btns button:nth-child(1) {
+.product-display .product-text .color-btns .label-1 {
   background-color: #3870ca;
 }
-.product-display .product-text .color-btns button:nth-child(2) {
+.product-display .product-text .color-btns .label-2 {
   background-color: #ff05e6;
 }
-.product-display .product-text .color-btns button:nth-child(3) {
+.product-display .product-text .color-btns .label-3 {
   background-color: #fb8200;
 }
-.product-display .product-text .color-btns button:nth-child(4) {
+.product-display .product-text .color-btns .label-4 {
   background-color: #000000;
+}
+.product-display .product-text .color-btns #blue:checked ~ .label-1, .product-display .product-text .color-btns #pink:checked ~ .label-2, .product-display .product-text .color-btns #orange:checked ~ .label-3, .product-display .product-text .color-btns #black:checked ~ .label-4 {
+  outline: 3px solid red;
 }
 .product-display .product-text .wish {
   border: 1px solid #bd3a3a;
@@ -943,8 +957,6 @@ article .title {
   border-radius: 10px;
   width: 100%;
   height: 50px;
-}
-.product-display .product-text .wish a, .product-display .product-text .wish i {
   text-decoration: none;
   color: red;
   font-size: 16px;
@@ -957,8 +969,6 @@ article .title {
   width: 100%;
   height: 60px;
   justify-content: center;
-}
-.product-display .product-text .cart a, .product-display .product-text .cart i {
   text-decoration: none;
   color: white;
   font-size: 16px;
