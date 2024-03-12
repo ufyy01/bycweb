@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/styles.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="getCart()">
     <div class="pagemodal">
         <div class="preloader">
             <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background:0 0"><circle cx="50" cy="50" r="4.719" fill="none" stroke="#bd3a3a" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3" keySplines="0 0.2 0.8 1" begin="-1.5s" repeatCount="indefinite"/><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3" keySplines="0.2 0 0.8 1" begin="-1.5s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="27.591" fill="none" stroke="#bd3a3a" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"/></circle>
@@ -189,73 +189,6 @@
             <h3 class="cart-header mt-5 mb-4">Cart <span class="cart-quantity">1</span> item(s)</h3>
             <div class="dash"></div>
             <div class="my-5 product-div">
-                <div class="row text-box">
-                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                        <div class="w-100">
-                            <img src="./assets/image25.png" alt="" class="img-fluid w-100">
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
-                        <div class="pb-lg-5">
-                            <div class="header mt-2">
-                                <p>men boxers</p>
-                                <p>byc 1166</p>
-                            </div>
-                            <p class="product-para mt-4 mb-5">100% cotton 12 pieces of mens boxer</p>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
-                        <div class="d-lg-flex price-qty">
-                            <div class="quantity check pt-2 pt-lg-0">
-                                <p>quantity</p>
-                                <div class="d-flex justify-content-center input-btn mt-3">
-                                    <button class="px-3 py-1" onclick="increaseQty()"><i class="fa-solid fa-plus"></i></button>
-                                    <input type="text" name="quantity-display" id="quantity-display" value="1" readonly>
-                                    <button class="px-3 py-1" onclick="decreaseQty()"><i class="fa-solid fa-minus"></i></button>
-                                </div>
-                            </div>
-                            <div class="unit-price mt-4 mt-lg-0">
-                                <p>unit price</p>
-                                <p class="price my-4 my-lg-0">₦2,800.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn-div mt-3">
-                        <button class="wish d-flex px-4 py-3 align-items-center justify-content-center">
-                            <i class="fa-regular fa-heart"></i>
-                            <a href="wishlist.html" class="ms-1 ps-1">wishlist</a>
-                        </button>
-                        <button class="cart-btn d-flex px-4 py-3 align-items-center justify-content-center">
-                            <i class="fa-solid fa-trash"></i>
-                            <a href="#" class="ms-1 ps-1">remove</a>
-                        </button>
-                    </div>
-                    <div class="dash mt-5"></div>
-                </div>
-                <div class="cart-total mt-3">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-12 offset-lg-7 offset-xl-8 col-lg-5 col-xl-4 cart-total-dets pe-lg-5">
-                            <h5 class="cart-total-header my-3">cart totals</h5>
-                            <div class="subtotal d-flex justify-content-between">
-                                <p>Subtotal</p>
-                                <p class="subtotal-amount">₦<span>2,800.00</span></p>
-                            </div>
-                            <div class="total d-flex justify-content-between">
-                                <p>total</p>
-                                <p class="total-amount">₦<span>2,800.00</span></p>
-                            </div>
-                            <div class="total-btn d-lg-flex mt-5 justify-content-between">
-                                <button class="shopping-btn py-3">
-                                    <a href="products.html">Continue Shopping</a>
-                                </button>
-                                <button class="checkout-btn py-3">
-                                    <a href="checkout.html">Proceed to Checkout</a>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dash mt-5"></div>
-                </div>
             </div>
         </div>
     </main>

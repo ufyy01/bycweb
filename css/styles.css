@@ -1115,6 +1115,10 @@ article .title {
 .cart-page .cart-details .header p:last-child, .cart-page .cart-details .price p:last-child {
   margin-top: -5px;
 }
+.cart-page .cart-details .text-box {
+  position: relative;
+  background-color: red;
+}
 .cart-page .cart-details .product-para {
   font: 100% Noto Sans, sans-serif;
   font-size: 20px;
@@ -1129,27 +1133,21 @@ article .title {
   border-radius: 10px;
   text-transform: capitalize;
   font-size: 16px;
-  width: 100%;
+  width: 50%;
   text-align: center;
   font-weight: bold;
   margin-bottom: 10px;
-}
-.cart-page .cart-details .btn-div button a {
-  text-decoration: none;
+  color: pink;
+  position: absolute;
 }
 .cart-page .cart-details .btn-div .wish {
   border: 2px solid #bd3a3a;
   background-color: white;
   margin-right: 10px;
-}
-.cart-page .cart-details .btn-div .wish a, .cart-page .cart-details .btn-div .wish i {
-  color: #bd3a3a;
+  top: 50%;
 }
 .cart-page .cart-details .btn-div .cart-btn {
   background-color: #bd3a3a;
-}
-.cart-page .cart-details .btn-div .cart-btn a, .cart-page .cart-details .btn-div .cart-btn i {
-  color: white;
 }
 .cart-page .cart-details .price-qty .quantity, .cart-page .cart-details .price-qty .unit-price {
   text-transform: capitalize;

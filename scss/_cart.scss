@@ -20,6 +20,10 @@
                 margin-top: -5px;
             }
         }
+        .text-box {
+            position: relative;
+            background-color: red;
+        }
         .product-para {
             font: 100% $secondary-font;
             font-size: 20px;
@@ -33,27 +37,23 @@
                 border-radius: 10px;
                 text-transform: capitalize;
                 font-size: 16px;
-                width: 100%;
+                width: 50%;
                 text-align: center;
                 font-weight: bold;
                 margin-bottom: 10px;
-                a {
-                    text-decoration: none;
-                }
+                color: pink;
+                position: absolute;
             }
             .wish {
                 border: 2px solid #bd3a3a;
                 background-color: white;
                 margin-right: 10px;
-                a, i {
-                    color: #bd3a3a;
-                }
+                top: 50%;
+                // color: #bd3a3a;
             }
             .cart-btn {
                 background-color: #bd3a3a;
-                a, i {
-                    color: white;
-                }
+                // color: white;
             }
         }
         .price-qty {

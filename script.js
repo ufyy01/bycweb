@@ -323,8 +323,6 @@ function productdetails() {
     const getModal = document.querySelector('.pagemodal');
     getModal.style.display = "block";
 
-    const token = getBearerToken();
-    
     const bigImg = document.querySelector('.big-image');
     const carousel = document.querySelector('.carousel-inner');
     const header = document.querySelector('div .header');
@@ -332,36 +330,16 @@ function productdetails() {
     const price = document.querySelector('.price');
     const qtybtn = document.querySelector('.qty-button');
     const productTxt = document.querySelector('.product-text');
-    const sizeDets = document.querySelector('input[name="size"]:checked').value;
-    const colorDets = document.querySelector('input[name="color"]:checked').value;
-    const quantityDets = document.querySelector('input[name="quantity-display"]').value;
-    const qtyNum = +quantityDets;
 
     const queryParams = new URLSearchParams(window.location.search)
 
     const productId = queryParams.get('productId');
 
     const url = baseURL + `products/${productId}`;
+
     fetch(url)
     .then(response => response.json())
     .then(result => {
-        if (token === '') {
-            data = {
-                _id: `${result._id}`,
-                name: `${result.name}`,
-                code: `${result.code}`,
-                price: `${result.price}`,
-                summary: `${result.summary}`,
-                image: `${result.image[0]}`,
-                size: sizeDets,
-                color: colorDets,
-                quantity: qtyNum
-            }
-            let product = JSON.parse(localStorage.getItem("product")) || []
-            product.push(data)
-            localStorage.setItem("product", JSON.stringify(product));
-        }
-
         bigImg.innerHTML = `
         <img src=${result.image[0]} alt="product" class="bigImage img-fluid">
         `
@@ -397,7 +375,7 @@ function productdetails() {
         wishlist
         </button>`
 
-        productTxt.innerHTML += `<button class="cart d-flex align-items-center mt-lg-4 my-3" onclick="addToCart('${result._id}')">
+        productTxt.innerHTML += `<button class="cart d-flex align-items-center mt-lg-4 my-3" onclick="addToCart('${result._id}','${result.name}','${result.code}','${result.price}','${result.summary}','${result.image[0]}')">
         <i class="fa-solid fa-cart-shopping me-3"></i>add to cart
         </button>`
 
@@ -586,10 +564,79 @@ function getCart() {
 
     if (token === '') {
         getModal.style.display= "none";
-        cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Kindly Login!</h3>';
-        setTimeout(() => {
-            location.href = "user.html"
-        }, 2000)
+        let data = JSON.parse(localStorage.getItem("product"))
+        console.log(data)
+        data.map(product => {
+            prodDiv.innerHTML += `
+            <div class="row text-box">
+                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                    <div class="w-100">
+                        <img src=${product.image} alt="" class="img-fluid w-100">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
+                    <div class="pb-lg-2">
+                        <div class="header mt-2">
+                            <p>${product.name}</p>
+                            <p>${product.code}</p>
+                        </div>
+                        <p class="product-para mt-4">${product.summary}</p>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
+                    <div class="d-lg-flex price-qty">
+                        <div class="quantity check pt-2 pt-lg-0">
+                            <p>quantity</p>
+                            <div class="d-flex justify-content-center input-btn mt-3">
+                                <button class="px-3 py-1" onclick="decreaseQty()"><i class="fa-solid fa-minus"></i></button>
+                                <input type="text" name="quantity-display" id="quantity-display" value=${product.quantity} readonly>
+                                <button class="px-3 py-1" onclick="increaseQty()"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="unit-price mt-4 mt-lg-0">
+                            <p>unit price</p>
+                            <p class="price my-4 my-lg-0">₦${product.price}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-div mb-2">
+                    <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="addToWishlist('${product._id}')">
+                        <i class="fa-regular fa-heart pe-1"></i>wishlist
+                    </button>
+                    <button class="cart-btn d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdCart('${product._id}')">
+                        <i class="fa-solid fa-trash pe-1"></i>remove
+                    </button>
+                </div>
+                <div class="dash mt-5"></div>
+            </div>
+            `
+            let totalPrice = 0
+            totalPrice += product.price * product.quantity;
+
+            prodDiv.innerHTML += `<div class="cart-total mt-3">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 offset-lg-7 offset-xl-8 col-lg-5 col-xl-4 cart-total-dets pe-lg-5">
+                    <h5 class="cart-total-header my-3">cart totals</h5>
+                    <div class="subtotal d-flex justify-content-between">
+                        <p>Subtotal</p>
+                        <p class="subtotal-amount">₦<span>${totalPrice}</span></p>
+                    </div>
+                    <div class="total">
+                        <p>Delivery fees not included yet</p>
+                    </div>
+                    <div class="total-btn d-lg-flex mt-5 justify-content-between">
+                        <button class="shopping-btn py-3">
+                            <a href="products.html">Continue Shopping</a>
+                        </button>
+                        <button class="checkout-btn py-3">
+                            <a href="checkout.html">Proceed to Checkout</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="dash mt-5"></div>
+        </div>`
+        })
     }
     const getCart = {
         method: 'GET',
@@ -604,19 +651,63 @@ function getCart() {
     fetch(url, getCart)
     .then(response => response.json())
     .then(result => {
-
+        console.log(result)
         if (result.msg === "Your cart is empty!") {
             cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Your cart is empty!</h3>'
         }
-        // else {
-
-        // }
+        else {
+            result.map(product => {
+                prodDiv.innerHTML += `
+                <div class="row text-box">
+                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                    <div class="w-100">
+                        <img src=${product.image} alt="" class="img-fluid w-100">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
+                    <div class="pb-lg-2">
+                        <div class="header mt-2">
+                            <p>${product.name}</p>
+                            <p>${product.code}</p>
+                        </div>
+                        <p class="product-para mt-4 mb-5">${product.summary}</p>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
+                    <div class="d-lg-flex price-qty">
+                        <div class="quantity check pt-2 pt-lg-0">
+                            <p>quantity</p>
+                            <div class="d-flex justify-content-center input-btn mt-3">
+                                <button class="px-3 py-1" onclick="decreaseQty()"><i class="fa-solid fa-minus"></i></button>
+                                <input type="text" name="quantity-display" id="quantity-display" value=${product.quantity} readonly>
+                                <button class="px-3 py-1" onclick="increaseQty()"><i class="fa-solid fa-plus"></i></button>
+                            </div>
+                        </div>
+                        <div class="unit-price mt-4 mt-lg-0">
+                            <p>unit price</p>
+                            <p class="price my-4 my-lg-0">₦${product.price}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-div mb-2">
+                    <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="addToWishlist('${product._id}')">
+                        <i class="fa-regular fa-heart pe-1"></i>wishlist
+                    </button>
+                    <button class="cart-btn d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdCart('${product._id}')">
+                        <i class="fa-solid fa-trash pe-1"></i>remove
+                    </button>
+                </div>
+                <div class="dash mt-5"></div>
+                </div>
+                `
+            })
+        }
     })
     .catch(error => console.log('error', error));
 }
 
 //add to cart
-function addToCart(prodId) {
+function addToCart(prodId, prodName, prodCode, prodPrice, prodSummary, prodImage) {
     const prodDiv = document.querySelector(".product-div")
 
     const sizeDets = document.querySelector('input[name="size"]:checked').value;
@@ -628,36 +719,69 @@ function addToCart(prodId) {
     const url = baseURL + "cart";
     const token = getBearerToken();
 
-
     if (token === '') {
-        const data = localStorage.getItem("product")
-        if (data.length !== 0) {
-            Swal.fire({
-                icon: 'success',
-                text: "Added to cart",
-                confirmButtonColor: '#bd3a3a'
-            })
-            setTimeout(() => {
-                location.href = "cart.html"
-            }, 2000)
+        data = {
+            _id: prodId,
+            name: prodName,
+            code: prodCode,
+            price: prodPrice,
+            summary: prodSummary,
+            image: prodImage,
+            size: sizeDets,
+            color: colorDets,
+            quantity: qtyNum
         }
+        let product = JSON.parse(localStorage.getItem("product")) || []
+        product.push(data)
+        localStorage.setItem("product", JSON.stringify(product));
+        Swal.fire({
+            icon: 'success',
+            text: "Added to cart",
+            showDenyButton: true,
+            showCancelButton: true,
+            confirmButtonText: "Continue Shopping",
+            denyButtonText: `Proceed to checkout`,
+            confirmButtonColor: '#bd3a3a'
+        })
+        .then((result) => {
+            if (result.isConfirmed) {
+                setTimeout(() => {
+                    location.href = "products.html"
+                }, 1000)
+            } else if (result.isDenied) {
+                setTimeout(() => {
+                    location.href = "cart.html"
+                }, 1000)
+            }
+        })
     }
-
-    const cartMethod = {
-        method: 'POST',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-        credentials: 'include',
-        mode: 'cors'
+    else {
+        const data = {
+            products: [
+                {
+                    productId: prodId,
+                    color: colorDets,
+                    size: sizeDets,
+                    quantity: quantityDets
+                }
+            ]
+        }
+        const cartMethod = {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: 'include',
+            mode: 'cors'
+        }
+    
+        fetch(url, cartMethod)
+        .then(response => response.json())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
     }
-
-    fetch(url, cartMethod)
-    .then(response => response.json())
-    .then(result => console.log(result))
-    .catch(error => console.log('error', error));
 }
 
 
