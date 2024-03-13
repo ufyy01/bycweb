@@ -690,10 +690,10 @@ function getCart() {
                     </div>
                 </div>
                 <div class="btn-div my-3">
-                    <button class="wish d-flex px-4 py-3 justify-content-center align-items-center" onclick="addToWishlist('${product._id}')">
+                    <button class="wish d-flex px-4 py-3 justify-content-center align-items-center" onclick="addToWishCart('${product._id}')">
                         <i class="fa-regular fa-heart pe-1"></i>wishlist
                     </button>
-                    <button class="cart-btn d-flex px-4 py-3 justify-content-center align-items-center" onclick="deleteProdCart('${product._id}')">
+                    <button class="cart-btn d-flex px-4 py-3 justify-content-center align-items-center" onclick="deleteProdCart('${result._id}','${product._id}')">
                         <i class="fa-solid fa-trash pe-1"></i>remove
                     </button>
                 </div>
@@ -812,5 +812,67 @@ function addToCart(prodId, prodName, prodCode, prodPrice, prodSummary, prodImage
     }
 }
 
+//delete product from cart
+function deleteProdCart(cartId, prodId) {
+    const url = baseURL + `cart/${cartId}/${prodId}`;
+    const token = getBearerToken()
 
+    const deleteCartProd = {
+        method: 'DELETE',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        mode: 'cors'
+    }
+    console.log(url)
+    fetch(url, deleteCartProd)
+    .then(response => response.json())
+    .then(result => {
+        if (result.msg === "Product removed from cart!") {
+            Swal.fire({
+                icon: 'success',
+                text: `${result.msg}`,
+                confirmButtonColor: '#bd3a3a'
+            })
 
+            setTimeout(() => {
+                location.href = "cart.html"
+            }, 3000)
+        }
+    })
+    .catch(error => console.log(error))
+}
+
+//move to wishlist from cart
+function addToWishCart(prodId) {
+    const url = baseURL + `cart/to-wishlist/${prodId}`;
+    const token = getBearerToken()
+
+    const addToWishCart = {
+        method: 'POST',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        mode: 'cors'
+    }
+    fetch(url, addToWishCart)
+    .then(response => response.json())
+    .then(result => {
+        if (result.message === "Product moved to wishlist!") {
+            Swal.fire({
+                icon: 'success',
+                text: `${result.message}`,
+                confirmButtonColor: '#bd3a3a'
+            })
+
+            setTimeout(() => {
+                location.href = "cart.html"
+            }, 3000)
+        }
+    })
+    .catch(error => console.log(error))
+}
