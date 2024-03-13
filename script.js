@@ -251,6 +251,9 @@ function getProducts() {
         else {
             getModal.style.display= "none";
             result.map(product => {
+                let price = product.price;
+                let prodPrice = new Intl.NumberFormat('en-US');
+                price = prodPrice.format(price)
                 data += 
                 `<div class="cards stack-pro">
                     <img src=${product.image[0]} class="card-img-top img-fluid" alt="product image" onclick="productdets('${product._id}')">
@@ -258,7 +261,7 @@ function getProducts() {
                         <h5 class="card-title">${product.name}</h5>
                         <p class="sub-title">${product.code}</p>
                         <p class="card-text">${product.summary}</p>
-                        <p class="price">₦${product.price}</p>
+                        <p class="price">₦${price}</p>
                         <div class="rating">
                             <i class="fa-regular fa-star" style="color: #fb8200;"></i>
                             <i class="fa-regular fa-star" style="color: #fb8200;"></i>
@@ -340,6 +343,10 @@ function productdetails() {
     fetch(url)
     .then(response => response.json())
     .then(result => {
+        let pricee = result.price;
+        let prodPrice = new Intl.NumberFormat('en-US');
+        pricee = prodPrice.format(pricee)
+
         bigImg.innerHTML = `
         <img src=${result.image[0]} alt="product" class="bigImage img-fluid">
         `
@@ -368,7 +375,7 @@ function productdetails() {
 
         para.innerText = result.summary;
 
-        price.innerText = "₦" + result.price;
+        price.innerText = "₦" + pricee;
 
         qtybtn.innerHTML += ` <button class="wish d-flex justify-content-center align-items-center ms-lg-4 mt-lg-2 mt-4" onclick="addToWishlist('${result._id}')">
         <i class="fa-regular fa-heart me-3"></i>
@@ -474,7 +481,6 @@ function getWishProducts() {
         fetch(url, getWish)
         .then(response => response.json())
         .then(result => {
-            console.log(result)
             if (result.products.length === 0) {
                 getModal.style.display= "none";
                 productCard.innerHTML = "<p>No Product Found</p>";
@@ -482,6 +488,11 @@ function getWishProducts() {
             else {
                 getModal.style.display= "none";
                 result.products.map(product => {
+
+                    let price = product.price;
+                    let prodPrice = new Intl.NumberFormat('en-US');
+                    price = prodPrice.format(price)
+
                     data += 
                     `<div class="cards stack-pro">
                         <img src=${product.image} class="card-img-top img-fluid" alt="product image" onclick="productdets('${product._id}')">
@@ -499,7 +510,7 @@ function getWishProducts() {
                                 <span class="ms-2">4.05</span>
                             </div>
                             <div class="btn-div mt-3">
-                            <button class="cart d-flex px-4 py-3 align-items-center justify-content-center me-2" onclick="addToCart('${product._id}')">
+                            <button class="cart d-flex px-4 py-3 align-items-center justify-content-center me-2" onclick="productdets('${product._id}')">
                                 <i class="fa-solid fa-cart-shopping me-2"></i> buy now
                             </button>
                                 <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdWish('${product._id}')">
@@ -558,6 +569,9 @@ function getCart() {
 
     const cartDiv = document.querySelector(".cart-details")
     const prodDiv = document.querySelector(".product-div")
+    const subTotal = document.querySelector(".subtotal-amount")
+    let prodPrice = new Intl.NumberFormat('en-US');
+    let totalPrice = 0
 
     const url = baseURL + "cart";
     const token = getBearerToken();
@@ -565,8 +579,10 @@ function getCart() {
     if (token === '') {
         getModal.style.display= "none";
         let data = JSON.parse(localStorage.getItem("product"))
-        console.log(data)
         data.map(product => {
+            let price = product.price;
+            price = prodPrice.format(price)
+
             prodDiv.innerHTML += `
             <div class="row text-box">
                 <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
@@ -595,7 +611,7 @@ function getCart() {
                         </div>
                         <div class="unit-price mt-4 mt-lg-0">
                             <p>unit price</p>
-                            <p class="price my-4 my-lg-0">₦${product.price}</p>
+                            <p class="price my-4 my-lg-0">₦${price}</p>
                         </div>
                     </div>
                 </div>
@@ -610,34 +626,12 @@ function getCart() {
                 <div class="dash mt-5"></div>
             </div>
             `
-            let totalPrice = 0
             totalPrice += product.price * product.quantity;
-
-            prodDiv.innerHTML += `<div class="cart-total mt-3">
-            <div class="row">
-                <div class="col-sm-12 col-md-12 offset-lg-7 offset-xl-8 col-lg-5 col-xl-4 cart-total-dets pe-lg-5">
-                    <h5 class="cart-total-header my-3">cart totals</h5>
-                    <div class="subtotal d-flex justify-content-between">
-                        <p>Subtotal</p>
-                        <p class="subtotal-amount">₦<span>${totalPrice}</span></p>
-                    </div>
-                    <div class="total">
-                        <p>Delivery fees not included yet</p>
-                    </div>
-                    <div class="total-btn d-lg-flex mt-5 justify-content-between">
-                        <button class="shopping-btn py-3">
-                            <a href="products.html">Continue Shopping</a>
-                        </button>
-                        <button class="checkout-btn py-3">
-                            <a href="checkout.html">Proceed to Checkout</a>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="dash mt-5"></div>
-        </div>`
+            totalPriceNew = prodPrice.format(totalPrice)
         })
+        subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${totalPriceNew}</span></p>`
     }
+
     const getCart = {
         method: 'GET',
         headers: {
@@ -651,17 +645,23 @@ function getCart() {
     fetch(url, getCart)
     .then(response => response.json())
     .then(result => {
-        console.log(result)
         if (result.msg === "Your cart is empty!") {
+            getModal.style.display= "none";
             cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Your cart is empty!</h3>'
         }
         else {
-            result.map(product => {
+            result.products.map(product => {
+
+                let price = product.price;
+                price = prodPrice.format(price)
+
+                getModal.style.display= "none";
+
                 prodDiv.innerHTML += `
                 <div class="row text-box">
                 <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                    <div class="w-100">
-                        <img src=${product.image} alt="" class="img-fluid w-100">
+                    <div>
+                        <img src=${product.image} alt="" class="img-fluid">
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
@@ -685,22 +685,25 @@ function getCart() {
                         </div>
                         <div class="unit-price mt-4 mt-lg-0">
                             <p>unit price</p>
-                            <p class="price my-4 my-lg-0">₦${product.price}</p>
+                            <p class="price my-4 my-lg-0">₦${price}</p>
                         </div>
                     </div>
                 </div>
-                <div class="btn-div mb-2">
-                    <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="addToWishlist('${product._id}')">
+                <div class="btn-div my-3">
+                    <button class="wish d-flex px-4 py-3 justify-content-center align-items-center" onclick="addToWishlist('${product._id}')">
                         <i class="fa-regular fa-heart pe-1"></i>wishlist
                     </button>
-                    <button class="cart-btn d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdCart('${product._id}')">
+                    <button class="cart-btn d-flex px-4 py-3 justify-content-center align-items-center" onclick="deleteProdCart('${product._id}')">
                         <i class="fa-solid fa-trash pe-1"></i>remove
                     </button>
                 </div>
-                <div class="dash mt-5"></div>
+                <div class="dash my-3"></div>
                 </div>
                 `
             })
+            totalPrice = result.billing;
+            totalPriceNew = prodPrice.format(totalPrice)
+            subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${totalPriceNew}</span></p>`
         }
     })
     .catch(error => console.log('error', error));
@@ -753,6 +756,7 @@ function addToCart(prodId, prodName, prodCode, prodPrice, prodSummary, prodImage
                     location.href = "cart.html"
                 }, 1000)
             }
+            deleteProdWish(prodId)
         })
     }
     else {
@@ -779,7 +783,31 @@ function addToCart(prodId, prodName, prodCode, prodPrice, prodSummary, prodImage
     
         fetch(url, cartMethod)
         .then(response => response.json())
-        .then(result => console.log(result))
+        .then(result => {
+            if (result.message === "product added to cart!") {
+                Swal.fire({
+                    icon: 'success',
+                    text: "Added to cart",
+                    showDenyButton: true,
+                    showCancelButton: true,
+                    confirmButtonText: "Continue Shopping",
+                    denyButtonText: `Proceed to checkout`,
+                    confirmButtonColor: '#bd3a3a'
+                })
+                .then((result) => {
+                    if (result.isConfirmed) {
+                        setTimeout(() => {
+                            location.href = "products.html"
+                        }, 1000)
+                    } else if (result.isDenied) {
+                        setTimeout(() => {
+                            location.href = "cart.html"
+                        }, 1000)
+                    }
+                    deleteProdWish(prodId)
+                })
+            }
+        })
         .catch(error => console.log('error', error));
     }
 }

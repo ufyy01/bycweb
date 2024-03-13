@@ -1115,10 +1115,6 @@ article .title {
 .cart-page .cart-details .header p:last-child, .cart-page .cart-details .price p:last-child {
   margin-top: -5px;
 }
-.cart-page .cart-details .text-box {
-  position: relative;
-  background-color: red;
-}
 .cart-page .cart-details .product-para {
   font: 100% Noto Sans, sans-serif;
   font-size: 20px;
@@ -1133,21 +1129,23 @@ article .title {
   border-radius: 10px;
   text-transform: capitalize;
   font-size: 16px;
-  width: 50%;
+  width: 100%;
   text-align: center;
   font-weight: bold;
   margin-bottom: 10px;
-  color: pink;
-  position: absolute;
+}
+.cart-page .cart-details .btn-div button a {
+  text-decoration: none;
 }
 .cart-page .cart-details .btn-div .wish {
   border: 2px solid #bd3a3a;
   background-color: white;
   margin-right: 10px;
-  top: 50%;
+  color: #bd3a3a;
 }
 .cart-page .cart-details .btn-div .cart-btn {
   background-color: #bd3a3a;
+  color: white;
 }
 .cart-page .cart-details .price-qty .quantity, .cart-page .cart-details .price-qty .unit-price {
   text-transform: capitalize;
@@ -1159,9 +1157,10 @@ article .title {
   line-height: 34px;
   text-transform: uppercase;
 }
-.cart-page .cart-details .cart-total-dets p {
+.cart-page .cart-details .cart-total-dets .subtotal {
   font-size: 20px;
   line-height: 26px;
+  font-weight: 600;
 }
 .cart-page .cart-details .cart-total-dets button {
   border: none;
@@ -1189,9 +1188,6 @@ article .title {
 }
 .cart-page .cart-details .cart-total-dets .checkout-btn a, .cart-page .cart-details .cart-total-dets .checkout-btn i {
   color: white;
-}
-.cart-page .cart-details .cart-total-dets .total {
-  font-weight: 700;
 }
 .cart-page .cart-details .cart {
   border: none;
@@ -1275,12 +1271,13 @@ article .title {
   }
   .cart-page .cart-details .text-box {
     position: relative;
+    margin-top: 25px;
   }
   .cart-page .cart-details .btn-div {
     display: flex;
     width: 40%;
     position: absolute;
-    bottom: 0;
+    bottom: -3%;
     left: 18%;
   }
   .cart-page .cart-details .price-qty {
@@ -1314,6 +1311,11 @@ article .title {
     margin-top: 100px;
     margin-left: 12%;
     font-size: 12px;
+  }
+}
+@media screen and (min-width: 1300px) {
+  .cart-page .cart-details .btn-div {
+    bottom: 15%;
   }
 }
 .user-page {

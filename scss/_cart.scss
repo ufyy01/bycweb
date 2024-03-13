@@ -20,10 +20,6 @@
                 margin-top: -5px;
             }
         }
-        .text-box {
-            position: relative;
-            background-color: red;
-        }
         .product-para {
             font: 100% $secondary-font;
             font-size: 20px;
@@ -37,23 +33,23 @@
                 border-radius: 10px;
                 text-transform: capitalize;
                 font-size: 16px;
-                width: 50%;
+                width: 100%;
                 text-align: center;
                 font-weight: bold;
                 margin-bottom: 10px;
-                color: pink;
-                position: absolute;
+                a {
+                    text-decoration: none;
+                }
             }
             .wish {
                 border: 2px solid #bd3a3a;
                 background-color: white;
                 margin-right: 10px;
-                top: 50%;
-                // color: #bd3a3a;
+                color: #bd3a3a;
             }
             .cart-btn {
                 background-color: #bd3a3a;
-                // color: white;
+                color: white;
             }
         }
         .price-qty {
@@ -70,9 +66,10 @@
                     line-height: 34px;
                     text-transform: uppercase;
                 }
-                p {
+                .subtotal {
                     font-size: 20px;
                     line-height: 26px;
+                    font-weight: 600;
                 }
                 button {
                     border: none;
@@ -100,9 +97,6 @@
                     a, i {
                         color: white;
                     }
-                }
-                .total {
-                    font-weight: 700;
                 }
             }
         }
@@ -205,12 +199,13 @@
         .cart-details {
             .text-box {
                 position: relative;
+                margin-top: 25px;
             }
             .btn-div {
                 display: flex;
                 width: 40%;
                 position: absolute;
-                bottom: 0;
+                bottom: -3%;
                 left: 18%;
             }
             .price-qty {
@@ -247,6 +242,16 @@
             margin-top: 100px;
             margin-left: 12%;
             font-size: 12px;  
+        }
+    }
+}
+
+@media screen and (min-width: 1300px) {
+    .cart-page {
+        .cart-details {
+            .btn-div {
+                bottom: 15%;
+            }
         }
     }
 }
