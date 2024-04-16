@@ -578,62 +578,6 @@ function getCart() {
     
     let data = JSON.parse(sessionStorage.getItem("product"))
 
-    if (data) {
-        getModal.style.display= "none";
-        data.map(product => {
-            let price = product.price;
-            price = prodPrice.format(price)
-
-            prodDiv.innerHTML += `
-            <div class="row text-box">
-                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                    <div class="w-100">
-                        <img src=${product.image} alt="" class="img-fluid w-100">
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
-                    <div class="pb-lg-2">
-                        <div class="header mt-2">
-                            <p>${product.name}</p>
-                            <p>${product.code}</p>
-                        </div>
-                        <p class="product-para mt-4">${product.summary}</p>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
-                    <div class="d-lg-flex price-qty">
-                        <div class="quantity check pt-2 pt-lg-0">
-                            <p>quantity</p>
-                            <div class="d-flex justify-content-center input-btn mt-3">
-                                <button class="px-3 py-1" onclick="decreaseOrd('${product._id}')"><i class="fa-solid fa-minus"></i></button>
-                                <input type="text" name="quantity-display" id="quantity-display" value=${product.quantity} readonly>
-                                <button class="px-3 py-1" onclick="increaseOrd('${product._id}')"><i class="fa-solid fa-plus"></i></button>
-                            </div>
-                        </div>
-                        <div class="unit-price mt-4 mt-lg-0">
-                            <p>unit price</p>
-                            <p class="price my-4 my-lg-0">₦${price}</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="btn-div mb-2">
-                    <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="addToWishlist('${product._id}')">
-                        <i class="fa-regular fa-heart pe-1"></i>wishlist
-                    </button>
-                    <button class="cart-btn d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdCart('${product._id}','${product._id}')">
-                        <i class="fa-solid fa-trash pe-1"></i>remove
-                    </button>
-                </div>
-                <div class="dash mt-5"></div>
-            </div>
-            `
-            totalPrice += product.price * product.quantity;
-            totalPriceNew = prodPrice.format(totalPrice)
-
-        })
-        subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${totalPriceNew}</span></p>`
-    }
-
     const getCart = {
         method: 'GET',
         headers: {
@@ -647,65 +591,125 @@ function getCart() {
     fetch(url, getCart)
     .then(response => response.json())
     .then(result => {
-        if (result.msg === "Your cart is empty!" && !data) {
-            getModal.style.display= "none";
+        console.log(result)
+        getModal.style.display= "none";
+        if (!data || data.length === 0 || result.msg === "Your cart is empty!") {
             cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Your cart is empty!</h3>'
         }
-        else {
-            result.products.map(product => {
+        else if (result.products || data.length !== 0) {
+            let billingData = 0;
 
-                let price = product.price;
-                price = prodPrice.format(price)
+            if (result.products) {
+                result.products.map(product => {
 
-                getModal.style.display= "none";
-
-                prodDiv.innerHTML += `
-                <div class="row text-box">
-                <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                    <div>
-                        <img src=${product.image} alt="" class="img-fluid">
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
-                    <div class="pb-lg-2">
-                        <div class="header mt-2">
-                            <p>${product.name}</p>
-                            <p>${product.code}</p>
+                    let price = product.price;
+                    price = prodPrice.format(price)
+    
+                    getModal.style.display= "none";
+    
+                    prodDiv.innerHTML += `
+                    <div class="row text-box">
+                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                        <div>
+                            <img src=${product.image} alt="" class="img-fluid">
                         </div>
-                        <p class="product-para mt-4 mb-5">${product.summary}</p>
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
-                    <div class="d-lg-flex price-qty">
-                        <div class="quantity check pt-2 pt-lg-0">
-                            <p>quantity</p>
-                            <div class="d-flex justify-content-center input-btn mt-3">
-                                <button class="px-3 py-1" onclick="decreaseQty()"><i class="fa-solid fa-minus"></i></button>
-                                <input type="text" name="quantity-display" id="quantity-display" value=${product.quantity} readonly>
-                                <button class="px-3 py-1" onclick="increaseQty()"><i class="fa-solid fa-plus"></i></button>
+                    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
+                        <div class="pb-lg-2">
+                            <div class="header mt-2">
+                                <p>${product.name}</p>
+                                <p>${product.code}</p>
+                            </div>
+                            <p class="product-para mt-4 mb-5">${product.summary}</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
+                        <div class="d-lg-flex price-qty">
+                            <div class="quantity check pt-2 pt-lg-0">
+                                <p>quantity</p>
+                                <div class="d-flex justify-content-center input-btn mt-3">
+                                    <button class="px-3 py-1" onclick="decreaseQty()"><i class="fa-solid fa-minus"></i></button>
+                                    <input type="text" name="quantity-display" id="quantity-display" value=${product.quantity} readonly>
+                                    <button class="px-3 py-1" onclick="increaseQty()"><i class="fa-solid fa-plus"></i></button>
+                                </div>
+                            </div>
+                            <div class="unit-price mt-4 mt-lg-0">
+                                <p>unit price</p>
+                                <p class="price my-4 my-lg-0">₦${price}</p>
                             </div>
                         </div>
-                        <div class="unit-price mt-4 mt-lg-0">
-                            <p>unit price</p>
-                            <p class="price my-4 my-lg-0">₦${price}</p>
-                        </div>
                     </div>
-                </div>
-                <div class="btn-div my-3">
-                    <button class="wish d-flex px-4 py-3 justify-content-center align-items-center" onclick="addToWishCart('${product._id}')">
-                        <i class="fa-regular fa-heart pe-1"></i>wishlist
-                    </button>
-                    <button class="cart-btn d-flex px-4 py-3 justify-content-center align-items-center" onclick="deleteProdCart('${result._id}','${product._id}')">
-                        <i class="fa-solid fa-trash pe-1"></i>remove
-                    </button>
-                </div>
-                <div class="dash my-3"></div>
-                </div>
-                `
-            })
-            totalPrice = result.billing;
-            totalPriceNew = prodPrice.format(totalPrice)
-            subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${totalPriceNew}</span></p>`
+                    <div class="btn-div my-3">
+                        <button class="wish d-flex px-4 py-3 justify-content-center align-items-center" onclick="addToWishCart('${product._id}')">
+                            <i class="fa-regular fa-heart pe-1"></i>wishlist
+                        </button>
+                        <button class="cart-btn d-flex px-4 py-3 justify-content-center align-items-center" onclick="deleteProdCart('${result._id}','${product._id}')">
+                            <i class="fa-solid fa-trash pe-1"></i>remove
+                        </button>
+                    </div>
+                    <div class="dash my-3"></div>
+                    </div>
+                    `
+                })
+            }
+            if (data) {
+                data.map(product => {
+                    let price = product.price;
+                    price = prodPrice.format(price)
+        
+                    prodDiv.innerHTML += `
+                    <div class="row text-box">
+                        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                            <div class="w-100">
+                                <img src=${product.image} alt="" class="img-fluid w-100">
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
+                            <div class="pb-lg-2">
+                                <div class="header mt-2">
+                                    <p>${product.name}</p>
+                                    <p>${product.code}</p>
+                                </div>
+                                <p class="product-para mt-4">${product.summary}</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
+                            <div class="d-lg-flex price-qty">
+                                <div class="quantity check pt-2 pt-lg-0">
+                                    <p>quantity</p>
+                                    <div class="d-flex justify-content-center input-btn mt-3">
+                                        <button class="px-3 py-1" onclick="decreaseOrd('${product._id}')"><i class="fa-solid fa-minus"></i></button>
+                                        <input type="text" name="quantity-display" id="quantity-display" value=${product.quantity} readonly>
+                                        <button class="px-3 py-1" onclick="increaseOrd('${product._id}')"><i class="fa-solid fa-plus"></i></button>
+                                    </div>
+                                </div>
+                                <div class="unit-price mt-4 mt-lg-0">
+                                    <p>unit price</p>
+                                    <p class="price my-4 my-lg-0">₦${price}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn-div mb-2">
+                            <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="addToWishlist('${product._id}')">
+                                <i class="fa-regular fa-heart pe-1"></i>wishlist
+                            </button>
+                            <button class="cart-btn d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdCart('${product._id}','${product._id}')">
+                                <i class="fa-solid fa-trash pe-1"></i>remove
+                            </button>
+                        </div>
+                        <div class="dash mt-5"></div>
+                    </div>
+                    `
+                    billingData += product.priceTotal
+        
+                })
+            }
+            if (result.products) {
+                subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${result.billing + billingData}</span></p>`
+            }
+            else {
+                subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${billingData}</span></p>` 
+            }
         }
     })
     .catch(error => console.log('error', error));
@@ -722,6 +726,7 @@ function increaseOrd(prodId) {
     if (existingProductIndex !== -1) {
         // If the product exists, update its quantity
         product[existingProductIndex].quantity = qtyNum + 1;
+        product[existingProductIndex].priceTotal = product[existingProductIndex].price * product[existingProductIndex].quantity;
     }
 
     sessionStorage.setItem("product", JSON.stringify(product));
@@ -746,6 +751,7 @@ function decreaseOrd(prodId) {
         else {
             product[existingProductIndex].quantity = 1;
         }
+        product[existingProductIndex].priceTotal = product[existingProductIndex].price * product[existingProductIndex].quantity;
     }
 
     sessionStorage.setItem("product", JSON.stringify(product));
@@ -754,6 +760,9 @@ function decreaseOrd(prodId) {
         location.href = "cart.html"
     }, 1000)
 }
+
+//modifying cart
+
 
 //add to cart
 function addToCart(prodId, prodName, prodCode, prodPrice, prodSummary, prodImage) {
@@ -887,7 +896,7 @@ function deleteProdCart(cartId, prodId) {
     const token = getBearerToken()
     let product = JSON.parse(sessionStorage.getItem("product"))
 
-    if (token === '' && product) {
+    if (product) {
         let id = product.findIndex((prod => prod._id === prodId))
         product.splice(id, 1)
         sessionStorage.setItem("product", JSON.stringify(product))
