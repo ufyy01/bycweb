@@ -4,6 +4,7 @@
 .row {
     padding: 0 !important;
 }
+
 .header {
     .nav-link {
         text-transform: capitalize;
@@ -12,6 +13,11 @@
     }
     .navbar-nav {
         font: 100% $secondary-font;
+        .drop-btn a {
+            background-color: red;
+            border-radius: 10px;
+            color: white;        
+        }
     }
     .navbar-brand {
         display: block;
@@ -54,6 +60,7 @@
         opacity: 1;
     }
 }
+
 .main-drop {
     background-color: #f5f5f5;
     border: 0;
@@ -135,38 +142,40 @@
     .dropdown-menu .submenu-li .mov::after {
         margin-left: 55px;
     }
-}  
-.hero {
-        .herotext{
-            .hero-title {
-                font-size: 25px;
-                font-weight: 500;
-            }
-            h1 {
-                font-weight: bold;
-                letter-spacing: 1.5px;
-                padding: 0;
-                margin: 0;
-            }
-            span::after {
-                content: "";
-                animation: wordchange infinite 5s; 
-            }
-        }
-        .buttons a {
-            @include buttons;
-            text-decoration: none;
-        }
-        
-        .shopbtn {
-            background-color: black;
-            color: white;
-        }
-        .learnbtn{
-            background-color: white;
-            color: black;
-        }
 }
+
+.hero {
+    .herotext{
+        .hero-title {
+            font-size: 25px;
+            font-weight: 500;
+        }
+        h1 {
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            padding: 0;
+            margin: 0;
+        }
+        span::after {
+            content: "";
+            animation: wordchange infinite 5s; 
+        }
+    }
+    .buttons a {
+        @include buttons;
+        text-decoration: none;
+    }
+    
+    .shopbtn {
+        background-color: black;
+        color: white;
+    }
+    .learnbtn{
+        background-color: white;
+        color: black;
+    }
+}
+
 .viewbtn, .explorebtn {
     @include buttons;
     border: 1px solid black;
@@ -176,6 +185,7 @@
     text-decoration: none;
     color: black;
 }
+
 .collection {
     .collectionText {
         font-weight: 700;
@@ -196,6 +206,7 @@
     
     
 }
+
 .category {
     margin-top: 100px;
     .section-header {
@@ -269,6 +280,7 @@
         }
     }
 }
+
 @media screen and (min-width: 576px) {
     .carousel-inner {
         display: flex;
@@ -281,6 +293,7 @@
         margin-left: 15px;
     }
 }
+
 .blog {
     margin-top: 150px;
     .insights {

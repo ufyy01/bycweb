@@ -151,15 +151,22 @@
                         <li class="nav-item">
                         <a class="nav-link ps-lg-4" href="contact.html">contact</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item me-lg-3">
                             <button class="search-btn ps-lg-4 pe-2 mt-2" id="search-btn" onclick="searchbar()">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link ps-lg-4" href="user.html">
-                            <i class="fa-regular fa-user"></i>
-                        </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="user.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-regular fa-user me-lg-2"></i>
+                                <span class="username">Account</span>
+                            </a>
+                            <ul class="dropdown-menu text-center px-2">
+                                <li class="drop-btn"><a class="dropdown-item" href="#">Orders</a></li>
+                                <li class="drop-btn"><hr class="dropdown-divider"></li>
+                                <li class="drop-btn"><a class="dropdown-item" href="user.html">Sign In</a></li>
+                                <li class="drop-btn mt-2"><a class="dropdown-item" href="user.html">Sign Out</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link ps-lg-4" href="wishlist.html">
@@ -179,30 +186,33 @@
     </header>
     <section class="hero mt-4 mt-lg-5">
             <div class="row ">
-                <div class="col-sm-12 col-md-12 offset-lg-2 col-lg-8 col-xl-8">
+                <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3"></div>
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                     <div class="herotext">
                         <p class="herotitle pt-3 text-center">Your body deserves comfort</p>
-                        <h1 class="py-2 py-lg-2 ps-4 mx-auto">Get the best for <span></span> </h1>
+                        <h1 class="py-2 mx-auto">Get the best for <br class="d-lg-none"><span></span> </h1>
                     </div>
-                    <div class="buttons pt-lg-4  text-center">
-                        <a class="shopbtn py-2 px-5 me-lg-3" href="products.html">Shop Now</a>
-                        <a class="learnbtn py-2 px-5" href="about.html">Learn More</a>
+                    <div class="buttons py-3 text-center w-100">
+                        <a class="learnbtn py-2 px-lg-5 me-lg-3" href="about.html">Learn More</a>
+                        <a class="shopbtn py-2 px-lg-5 mt-2 mt-lg-0" href="products.html">Shop Now</a>
                     </div>
                 </div>
+                <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3"></div>
             </div>
     </section>
+
     <section class="newarrival">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-1 col-xl-1"></div>
             <div class="col-sm-12 col-md-12 col-lg-10 col-xl-10">
                 <div class="row align-items-end mt-5 pb-5 gap-lg-3 justify-content-center px-4 px-lg-0">
-                    <div class="imgdiv col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center">
+                    <div class="imgdiv col-sm-12 col-md-4 col-lg-3 col-xl-3 text-center">
                         <img src="./assets/feature-image 1.png" alt="product-image" class="img-fluid">
                     </div>
-                    <div class="imgdiv col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center">
+                    <div class="imgdiv col-sm-12 col-md-4 col-lg-3 col-xl-3 text-center">
                         <img src="./assets/image2.png" alt="product-image" class="img-fluid py-2">
                     </div>
-                    <div class="imgdiv col-sm-12 col-md-12 col-lg-3 col-xl-3 text-center">
+                    <div class="imgdiv col-sm-12 col-md-4 col-lg-3 col-xl-3 text-center">
                         <img src="./assets/image3.png" alt="product-image" class="img-fluid">
                     </div>
                 </div>
@@ -210,10 +220,11 @@
             <div class="col-sm-12 col-md-12 col-lg-1 col-xl-1"></div>
         </div>
     </section>
+
     <section class="newarrival-cards">
         <h3 class="text-center py-5">Checkout BYC New Arrivals</h3>
         <div class="row mx-lg-5">
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <div class="px-2 px-lg-0 text-center text-lg-start">
                     <img src="./assets/image4.png" alt="product-image" class="img-fluid">
                     <div class="card-body py-3">
@@ -222,7 +233,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <div class="px-2 px-lg-0 text-center text-lg-start">
                     <img src="./assets/image5.png" alt="product-image" class="img-fluid">
                     <div class="card-body py-3">
@@ -231,7 +242,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4">
                 <div class="px-2 px-lg-0 text-center text-lg-start">
                     <img src="./assets/image6.png" alt="product-image" class="img-fluid">
                     <div class="card-body py-3">
@@ -245,23 +256,24 @@
             <a class="viewbtn py-2 px-5" href="products.html">View All</a>
         </div>
     </section>
+
     <section class="collection">
         <div class="row my-3 mx-lg-5">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 textcol">
-                <div class="collectionText">
+                <div class="collectionText text-lg-start text-center">
                     <p class="leadpara">BYC Collection 2021</p>
                     <h4 class="collection-title">BYC Collection</h4>
-                    <p class="textpara">The best everyday option in a Super Saver range within a reasonable price. It is our responsibility to keep you 100 percent stylish. Be smart & trendy with us.</p>
+                    <p class="textpara">The best everyday option in a Super Saver range within a reasonable price. <br class="d-lg-none">It is our responsibility to keep you 100 percent stylish. Be smart & trendy with us.</p>
                     <div class="my-5 text-center text-lg-start">
                         <a href="products.html" class="explorebtn py-2">Explore</a>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                <img src="./assets/image7.png" alt="product-image" class="img-fluid">
+            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 text-center text-lg-start">
+                <img src="./assets/image7.png" alt="product-image" class="img-fluid h-100">
             </div>
         </div>
-        <div class="row mx-lg-5">
+        <div class="row mx-lg-5 text-center text-lg-start">
             <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 my-2 my-lg-0 pic">
                 <img src="./assets/image8.png" alt="product-image" class="img-fluid">
             </div>
@@ -273,6 +285,7 @@
             <a href="products.html" class="viewbtn py-2">View All</a>
         </div>
     </section>
+
     <section class="category">
         <div class="section-header text-center">
             <h3 class="section-title mb-5">shop by category</h3>
@@ -417,6 +430,7 @@
             <a href="products.html" class="viewbtn py-2">View All</a>
         </div>
     </section>
+
     <section class="blog mb-5">
         <h3 class="text-center my-5">BYC AFRICA Blog News</h3>
         <div class="row mx-3">

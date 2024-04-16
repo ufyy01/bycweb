@@ -3,20 +3,17 @@
   0% {
     content: "Men";
   }
-  20% {
+  25% {
     content: "Women";
   }
-  40% {
+  50% {
     content: "Kids";
   }
-  60% {
+  75% {
     content: "yourself";
   }
-  80% {
-    content: "Women";
-  }
   100% {
-    content: "Kids";
+    content: "Men";
   }
 }
 .row {
@@ -30,6 +27,11 @@
 }
 .header .navbar-nav {
   font: 100% Noto Sans, sans-serif;
+}
+.header .navbar-nav .drop-btn a {
+  background-color: red;
+  border-radius: 10px;
+  color: white;
 }
 .header .navbar-brand {
   display: block;
@@ -359,7 +361,7 @@ article .title {
   border-radius: 0;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 920px) {
   body {
     overflow-x: hidden !important;
   }
@@ -371,12 +373,13 @@ article .title {
     font-size: 5px;
   }
   .hero .herotext h1 {
-    font-size: 50px;
-    margin-left: 20px;
+    font-size: 40px;
+    text-align: center;
   }
-  .hero .buttons button {
-    width: 100%;
-    margin-bottom: 5px;
+  .hero .buttons a {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
   }
   .collection .explorebtn, .collection .viewbtn {
     width: 100%;
@@ -391,7 +394,7 @@ article .title {
     font-size: 17px;
   }
 }
-@media screen and (min-width: 992px) and (max-width: 2000px) {
+@media screen and (min-width: 900px) {
   body {
     overflow-x: hidden !important;
   }
@@ -412,7 +415,7 @@ article .title {
     width: 90vw;
   }
   .hero .herotext h1 {
-    width: 65%;
+    width: 80%;
   }
   .collection .textcol {
     background-color: #F1F1F1;
@@ -433,6 +436,11 @@ article .title {
   }
   .collection .pic {
     background-color: #F1F1F1;
+  }
+}
+@media screen and (min-width: 1100px) and (max-width: 2000px) {
+  .hero .herotext h1 {
+    width: 70%;
   }
 }
 .about h1 {
@@ -1169,10 +1177,10 @@ article .title {
   width: 100%;
   text-align: center;
   margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: bold;
 }
 .cart-page .cart-details .cart-total-dets button a {
-  font-weight: bold;
-  font-size: 16px;
   text-decoration: none;
 }
 .cart-page .cart-details .cart-total-dets .shopping-btn {
@@ -1185,8 +1193,6 @@ article .title {
 }
 .cart-page .cart-details .cart-total-dets .checkout-btn {
   background-color: #bd3a3a;
-}
-.cart-page .cart-details .cart-total-dets .checkout-btn a, .cart-page .cart-details .cart-total-dets .checkout-btn i {
   color: white;
 }
 .cart-page .cart-details .cart {

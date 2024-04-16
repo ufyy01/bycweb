@@ -8,9 +8,15 @@
     <link rel="stylesheet" href="./css/styles.css">
     <title>Document</title>
 </head>
-<body>
+<body onload="checkout()">
+    <div class="pagemodal">
+        <div class="preloader">
+            <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-ripple" style="background:0 0"><circle cx="50" cy="50" r="4.719" fill="none" stroke="#bd3a3a" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3" keySplines="0 0.2 0.8 1" begin="-1.5s" repeatCount="indefinite"/><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3" keySplines="0.2 0 0.8 1" begin="-1.5s" repeatCount="indefinite"/></circle><circle cx="50" cy="50" r="27.591" fill="none" stroke="#bd3a3a" stroke-width="2"><animate attributeName="r" calcMode="spline" values="0;40" keyTimes="0;1" dur="3" keySplines="0 0.2 0.8 1" begin="0s" repeatCount="indefinite"/><animate attributeName="opacity" calcMode="spline" values="1;0" keyTimes="0;1" dur="3" keySplines="0.2 0 0.8 1" begin="0s" repeatCount="indefinite"/></circle>
+            </svg>
+        </div>
+    </div>
     <header class="header">
-        <nav class="navbar navbar-expand-lg py-4 mx-3">
+        <nav class="navbar navbar-expand-lg py-4 mx-2">
             <div class="container-fluid">
                 <a class="navbar-brand d-lg-none" href="index.html">
                     <img src="./assets/LOGO.png" alt="brand-logo">
@@ -151,15 +157,22 @@
                         <li class="nav-item">
                         <a class="nav-link ps-lg-4" href="contact.html">contact</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item me-lg-3">
                             <button class="search-btn ps-lg-4 pe-2 mt-2" id="search-btn" onclick="searchbar()">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link ps-lg-4" href="user.html">
-                            <i class="fa-regular fa-user"></i>
-                        </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="user.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-regular fa-user me-lg-2"></i>
+                                <span class="username">Account</span>
+                            </a>
+                            <ul class="dropdown-menu text-center px-2">
+                                <li class="drop-btn"><a class="dropdown-item" href="#">Orders</a></li>
+                                <li class="drop-btn"><hr class="dropdown-divider"></li>
+                                <li class="drop-btn"><a class="dropdown-item" href="#">Sign In</a></li>
+                                <li class="drop-btn mt-2"><a class="dropdown-item" href="#">Sign Out</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link ps-lg-4" href="wishlist.html">
@@ -177,51 +190,13 @@
             </div>
         </nav>
     </header>
+
     <main class="cart-page my-5">
         <div class="cart-details mx-lg-3 px-lg-5 px-2">
             <h3 class="cart-header mt-5 mb-4">Order Summary <span class="cart-quantity">1</span> item(s)</h3>
             <div class="dash"></div>
-            <div class="mt-5">
-                <div class="row text-box">
-                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                        <div class="w-100">
-                            <img src="./assets/image25.png" alt="" class="img-fluid w-100">
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-5 ms-xl-4 mt-3 mt-lg-0">
-                        <div>
-                            <div class="header mt-2 mt-lg-0">
-                                <p>men boxers</p>
-                                <p>byc 1166</p>
-                            </div>
-                            <p class="product-para mt-4 mt-lg-0">100% cotton 12 pieces of mens boxer</p>
-                            <div class="unit-price mt-4 mt-lg-0">
-                                <p class="price my-4">₦2,800.00</p>
-                                <p>Quantity: <span class="ms-4">1</span></p>
-                            </div>
-                        </div>
-                        <button class="cart px-4 py-3 mb-4">
-                            <a href="cart.html">Modify Cart</a>
-                        </button>
-                    </div>
-                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 cart-total-dets mt-3">
-                        <div class="check2 ps-lg-3">
-                            <div class="subtotal d-flex justify-content-between pe-lg-4">
-                                <p>Subtotal</p>
-                                <p class="subtotal-amount">₦<span>2,800.00</span></p>
-                            </div>
-                            <div class="delivery d-flex justify-content-between pe-lg-4">
-                                <p>delivery fee</p>
-                                <p class="total-amount">₦<span>2,800.00</span></p>
-                            </div>
-                            <div class="dash"></div>
-                            <div class="total d-flex justify-content-between pe-lg-4 mt-3">
-                                <p>Total</p>
-                                <p class="total-amount">₦<span>2,800.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="mt-5 product">
+                
             </div>
             <div class="dash mb-5"></div>
             <div class="row payment-header">
@@ -295,9 +270,6 @@
             </div>
         </div>
     </main>
-  
-
-
 
 
 

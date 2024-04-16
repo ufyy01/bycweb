@@ -16,7 +16,7 @@
         </div>
     </div>
     <header class="header">
-        <nav class="navbar navbar-expand-lg py-4 mx-3">
+        <nav class="navbar navbar-expand-lg py-4 mx-2">
             <div class="container-fluid">
                 <a class="navbar-brand d-lg-none" href="index.html">
                     <img src="./assets/LOGO.png" alt="brand-logo">
@@ -157,15 +157,22 @@
                         <li class="nav-item">
                         <a class="nav-link ps-lg-4" href="contact.html">contact</a>
                         </li>
-                        <li class="nav-item">
+                        <li class="nav-item me-lg-3">
                             <button class="search-btn ps-lg-4 pe-2 mt-2" id="search-btn" onclick="searchbar()">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
                         </li>
-                        <li class="nav-item">
-                        <a class="nav-link ps-lg-4" href="user.html">
-                            <i class="fa-regular fa-user"></i>
-                        </a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="user.html" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fa-regular fa-user me-lg-2"></i>
+                                <span class="username">Account</span>
+                            </a>
+                            <ul class="dropdown-menu text-center px-2">
+                                <li class="drop-btn"><a class="dropdown-item" href="#">Orders</a></li>
+                                <li class="drop-btn"><hr class="dropdown-divider"></li>
+                                <li class="drop-btn"><a class="dropdown-item" href="#">Sign In</a></li>
+                                <li class="drop-btn mt-2"><a class="dropdown-item" href="#">Sign Out</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                         <a class="nav-link ps-lg-4" href="wishlist.html">
@@ -206,8 +213,8 @@
                             <button class="shopping-btn py-3">
                                 <a href="products.html">Continue Shopping</a>
                             </button>
-                            <button class="checkout-btn py-3">
-                                <a href="checkout.html">Proceed to Checkout</a>
+                            <button class="checkout-btn py-3" onclick="checkoutPass()">
+                                Proceed to Checkout
                             </button>
                         </div>
                     </div>

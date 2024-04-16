@@ -1,6 +1,6 @@
 @use 'mixins' as *;
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 920px) {
     body {
         overflow-x: hidden !important;
     }
@@ -14,13 +14,14 @@
                 font-size: 5px;
             }
             h1 {
-                font-size: 50px;
-                margin-left: 20px;
+                font-size: 40px;
+                text-align: center;
             }
         }
-        .buttons button {
-            width: 100%;
-            margin-bottom: 5px;
+        .buttons a  {
+            display: block;
+            width: 90%;
+            margin: 0 auto;
         }
     }  
     .collection {
@@ -43,7 +44,7 @@
     }
 }
 
-@media screen and (min-width: 992px) and (max-width:2000px){
+@media screen and (min-width: 900px) {
     body {
         overflow-x: hidden !important;
     }
@@ -70,8 +71,7 @@
     .hero {
         .herotext{
             h1 {
-                width: 65%;
-            
+                width: 80%;
             }
         }
     }
@@ -97,5 +97,15 @@
             background-color: #F1F1F1;
         }
         
+    }
+}
+
+@media screen and (min-width: 1100px) and (max-width:2000px){
+    .hero {
+        .herotext{
+            h1 {
+                width: 70%;
+            }
+        }
     }
 }

@@ -78,9 +78,9 @@
                     width: 100%;
                     text-align: center;
                     margin-bottom: 10px;
+                    font-size: 16px;
+                    font-weight: bold;
                     a {
-                        font-weight: bold;
-                        font-size: 16px;
                         text-decoration: none;
                     }
                 }
@@ -94,9 +94,7 @@
                 }
                 .checkout-btn {
                     background-color: #bd3a3a;
-                    a, i {
-                        color: white;
-                    }
+                    color: white;
                 }
             }
         }
