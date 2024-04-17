@@ -591,15 +591,14 @@ function getCart() {
     fetch(url, getCart)
     .then(response => response.json())
     .then(result => {
-        console.log(result)
         getModal.style.display= "none";
-        if (!data || data.length === 0 || result.msg === "Your cart is empty!") {
+        if (!data && result.msg === "Your cart is empty!") {
             cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Your cart is empty!</h3>'
         }
-        else if (result.products || data.length !== 0) {
+        else if (result.products.length >= 1 || data.length !== 0) {
             let billingData = 0;
 
-            if (result.products) {
+            if (result.products.length >= 1) {
                 result.products.map(product => {
 
                     let price = product.price;
@@ -628,9 +627,9 @@ function getCart() {
                             <div class="quantity check pt-2 pt-lg-0">
                                 <p>quantity</p>
                                 <div class="d-flex justify-content-center input-btn mt-3">
-                                    <button class="px-3 py-1" onclick="decreaseQty()"><i class="fa-solid fa-minus"></i></button>
+                                    <button class="px-3 py-1" onclick="updateCart('${product._id}', '${product.color}', '${product.size}', -1)"><i class="fa-solid fa-minus"></i></button>
                                     <input type="text" name="quantity-display" id="quantity-display" value=${product.quantity} readonly>
-                                    <button class="px-3 py-1" onclick="increaseQty()"><i class="fa-solid fa-plus"></i></button>
+                                    <button class="px-3 py-1" onclick="updateCart('${product._id}', '${product.color}', '${product.size}', 1)"><i class="fa-solid fa-plus"></i></button>
                                 </div>
                             </div>
                             <div class="unit-price mt-4 mt-lg-0">
@@ -704,7 +703,7 @@ function getCart() {
         
                 })
             }
-            if (result.products) {
+            if (result.products.length >= 1) {
                 subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${result.billing + billingData}</span></p>`
             }
             else {
@@ -762,7 +761,50 @@ function decreaseOrd(prodId) {
 }
 
 //modifying cart
+function updateCart(prodId, colorDets, sizeDets, num) {
+    const quantityDets = document.querySelector('input[name="quantity-display"]').value;
+    let qtyNum = +quantityDets;
+    let finalQty = qtyNum += num
 
+    if (finalQty === 0) {
+        return finalQty = 1
+    }
+
+    const url = baseURL + "cart";
+    const token = getBearerToken();
+
+    const data = {
+        products: [
+            {
+                productId: prodId,
+                color: colorDets,
+                size: sizeDets,
+                quantity: finalQty
+            }
+        ]
+    }
+    const cartMethod = {
+        method: 'PUT',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+        credentials: 'include',
+        mode: 'cors'
+    }
+
+    fetch(url, cartMethod)
+    .then(response => response.json())
+    .then(result => {
+        if (result.message === "cart updated!") {
+            setTimeout(() => {
+                location.href = "cart.html"
+            }, 1000)
+        }
+    })
+    .catch(error => console.log('error', error));
+}
 
 //add to cart
 function addToCart(prodId, prodName, prodCode, prodPrice, prodSummary, prodImage) {
@@ -905,10 +947,10 @@ function deleteProdCart(cartId, prodId) {
             text: `Product removed successfully!`,
             confirmButtonColor: '#bd3a3a'
         })
-
         setTimeout(() => {
             location.href = "cart.html"
         }, 1000)
+
     }
     else {
         const deleteCartProd = {
@@ -920,20 +962,18 @@ function deleteProdCart(cartId, prodId) {
             credentials: 'include',
             mode: 'cors'
         }
-        console.log(url)
         fetch(url, deleteCartProd)
         .then(response => response.json())
         .then(result => {
-            if (result.msg === "Product removed from cart!") {
+            if (result.message === "Product removed from cart!") {
                 Swal.fire({
                     icon: 'success',
-                    text: `${result.msg}`,
+                    text: `${result.message}`,
                     confirmButtonColor: '#bd3a3a'
                 })
-    
                 setTimeout(() => {
                     location.href = "cart.html"
-                }, 3000)
+                }, 1000)
             }
         })
         .catch(error => console.log(error))
