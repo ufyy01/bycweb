@@ -562,248 +562,193 @@ function deleteProdWish(productId) {
     .catch(error => console.log(error))
 }
 
-//get cart
+//get Cart
 function getCart() {
+
     const getModal = document.querySelector('.pagemodal');
     getModal.style.display = "block";
 
-    const cartDiv = document.querySelector(".cart-details")
-    const prodDiv = document.querySelector(".product-div")
-    const subTotal = document.querySelector(".subtotal-amount")
+    let data = JSON.parse(sessionStorage.getItem("product"));
+    let prodData = [];
+
+    const cartDiv = document.querySelector(".cart-details");
+    const prodDiv = document.querySelector(".product-div");
+    const subTotal = document.querySelector(".subtotal-amount");
     let prodPrice = new Intl.NumberFormat('en-US');
-    let totalPrice = 0
+    let billingData = 0;
+    let billing = 0;
 
     const url = baseURL + "cart";
     const token = getBearerToken();
-    
-    let data = JSON.parse(sessionStorage.getItem("product"))
 
-    const getCart = {
-        method: 'GET',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        credentials: 'include',
-        mode: 'cors'
+    // Check if user is logged in
+    if (data) {
+        if (data.length !== 0) {
+            displayProducts(data);
+            calculateSubtotal()
+        }
     }
-
-    fetch(url, getCart)
-    .then(response => response.json())
-    .then(result => {
+    if (!data || data.length === 0 && !token) {
         getModal.style.display= "none";
-        if (!data && result.msg === "Your cart is empty!") {
-            cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Your cart is empty!</h3>'
-        }
-        else if (result.products.length >= 1 || data.length !== 0) {
-            let billingData = 0;
+        cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Your cart is empty!</h3>';
+    }
+    if (token) {
+        const getCart = {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include',
+            mode: 'cors'
+        };
 
-            if (result.products.length >= 1) {
-                result.products.map(product => {
-
-                    let price = product.price;
-                    price = prodPrice.format(price)
+        fetch(url, getCart)
+        .then(response => response.json())
+        .then(result => {
+            if (result.msg === "Your cart is empty!" && data.length === 0) {
+                getModal.style.display= "none";
+                cartDiv.innerHTML = '<h3 class="cart-header mt-5 mb-4">Your cart is empty!</h3>';
+            } else {
+                billing = result.billing;
+                displayProducts(result.products);
+                calculateSubtotal()
+            }
+        })
+        .catch(error => console.log('error', error));
+    } 
     
-                    getModal.style.display= "none";
     
-                    prodDiv.innerHTML += `
-                    <div class="row text-box">
-                    <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                        <div>
-                            <img src=${product.image} alt="" class="img-fluid">
+    function displayProducts(products) {
+        products.forEach(product => {
+            let price = product.price;
+            price = prodPrice.format(price);
+            prodData += `
+            <div class="row text-box">
+            <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
+                <div>
+                    <img src=${product.image} alt="" class="img-fluid">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
+                <div class="pb-lg-2">
+                    <div class="header mt-2">
+                        <p>${product.name}</p>
+                        <p>${product.code}</p>
+                    </div>
+                    <p class="product-para mt-4 mb-5">${product.summary}</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
+                <div class="d-lg-flex price-qty">
+                    <div class="quantity check pt-2 pt-lg-0">
+                        <p>quantity</p>
+                        <div class="d-flex justify-content-center input-btn mt-3">
+                            <button class="px-3 py-1" onclick="updateCart('${product._id}', '${product.color}', '${product.size}', -1)"><i class="fa-solid fa-minus"></i></button>
+                            <input type="text" name="quantity-display" id="quantity-display" data-product-id="${product._id}" value=${product.quantity} readonly>
+                            <button class="px-3 py-1" onclick="updateCart('${product._id}', '${product.color}', '${product.size}', 1)"><i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
-                        <div class="pb-lg-2">
-                            <div class="header mt-2">
-                                <p>${product.name}</p>
-                                <p>${product.code}</p>
-                            </div>
-                            <p class="product-para mt-4 mb-5">${product.summary}</p>
-                        </div>
+                    <div class="unit-price mt-4 mt-lg-0">
+                        <p>unit price</p>
+                        <p class="price my-4 my-lg-0">₦${price}</p>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
-                        <div class="d-lg-flex price-qty">
-                            <div class="quantity check pt-2 pt-lg-0">
-                                <p>quantity</p>
-                                <div class="d-flex justify-content-center input-btn mt-3">
-                                    <button class="px-3 py-1" onclick="updateCart('${product._id}', '${product.color}', '${product.size}', -1)"><i class="fa-solid fa-minus"></i></button>
-                                    <input type="text" name="quantity-display" id="quantity-display" value=${product.quantity} readonly>
-                                    <button class="px-3 py-1" onclick="updateCart('${product._id}', '${product.color}', '${product.size}', 1)"><i class="fa-solid fa-plus"></i></button>
-                                </div>
-                            </div>
-                            <div class="unit-price mt-4 mt-lg-0">
-                                <p>unit price</p>
-                                <p class="price my-4 my-lg-0">₦${price}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="btn-div my-3">
-                        <button class="wish d-flex px-4 py-3 justify-content-center align-items-center" onclick="addToWishCart('${product._id}')">
-                            <i class="fa-regular fa-heart pe-1"></i>wishlist
-                        </button>
-                        <button class="cart-btn d-flex px-4 py-3 justify-content-center align-items-center" onclick="deleteProdCart('${result._id}','${product._id}')">
-                            <i class="fa-solid fa-trash pe-1"></i>remove
-                        </button>
-                    </div>
-                    <div class="dash my-3"></div>
-                    </div>
-                    `
-                })
-            }
-            if (data) {
-                data.map(product => {
-                    let price = product.price;
-                    price = prodPrice.format(price)
-        
-                    prodDiv.innerHTML += `
-                    <div class="row text-box">
-                        <div class="col-sm-12 col-md-12 col-lg-2 col-xl-2">
-                            <div class="w-100">
-                                <img src=${product.image} alt="" class="img-fluid w-100">
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-5 col-xl-5 ms-lg-4 mt-3 mt-lg-0 check">
-                            <div class="pb-lg-2">
-                                <div class="header mt-2">
-                                    <p>${product.name}</p>
-                                    <p>${product.code}</p>
-                                </div>
-                                <p class="product-para mt-4">${product.summary}</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 ms-lg-2">
-                            <div class="d-lg-flex price-qty">
-                                <div class="quantity check pt-2 pt-lg-0">
-                                    <p>quantity</p>
-                                    <div class="d-flex justify-content-center input-btn mt-3">
-                                        <button class="px-3 py-1" onclick="decreaseOrd('${product._id}')"><i class="fa-solid fa-minus"></i></button>
-                                        <input type="text" name="quantity-display" id="quantity-display" value=${product.quantity} readonly>
-                                        <button class="px-3 py-1" onclick="increaseOrd('${product._id}')"><i class="fa-solid fa-plus"></i></button>
-                                    </div>
-                                </div>
-                                <div class="unit-price mt-4 mt-lg-0">
-                                    <p>unit price</p>
-                                    <p class="price my-4 my-lg-0">₦${price}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="btn-div mb-2">
-                            <button class="wish d-flex px-4 py-3 align-items-center justify-content-center" onclick="addToWishlist('${product._id}')">
-                                <i class="fa-regular fa-heart pe-1"></i>wishlist
-                            </button>
-                            <button class="cart-btn d-flex px-4 py-3 align-items-center justify-content-center" onclick="deleteProdCart('${product._id}','${product._id}')">
-                                <i class="fa-solid fa-trash pe-1"></i>remove
-                            </button>
-                        </div>
-                        <div class="dash mt-5"></div>
-                    </div>
-                    `
-                    billingData += product.priceTotal
-        
-                })
-            }
-            if (result.products.length >= 1) {
-                subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${result.billing + billingData}</span></p>`
-            }
-            else {
-                subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${billingData}</span></p>` 
-            }
-        }
-    })
-    .catch(error => console.log('error', error));
-}
-
-//Increasing and reducing cart quantity
-function increaseOrd(prodId) {
-    const quantityDets = document.querySelector('input[name="quantity-display"]').value;
-    const qtyNum = +quantityDets;
-
-    let product = JSON.parse(sessionStorage.getItem("product")) || [];
-
-    const existingProductIndex = product.findIndex(prod => prod._id === prodId );
-    if (existingProductIndex !== -1) {
-        // If the product exists, update its quantity
-        product[existingProductIndex].quantity = qtyNum + 1;
-        product[existingProductIndex].priceTotal = product[existingProductIndex].price * product[existingProductIndex].quantity;
+                </div>
+            </div>
+            <div class="btn-div my-3">
+                <button class="wish d-flex px-4 py-3 justify-content-center align-items-center" onclick="addToWishCart('${product._id}')">
+                    <i class="fa-regular fa-heart pe-1"></i>wishlist
+                </button>
+                <button class="cart-btn d-flex px-4 py-3 justify-content-center align-items-center" onclick="deleteProdCart('${product._id}')">
+                    <i class="fa-solid fa-trash pe-1"></i>remove
+                </button>
+            </div>
+            <div class="dash my-3"></div>
+            </div>
+            `
+            if (product.priceTotal) {
+                billingData += product.priceTotal
+            } 
+        });
+        prodDiv.innerHTML = prodData
+        getModal.style.display= "none";
     }
 
-    sessionStorage.setItem("product", JSON.stringify(product));
+    function calculateSubtotal() {
+        let subTotalAmt = billing + billingData;
+        subTotalAmt = prodPrice.format(subTotalAmt);
 
-    setTimeout(() => {
-        location.href = "cart.html"
-    }, 1000)
-}
-
-function decreaseOrd(prodId) {
-    const quantityDets = document.querySelector('input[name="quantity-display"]').value;
-    const qtyNum = +quantityDets;
-
-    let product = JSON.parse(sessionStorage.getItem("product")) || [];
-
-    const existingProductIndex = product.findIndex(prod => prod._id === prodId );
-    if (existingProductIndex !== -1) {
-        // If the product exists, update its quantity
-        if (product[existingProductIndex].quantity > 1) {
-            product[existingProductIndex].quantity = qtyNum - 1;
-        }
-        else {
-            product[existingProductIndex].quantity = 1;
-        }
-        product[existingProductIndex].priceTotal = product[existingProductIndex].price * product[existingProductIndex].quantity;
+        subTotal.innerHTML = `<p class="subtotal-amount">₦<span>${subTotalAmt}</span></p>`;
     }
 
-    sessionStorage.setItem("product", JSON.stringify(product));
-
-    setTimeout(() => {
-        location.href = "cart.html"
-    }, 1000)
 }
 
 //modifying cart
 function updateCart(prodId, colorDets, sizeDets, num) {
-    const quantityDets = document.querySelector('input[name="quantity-display"]').value;
-    let qtyNum = +quantityDets;
-    let finalQty = qtyNum += num
+    const getModal = document.querySelector('.pagemodal');
+    getModal.style.display = "block";
+
+    let product = JSON.parse(sessionStorage.getItem("product")) || [];
+
+    const quantityInput = document.querySelector(`[data-product-id="${prodId}"]`);
+    let finalQty = parseInt(quantityInput.value) + num;
 
     if (finalQty === 0) {
+        getModal.style.display = "none";
+
         return finalQty = 1
     }
 
     const url = baseURL + "cart";
     const token = getBearerToken();
 
-    const data = {
-        products: [
-            {
-                productId: prodId,
-                color: colorDets,
-                size: sizeDets,
-                quantity: finalQty
-            }
-        ]
-    }
-    const cartMethod = {
-        method: 'PUT',
-        headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data),
-        credentials: 'include',
-        mode: 'cors'
-    }
-
-    fetch(url, cartMethod)
-    .then(response => response.json())
-    .then(result => {
-        if (result.message === "cart updated!") {
-            setTimeout(() => {
-                location.href = "cart.html"
-            }, 1000)
+    if (token) {
+        const data = {
+            products: [
+                {
+                    productId: prodId,
+                    color: colorDets,
+                    size: sizeDets,
+                    quantity: finalQty
+                }
+            ]
         }
-    })
-    .catch(error => console.log('error', error));
+        const cartMethod = {
+            method: 'PUT',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data),
+            credentials: 'include',
+            mode: 'cors'
+        }
+    
+        fetch(url, cartMethod)
+        .then(response => response.json())
+        .then(result => {
+            if (result.message === "cart updated!") {
+                setTimeout(() => {
+                    location.href = "cart.html"
+                }, 1000)
+            }
+        })
+        .catch(error => console.log('error', error));
+    }
+    if (product) {
+        getModal.style.display = "block";
+
+        const existingProductIndex = product.findIndex(prod => prod._id === prodId );
+
+        if (existingProductIndex !== -1) {
+            product[existingProductIndex].quantity = finalQty;
+            product[existingProductIndex].priceTotal = finalQty * product[existingProductIndex].price;
+        }
+        sessionStorage.setItem("product", JSON.stringify(product));
+        setTimeout(() => {
+            location.href = "cart.html"
+        }, 1000)
+    }
 }
 
 //add to cart
@@ -844,7 +789,7 @@ function addToCart(prodId, prodName, prodCode, prodPrice, prodSummary, prodImage
             if (existingProductIndex !== -1) {
                 // If the product exists, update its quantity
                 product[existingProductIndex].quantity = qtyNum;
-                product[existingProductIndex].totalSum = qtyNum * prodPrice;
+                product[existingProductIndex].priceTotal = qtyNum * prodPrice;
             }
             else {
                 product.push(data)
@@ -933,12 +878,13 @@ function addToCart(prodId, prodName, prodCode, prodPrice, prodSummary, prodImage
 }
 
 //delete product from cart
-function deleteProdCart(cartId, prodId) {
-    const url = baseURL + `cart/${cartId}/${prodId}`;
+function deleteProdCart(prodId) {
+    const url = baseURL + `cart/${prodId}`;
+    console.log(url)
     const token = getBearerToken()
     let product = JSON.parse(sessionStorage.getItem("product"))
 
-    if (product) {
+    if (product.length !== 0) {
         let id = product.findIndex((prod => prod._id === prodId))
         product.splice(id, 1)
         sessionStorage.setItem("product", JSON.stringify(product))
@@ -983,8 +929,20 @@ function deleteProdCart(cartId, prodId) {
 
 //move to wishlist from cart
 function addToWishCart(prodId) {
+    let product = JSON.parse(sessionStorage.getItem("product"));
+
     const url = baseURL + `cart/to-wishlist/${prodId}`;
     const token = getBearerToken()
+
+    if (token === '' && data) {
+        if (data.length === 0) {
+            Swal.fire({
+                icon: 'error',
+                text: "Kindly login in",
+                confirmButtonColor: '#bd3a3a'
+            })
+        }
+    }
 
     const addToWishCart = {
         method: 'POST',
@@ -1004,6 +962,9 @@ function addToWishCart(prodId) {
                 text: `${result.message}`,
                 confirmButtonColor: '#bd3a3a'
             })
+            let id = product.findIndex((prod => prod._id === prodId))
+            product.splice(id, 1)
+            sessionStorage.setItem("product", JSON.stringify(product))
 
             setTimeout(() => {
                 location.href = "cart.html"
