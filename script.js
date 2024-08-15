@@ -288,6 +288,13 @@ function createAccount(event) {
 
 }
 
+//logout
+function logout(event) {
+  event.preventDefault()
+
+  sessionStorage.clear()
+}
+
 //get Token
 function getBearerToken(){
     let user = sessionStorage.getItem("user");

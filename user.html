@@ -165,7 +165,7 @@
                             <li class="drop-btn"><a class="dropdown-item" href="cart.html">Orders</a></li>
                             <li class="drop-btn"><hr class="dropdown-divider"></li>
                             <li class="drop-btn"><a class="dropdown-item" href="user.html">Sign In</a></li>
-                            <li class="drop-btn mt-2"><a class="dropdown-item" href="user.html">Sign Out</a></li>
+                            <li class="drop-btn mt-2" onclick="logout(event)">Sign Out</li>
                         </ul>
                     </li>
                     <li class="nav-item">
@@ -197,8 +197,8 @@
         
                                 <label for="password" class="form-label">password</label>
                                 <input type="password" class="form-control" id="password">
-                                <div class="fgt-password d-flex justify-content-between">
-                                    <div class="d-flex">
+                                <div class="fgt-password d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
                                         <input type="checkbox" name="rem-password" id="rem-password">
                                         <p class="ms-4 pt-3">Remember me</p>
                                     </div>
@@ -230,14 +230,14 @@
                                 <label for="confirm-password" class="form-label">Confirm Password</label>
                                 <input type="password" class="form-control mb-3" id="confirm-password">
 
-                                <button class="createAcc-btn1 px-4 py-3 d-none d-lg-block w-100" onclick="createAccount(event)">
+                                <button class="createAcc-btn1 px-4 py-3 w-100" onclick="createAccount(event)">
                                     Create Account
                                 </button>
                             </form>
                         </div>
                     </div>
                     <div class="col-lg-5 text-center mx-auto">
-                        <div class="create-acc d-flex flex-column justify-content-between h-100">
+                        <div class="create-acc d-flex flex-column justify-content-between h-100 mt-lg-0 mt-4">
                             <div>
                                 <h5>Create an account</h5>
                                 <p>
