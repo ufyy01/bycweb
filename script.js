@@ -175,7 +175,6 @@ function login(event) {
         fetch(url, signMethod)
         .then(response => response.json())
         .then(result => {
-            console.log(result)
             sessionStorage.setItem("user", JSON.stringify(result));
 
             if (result.hasOwnProperty("user")) {
