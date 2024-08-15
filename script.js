@@ -219,6 +219,76 @@ function login(event) {
 
 }
 
+//create user
+function createAccount(event) {
+
+  event.preventDefault();
+  
+  let getSpin = document.querySelector('.spin');
+  getSpin.style.display = "inline-block";
+
+  const email = document.getElementById('signup-email').value;
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const password = document.getElementById('sign-password').value;
+  const confirmPassword = document.getElementById('confirm-password').value;
+
+  if ( password !== confirmPassword ) {
+      Swal.fire({
+          icon: 'info',
+          text: 'Passwords do not match!',
+          confirmButtonColor: '#bd3a3a'
+      })
+      getSpin.style.display = "none";
+  }
+  else if ( !email || !name || !phone || !password || !confirmPassword ) {
+      Swal.fire({
+          icon: 'info',
+          text: 'Please enter all information!',
+          confirmButtonColor: '#bd3a3a'
+      })
+      getSpin.style.display = "none";
+  }
+  else {
+
+      const signMethod = {
+          method: 'POST',
+          body: JSON.stringify({name, email, phone, password}),
+          headers: {'Content-Type': 'application/json'},
+          credentials: 'include',
+          mode: 'cors'
+      }
+
+      const url = baseURL + "user/signup";
+
+      fetch(url, signMethod)
+      .then(response => response.json())
+      .then(result => {
+
+          if (result.hasOwnProperty("user")) {
+              Swal.fire({
+                  icon: 'success',
+                  text: "Account created successfully!",
+                  showConfirmButton: false,
+              })
+              setTimeout(() => {
+                  location.href = "user.html"
+              }, 1000)
+          }
+      })
+      .catch(error => {
+          Swal.fire({
+              icon: 'info',
+              text: `${error.message}`,
+              confirmButtonColor: "#bd3a3a"
+          })
+          getSpin.style.display = "none"
+      });
+      
+  }
+
+}
+
 //get Token
 function getBearerToken(){
     let user = sessionStorage.getItem("user");
