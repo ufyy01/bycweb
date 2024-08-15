@@ -691,18 +691,23 @@ function updateCart(prodId, colorDets, sizeDets, num) {
     let product = JSON.parse(sessionStorage.getItem("product")) || [];
 
     const quantityInput = document.querySelector(`[data-product-id="${prodId}"]`);
-    let finalQty = parseInt(quantityInput.value) + num;
-
-    if (finalQty === 0) {
-        getModal.style.display = "none";
-
-        return finalQty = 1
-    }
+    let finalQty = 0;
 
     const url = baseURL + "cart";
     const token = getBearerToken();
 
     if (token) {
+
+        if(colorDets !== product.color && sizeDets !== product.size){
+
+            finalQty = parseInt(quantityInput.value) + num;
+            
+            if (finalQty === 0) {
+                getModal.style.display = "none";
+        
+                return finalQty = 1
+            }
+        }
         const data = {
             products: [
                 {
@@ -736,7 +741,19 @@ function updateCart(prodId, colorDets, sizeDets, num) {
         .catch(error => console.log('error', error));
     }
     if (product) {
+        
         getModal.style.display = "block";
+
+        if(colorDets !== product.color && sizeDets !== product.size){
+
+            finalQty = parseInt(quantityInput.value) + num;
+            
+            if (finalQty === 0) {
+                getModal.style.display = "none";
+        
+                return finalQty = 1
+            }
+        }
 
         const existingProductIndex = product.findIndex(prod => prod._id === prodId );
 
